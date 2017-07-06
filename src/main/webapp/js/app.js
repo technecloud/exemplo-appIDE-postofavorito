@@ -97,12 +97,11 @@ var app = (function() {
           templateUrl: 'views/logged/home.view.html'
         })
         
-        .state('comentario', {
-          url: "/home/logged/comentario",
-          controller: 'ComentariosController',
+            .state('comentario', {
+          url: "home/logged/comentario",
+          controller: 'HomeController',
           templateUrl: 'views/logged/comentario.view.html'
         })
-        
         .state('mediaRentabilidadeCarro', {
           url: "/home/logged/mediaRentabilidadeCarro",
           controller: 'HomeController',
@@ -124,7 +123,7 @@ var app = (function() {
         })
          .state('comentarios', {
           url: "home/logged/comentarios",
-          controller: 'ComentariosController',
+          controller: 'HomeController',
           templateUrl: 'views/logged/comentarios.view.html'
         })
 

@@ -1,5 +1,4 @@
-<h3>Comentário</h3>
-
+<h3>Comentario</h3>
 <div class="row" ng-hide="Comentario.inserting || Comentario.editing">
   <div class="col-md-2">
     <div class="component-holder ng-binding ng-scope" data-component="crn-datepicker" id="crn-datepicker-32329">
@@ -21,7 +20,7 @@
   <div class="col-md-2">
     <div>
       <label for="textinput-filter" class="">{{"template.crud.search" | translate}} Moderado</label>
-      <input type="checkbox" ng-model="moderado" class="form-control" value="" placeholder="Moderado">
+      <input type="checkbox" ng-model="moderado" class="form-control" value="null" placeholder="Moderado">
     </div>
   </div>
 </div>
@@ -106,9 +105,9 @@
     </div>
   </div>
 </div>
-<div data-component="crn-form" id="crn-form-form-Comentario" onload="dataHora()">
+<div data-component="crn-form" id="crn-form-form-Comentario">
   <div class="form" ng-show="Comentario.editing || Comentario.inserting">
-    <form crn-datasource="Comentario" class="" onload="atualizarDataHora()">
+    <form crn-datasource="Comentario" class="">
       <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
         <button class="btn btn-primary" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
         <button class="btn btn-success" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>
@@ -126,10 +125,9 @@
           <div class="form-group">
             <label for="textinput-data" class="">Data</label>
             <div style="position:relative">
-              <input type="text" 
-              ng-model="Comentario.active.data" class="form-control" id="textinput-data"  value=''
-
-            >
+              <input type="text" as-date
+              format="DD/MM/YYYY HH:mm:ss"
+              ng-model="Comentario.active.data" class="form-control" id="textinput-data" placeholder="Data" >
             </div>
           </div>
         </div>
