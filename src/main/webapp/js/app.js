@@ -15,10 +15,9 @@ var app = (function() {
       'tmh.dynamicLocale',
       'ui-notification',
       'ui.bootstrap',
-      'ui.utils.masks', 
-      'ngFileUpload'
-    ])
-
+      'ngFileUpload',
+      'ui.utils.masks'
+  ])
     .constant('LOCALES', {
       'locales': {
         'pt_br': 'Portugues (Brasil)',
@@ -65,20 +64,20 @@ var app = (function() {
           controller: 'LoginController',
           templateUrl: 'views/login.view.html'
         })
-        
+
         .state('livreAcesso', {
           url: "",
           controller: 'LivreAcessoController',
           templateUrl: 'views/livreAcesso.view.html'
         })
-        
+
         .state('cep', {
           url: "/cep",
           controller: 'CepController',
           templateUrl: 'views/cep.view.html'
         })
-        
-        
+
+
         .state('cadastro', {
           url: "/cadastro",
           controller: 'CadastroController',
@@ -96,15 +95,15 @@ var app = (function() {
           controller: 'HomeController',
           templateUrl: 'views/logged/home.view.html'
         })
-        
-   
-        
+
+
+
         .state('mediaRentabilidadeCarro', {
           url: "/home/logged/mediaRentabilidadeCarro",
           controller: 'HomeController',
           templateUrl: 'views/logged/mediaRentabilidadeCarro.view.html'
         })
-        
+
         .state('consumoMedio', {
           url: "/home/logged/consumoMedio",
           controller: 'HomeController',
@@ -118,7 +117,7 @@ var app = (function() {
             return 'views/' + urlattr.name + '.view.html';
           }
         })
-      
+
 
 
         .state('404', {
