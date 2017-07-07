@@ -93,16 +93,7 @@ public class ComentarioREST {
    */
   @RequestMapping(method = RequestMethod.GET, value = "/specificSearch")
   public HttpEntity<PagedResources<Comentario>> specificSearch(java.lang.String data, java.lang.String texto, java.lang.Boolean moderado, Pageable pageable, PagedResourcesAssembler assembler) {
-    Date dataAux = null;
-    if (data != null && data.length() > 0 ) {
-      try {
-        java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        dataAux = formatter.parse(data);
-      } catch (Exception e) {
-          e.printStackTrace();
-      }
-    }
-    return new ResponseEntity<>(assembler.toResource(comentarioBusiness.specificSearch(dataAux, texto, moderado, pageable)), HttpStatus.OK);
+    return new ResponseEntity<>(assembler.toResource(comentarioBusiness.specificSearch(data, texto, moderado, pageable)), HttpStatus.OK);
   }
 
   /**

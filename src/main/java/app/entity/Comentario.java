@@ -30,9 +30,8 @@ public class Comentario implements Serializable {
   /**
   * @generated
   */
-  @Temporal(TemporalType.TIMESTAMP)
-  @Column(name = "data", nullable = true, unique = false, insertable=false, updatable=true)
-  private java.util.Date data;
+  @Column(name = "data", nullable = true, unique = false, insertable=true, updatable=true)
+  private java.lang.String data;
   
   /**
   * @generated
@@ -49,8 +48,8 @@ public class Comentario implements Serializable {
   /**
   * @generated
   */
-  @Column(name = "moderado", nullable = true, unique = false, insertable=false, updatable=true)
-  private java.lang.Boolean moderado;
+  @Column(name = "moderado", nullable = true, unique = false, insertable=true, updatable=true)
+  private java.lang.Boolean moderado = false;
   
   /**
   * @generated
@@ -98,7 +97,7 @@ public class Comentario implements Serializable {
    * return data
    * @generated
    */
-  public java.util.Date getData(){
+  public java.lang.String getData(){
     return this.data;
   }
   
@@ -107,7 +106,7 @@ public class Comentario implements Serializable {
    * @param data data
    * @generated
    */
-  public Comentario setData(java.util.Date data){
+  public Comentario setData(java.lang.String data){
     this.data = data;
     return this;
   }

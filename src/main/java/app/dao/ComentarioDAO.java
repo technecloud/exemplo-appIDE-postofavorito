@@ -58,15 +58,15 @@ public interface ComentarioDAO extends JpaRepository<Comentario, java.lang.Strin
    * Searchable fields - General search (Only strings fields)
    * @generated
    */
-  @Query("SELECT entity FROM Comentario entity WHERE entity.texto like concat('%',coalesce(:search,''),'%')")
+  @Query("SELECT entity FROM Comentario entity WHERE entity.data like concat('%',coalesce(:search,''),'%') OR entity.texto like concat('%',coalesce(:search,''),'%')")
   public Page<Comentario> generalSearch(@Param(value="search") java.lang.String search, Pageable pageable);
 
   /**
    * Searchable fields - Specific search
    * @generated
    */
-  @Query("SELECT entity FROM Comentario entity WHERE (:data is null OR entity.data = :data) AND (:texto is null OR entity.texto like concat('%',:texto,'%')) AND (:moderado is null OR entity.moderado = :moderado)")
-  public Page<Comentario> specificSearch(@Param(value="data") java.util.Date data, @Param(value="texto") java.lang.String texto, @Param(value="moderado") java.lang.Boolean moderado, Pageable pageable);
+  @Query("SELECT entity FROM Comentario entity WHERE (:data is null OR entity.data like concat('%',:data,'%')) AND (:texto is null OR entity.texto like concat('%',:texto,'%')) AND (:moderado is null OR entity.moderado = :moderado)")
+  public Page<Comentario> specificSearch(@Param(value="data") java.lang.String data, @Param(value="texto") java.lang.String texto, @Param(value="moderado") java.lang.Boolean moderado, Pageable pageable);
   
   /**
    * Foreign Key user

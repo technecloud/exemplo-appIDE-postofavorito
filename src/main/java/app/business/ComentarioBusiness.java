@@ -113,7 +113,7 @@ public class ComentarioBusiness {
    * Searchable fields - Specific search
    * @generated
    */
-  public Page<Comentario> specificSearch(java.util.Date data, java.lang.String texto, java.lang.Boolean moderado, Pageable pageable) {
+  public Page<Comentario> specificSearch(java.lang.String data, java.lang.String texto, java.lang.Boolean moderado, Pageable pageable) {
     return repository.specificSearch(data, texto, moderado, pageable);
   }
   

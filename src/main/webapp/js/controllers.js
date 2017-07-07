@@ -57,16 +57,7 @@ app.controller('CadastroController', ['$scope', '$http', '$rootScope', '$state',
   
 }]);
 
-app.controller('ComentariosController', ['$scope', '$http', '$rootScope', '$state', '$translate', 'Notification', function ($scope, $http, $rootScope, $state, $translate, Notification) {
-  
-  $scope.dataHora = function() {
-    
-    Comentario.active.data = new Date();
-  
-  }
-  
-  
-}]);
+
 
 
 
@@ -129,6 +120,28 @@ app.controller('LivreAcessoController', ['$scope', '$http', '$rootScope', '$stat
          $scope.redirectComentarios = function() {
             $state.go("comentarios");
   };
+  
+  
+    $scope.dataHora = function() {
+           
+          var d = new Date();
+          dataHora = (d.toLocaleString());    
+          // alert(d.toLocaleString());
+
+// Mostrando data no campo
+          $scope.Comentario.active.data = dataHora;
+  };
+  
+    $scope.dataHoraGrid = function() {
+           
+          var d = new Date();
+          dataHora = (d.toLocaleString());    
+          // alert(d.toLocaleString());
+
+// Mostrando data no campo
+          $scope.ComentarioGrid.active.data = dataHora;
+  };
+  
         // refresh token
         $scope.refreshToken = function() {
             $http({

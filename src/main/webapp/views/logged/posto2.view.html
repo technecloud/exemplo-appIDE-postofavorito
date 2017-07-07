@@ -101,7 +101,7 @@
                     <div class="form-group">
                       <label for="textinput-data">Data</label>
                       <div style="position:relative">
-                        <input as-date="" format="DD/MM/YYYY HH:mm:ss" ng-model="ComentarioGrid.active.data" class="form-control" id="textinput-data" placeholder="Data" type="text">
+                        <input type="text" ng-model="ComentarioGrid.active.data" class="form-control" id="textinput-data" ng-click="dataHoraGrid()" ng-readonly="" mask="9/9/9999, 99:99:99 AA">
                       </div>
                     </div>
                   </div>
