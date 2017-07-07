@@ -57,6 +57,19 @@ app.controller('CadastroController', ['$scope', '$http', '$rootScope', '$state',
   
 }]);
 
+app.controller('ComentariosController', ['$scope', '$http', '$rootScope', '$state', '$translate', 'Notification', function ($scope, $http, $rootScope, $state, $translate, Notification) {
+  
+  $scope.dataHora = function() {
+    
+    Comentario.active.data = new Date();
+  
+  }
+  
+  
+}]);
+
+
+
 
 app.controller('CepController', ['$scope', '$http', '$rootScope', '$state', '$translate', 'Notification', function ($scope, $http, $rootScope, $state, $translate, Notification) {
 

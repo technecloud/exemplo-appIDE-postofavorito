@@ -15,7 +15,7 @@ var app = (function() {
       'tmh.dynamicLocale',
       'ui-notification',
       'ui.bootstrap',
-      'ui.utils.masks',
+      'ui.utils.masks', 
       'ngFileUpload'
     ])
 
@@ -97,11 +97,8 @@ var app = (function() {
           templateUrl: 'views/logged/home.view.html'
         })
         
-            .state('comentario', {
-          url: "home/logged/comentario",
-          controller: 'HomeController',
-          templateUrl: 'views/logged/comentario.view.html'
-        })
+   
+        
         .state('mediaRentabilidadeCarro', {
           url: "/home/logged/mediaRentabilidadeCarro",
           controller: 'HomeController',
@@ -121,11 +118,7 @@ var app = (function() {
             return 'views/' + urlattr.name + '.view.html';
           }
         })
-         .state('comentarios', {
-          url: "home/logged/comentarios",
-          controller: 'HomeController',
-          templateUrl: 'views/logged/comentarios.view.html'
-        })
+      
 
 
         .state('404', {
