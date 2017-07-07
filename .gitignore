@@ -5,6 +5,7 @@ target/**
 .history/**
 .autosave/**
 .mvn/**
+.idea/**
 
 pom.xml.tag
 pom.xml.releaseBackup
@@ -17,3 +18,5 @@ buildNumber.properties
 
 .classpath
 .project
+
+*.iml
