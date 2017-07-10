@@ -76,7 +76,7 @@
           </td>
           <td class="">
             <div class="">
-              {{rowData.user.email}}
+              {{rowData.user.login}}
             </div>
           </td>
           <td class="">
@@ -185,24 +185,6 @@
               ui-money-mask
               oninvalid="setCustomValidity('Por favor, insira o preço por litro.')" onchange="try{setCustomValidity('')}catch(e){}"
               >
-          </div>
-        </div>
-        <div data-component="crn-datasource" class="component-holder">
-          <datasource name="user" entity="api/security/User" keys="id" class="" dependent-by="{{Abastecimento}}"></datasource>
-        </div>
-        <div data-component="crn-combobox" id="crn-combobox-user">
-          <div class="form-group">
-            <label for="combobox-user" class="">User</label>
-            <ui-select ng-model="Abastecimento.active.user" crn-datasource="user" class="crn-select" id="combobox-user" required="true"   oninvalid="setCustomValidity('Por favor, insira o usuario.')" onchange="try{setCustomValidity('')}catch(e){}">
-              <ui-select-match class="">
-                {{$select.selected.email}}
-              </ui-select-match>
-              <ui-select-choices  repeat="rowData in datasource.data | filter : session.user.email" class="">
-                <div class="" data-container="true">
-                  {{rowData.email}}
-                </div>
-              </ui-select-choices>
-            </ui-select>
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">

@@ -1,4 +1,22 @@
 <h3>Posto</h3>
+
+<style type="text/css">
+
+.form-group input[type=radio] {
+  display: none;
+}
+.form-group label i.fa:before {
+  content:'\f005';
+  color: #FC0;
+  font-size: 4em;
+}
+.form-group input[type=radio]:checked ~ label i.fa:before {
+  color: #CCC;
+  
+}   
+ 
+</style>
+
 <div class="row" ng-hide="Posto.inserting || Posto.editing">
   <div class="col-md-2">
     <div>
@@ -97,14 +115,6 @@
                 <div class="text-danger wrapper text-center" ng-show="authError">
                 </div>
                 <div class="list-group list-group-sm">
-                  <div data-component="crn-textinput" id="crn-textinput-data">
-                    <div class="form-group">
-                      <label for="textinput-data">Data</label>
-                      <div style="position:relative">
-                        <input type="text" ng-model="ComentarioGrid.active.data" class="form-control" id="textinput-data" ng-click="dataHoraGrid()" ng-readonly="" mask="9/9/9999, 99:99:99 AA">
-                      </div>
-                    </div>
-                  </div>
                   <div data-component="crn-textinput" id="crn-textinput-texto">
                     <div class="form-group">
                         
@@ -113,10 +123,19 @@
                     </div>
                   </div>
                   <div data-component="crn-textinput" id="crn-textinput-nota">
-                    <div class="form-group">
-                      <label for="textinput-nota">Nota</label>
-                      <input ng-model="ComentarioGrid.active.nota" class="form-control" id="textinput-nota" placeholder="Nota" type="number" max="5" required="" title="Por favor, Insira uma nota até 5.">
-                    </div>
+                <input type="checkbox" ng-model="Comentario.active.moderado" id="textinput-moderado" placeholder="Moderado">
+                </div><label for="combobox-user">Nota</label><div class="form-group">
+                <input type="radio" id="cm_star-empty" name="fb" value="0" checked="">
+                <label for="cm_star-1"><i class="fa"></i></label>
+                <input type="radio" id="cm_star-1" name="fb" value="1" ng-model="ComentarioGrid.active.nota">
+                <label for="cm_star-2"><i class="fa"></i></label>
+                <input type="radio" id="cm_star-2" ng-model="ComentarioGrid.active.nota" name="fb" value="2">
+                <label for="cm_star-3"><i class="fa"></i></label>
+                <input type="radio" id="cm_star-3" ng-model="ComentarioGrid.active.nota" name="fb" value="3">
+                <label for="cm_star-4"><i class="fa"></i></label>
+                <input type="radio" id="cm_star-4" name="fb" ng-model="ComentarioGrid.active.nota" value="4">
+                <label for="cm_star-5"><i class="fa"></i></label>
+                <input type="radio" id="cm_star-5" name="fb" ng-model="ComentarioGrid.active.nota" value="5">
                   </div>
               <div data-component="crn-datasource" class="component-holder">
                     <datasource name="userGridForUiSelect" entity="api/security/User" keys="id" rows-per-page="100" ></datasource>

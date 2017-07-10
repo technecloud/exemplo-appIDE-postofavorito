@@ -120,7 +120,7 @@
     </div> 
    
    <div style="margin-top:50px;"  align="center"> 
-      <button class="btn btn-sucess" ng-click="User.startInserting()" ><i class="glyphicon glyphicon-ok"></i> Iniciar cadastro</button> 
+      <button class="btn btn-sucess" ng-click="User.startInserting()" ng-scope="User.active=null" ><i class="glyphicon glyphicon-ok"></i> Iniciar cadastro</button> 
   
     </div >
    
@@ -128,7 +128,7 @@
   </div> 
   <div class="form"  ng-show="User.inserting" > 
     
-    <form crn-datasource="User"> 
+    <form crn-datasource="User" > 
       <!--<div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
         <button class="btn btn-primary" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
         <button class="btn btn-success" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>

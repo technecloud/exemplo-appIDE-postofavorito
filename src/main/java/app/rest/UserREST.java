@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.*;
 import java.util.*;
 import app.entity.*;
 import app.business.*;
+import javax.servlet.http.HttpServletRequest;
+
 
 /**
  * Controller para expor serviços REST de User
@@ -156,10 +158,10 @@ public class UserREST {
    * @generated
    */  
   @RequestMapping(method = RequestMethod.POST, value="/{userId}/Carro")
-  public Carro postCarro(@Validated @RequestBody final Carro entity, @PathVariable("userId") java.lang.String userId) throws Exception {
+  public Carro postCarro(@Validated @RequestBody final Carro entity, @PathVariable("userId") java.lang.String userId, HttpServletRequest req) throws Exception {
     User user = this.userBusiness.get(userId);
     entity.setUser(user);
-    return this.carroBusiness.post(entity);
+    return this.carroBusiness.post(entity, req);
   }
 
   /**
@@ -221,10 +223,10 @@ public class UserREST {
    * @generated
    */  
   @RequestMapping(method = RequestMethod.POST, value="/{userId}/Comentario")
-  public Comentario postComentario(@Validated @RequestBody final Comentario entity, @PathVariable("userId") java.lang.String userId) throws Exception {
+  public Comentario postComentario(@Validated @RequestBody final Comentario entity, @PathVariable("userId") java.lang.String userId, HttpServletRequest req) throws Exception {
     User user = this.userBusiness.get(userId);
     entity.setUser(user);
-    return this.comentarioBusiness.post(entity);
+    return this.comentarioBusiness.post(entity, req);
   }
 
   /**
@@ -259,10 +261,10 @@ public class UserREST {
    * @generated
    */  
   @RequestMapping(method = RequestMethod.POST, value="/{userId}/Abastecimento")
-  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("userId") java.lang.String userId) throws Exception {
+  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("userId") java.lang.String userId, HttpServletRequest req) throws Exception {
     User user = this.userBusiness.get(userId);
     entity.setUser(user);
-    return this.abastecimentoBusiness.post(entity);
+    return this.abastecimentoBusiness.post(entity, req);
   }
   
   /**
@@ -297,7 +299,7 @@ public class UserREST {
    * @generated
    */  
   @RequestMapping(method = RequestMethod.POST,value="/{userId}/Posto")
-  public User postPosto(@Validated @RequestBody final Posto entity, @PathVariable("userId") java.lang.String userId) throws Exception {
+  public User postPosto(@Validated @RequestBody final Posto entity, @PathVariable("userId") java.lang.String userId, HttpServletRequest req) throws Exception {
     Comentario newComentario = new Comentario();
 
     User user = this.userBusiness.get(userId);
@@ -305,7 +307,7 @@ public class UserREST {
     newComentario.setPosto(entity);
     newComentario.setUser(user);
     
-    this.comentarioBusiness.post(newComentario);
+    this.comentarioBusiness.post(newComentario, req);
 
     return newComentario.getUser();
   }   

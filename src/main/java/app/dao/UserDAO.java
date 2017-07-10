@@ -30,6 +30,8 @@ public interface UserDAO extends JpaRepository<User, java.lang.String> {
    */    
   @Query("SELECT entity FROM User entity WHERE entity.id = :id")
   public User findOne(@Param(value="id") java.lang.String id);
+  
+
 
   /**
    * Remove a instância de User utilizando os identificadores
@@ -66,6 +68,9 @@ public interface UserDAO extends JpaRepository<User, java.lang.String> {
    */
   @Query("select u from User u where u.login = :login")
   public Page<User> findByLogin(@Param(value="login") java.lang.String login, Pageable pageable);
+  
+   @Query("select u from User u where u.login = :login")
+   public User userByLogin(@Param(value="login") java.lang.String login);
   
 
 

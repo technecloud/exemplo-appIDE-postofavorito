@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.*;
 import java.util.*;
 import app.entity.*;
 import app.business.*;
+import javax.servlet.http.HttpServletRequest;
+
 
 /**
  * Controller para expor serviços REST de Comentario
@@ -28,6 +30,7 @@ public class ComentarioREST {
   @Autowired
   @Qualifier("ComentarioBusiness")
   private ComentarioBusiness comentarioBusiness;
+  
 
   /**
    * Serviço exposto para novo registro de acordo com a entidade fornecida
@@ -35,8 +38,8 @@ public class ComentarioREST {
    * @generated
    */
   @RequestMapping(method = RequestMethod.POST)
-  public Comentario post(@Validated @RequestBody final Comentario entity) throws Exception {
-    return comentarioBusiness.post(entity);
+  public Comentario post(@Validated @RequestBody final Comentario entity, HttpServletRequest req) throws Exception {
+    return comentarioBusiness.post(entity, req);
   }
 
   /**

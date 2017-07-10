@@ -29,7 +29,6 @@ import app.dao.UserRoleDAO;
 import app.entity.User;
 import app.entity.UserRole;
 
-
 @Component
 public class AuthenticationConfigurer implements AuthenticationProvider {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AuthenticationConfigurer.class);
@@ -45,7 +44,6 @@ public class AuthenticationConfigurer implements AuthenticationProvider {
 	@Autowired
 	private UserRoleDAO userRoleRepository;
 
-
 	private UsernamePasswordAuthenticationToken authenticateDataBase(Authentication authentication)
 			throws AuthenticationException {
 		String name = authentication.getName();
@@ -55,7 +53,7 @@ public class AuthenticationConfigurer implements AuthenticationProvider {
 		if (users.isEmpty())
 			throw new UsernameNotFoundException("Usuário não encontrado!");
 
-		User user = users.get(0);	
+		User user = users.get(0);
 		if (passwordEncoder.matches(rawPassword, user.getPassword())) {
 			Set<GrantedAuthority> roles = getAuthorities(user);
 			org.springframework.security.core.userdetails.User userDetails = new org.springframework.security.core.userdetails.User(
@@ -66,8 +64,6 @@ public class AuthenticationConfigurer implements AuthenticationProvider {
 
 			HttpSession session = request.getSession();
 
-
-    
 			return userToken;
 		} else {
 			throw new BadCredentialsException("Usuário ou senha incorreta!");
