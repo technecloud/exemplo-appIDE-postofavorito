@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.*;
 import java.util.*;
 import app.entity.*;
 import app.business.*;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Controller para expor serviços REST de Posto
@@ -158,10 +159,10 @@ public class PostoREST {
    * @generated
    */  
   @RequestMapping(method = RequestMethod.POST, value="/{postoId}/Comentario")
-  public Comentario postComentario(@Validated @RequestBody final Comentario entity, @PathVariable("postoId") java.lang.String postoId) throws Exception {
+  public Comentario postComentario(@Validated @RequestBody final Comentario entity, @PathVariable("postoId") java.lang.String postoId, HttpServletRequest req) throws Exception {
     Posto posto = this.postoBusiness.get(postoId);
     entity.setPosto(posto);
-    return this.comentarioBusiness.post(entity);
+    return this.comentarioBusiness.post(entity, req);
   }
 
   /**
@@ -196,10 +197,10 @@ public class PostoREST {
    * @generated
    */  
   @RequestMapping(method = RequestMethod.POST, value="/{postoId}/Abastecimento")
-  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("postoId") java.lang.String postoId) throws Exception {
+  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("postoId") java.lang.String postoId, HttpServletRequest req) throws Exception {
     Posto posto = this.postoBusiness.get(postoId);
     entity.setPosto(posto);
-    return this.abastecimentoBusiness.post(entity);
+    return this.abastecimentoBusiness.post(entity, req);
   }
   
   /**
@@ -234,7 +235,7 @@ public class PostoREST {
    * @generated
    */  
   @RequestMapping(method = RequestMethod.POST,value="/{postoId}/User")
-  public Posto postUser(@Validated @RequestBody final User entity, @PathVariable("postoId") java.lang.String postoId) throws Exception {
+  public Posto postUser(@Validated @RequestBody final User entity, @PathVariable("postoId") java.lang.String postoId, HttpServletRequest req) throws Exception {
     Comentario newComentario = new Comentario();
 
     Posto posto = this.postoBusiness.get(postoId);
@@ -242,7 +243,7 @@ public class PostoREST {
     newComentario.setUser(entity);
     newComentario.setPosto(posto);
     
-    this.comentarioBusiness.post(newComentario);
+    this.comentarioBusiness.post(newComentario, req);
 
     return newComentario.getPosto();
   }   

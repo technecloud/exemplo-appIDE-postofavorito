@@ -9,6 +9,12 @@ import app.dao.*;
 import app.entity.*;
 import org.springframework.data.domain.PageImpl;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+
 /**
  * Classe que representa a camada de negócios de CarroBusiness
  * 
@@ -27,6 +33,11 @@ public class CarroBusiness {
   @Autowired
   @Qualifier("CarroDAO")
   protected CarroDAO repository;
+  
+  @Autowired
+  @Qualifier("UserDAO")
+  protected UserDAO userDAO;
+
 
   // CRUD
 
@@ -35,9 +46,19 @@ public class CarroBusiness {
  +   * 
  +   * @generated
  +   */
-  public Carro post(final Carro entity) throws Exception {
+  public Carro post(final Carro entity,  HttpServletRequest req) throws Exception {
     // begin-user-code  
     // end-user-code  
+    
+   // entity.setUser(user);
+   String username = (String)req.getSession().getAttribute("username");
+
+    
+    User user = userDAO.userByLogin(username);
+    
+    entity.setUser(user);
+    		
+   
     Carro result = repository.save(entity);
     // begin-user-code
     // end-user-code

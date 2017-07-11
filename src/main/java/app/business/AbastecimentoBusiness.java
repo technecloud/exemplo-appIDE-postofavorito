@@ -10,11 +10,16 @@ import app.dao.*;
 import app.entity.*;
 import org.springframework.data.domain.PageImpl;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 /**
  * Classe que representa a camada de negócios de AbastecimentoBusiness
  * 
  * @generated
  **/
+ 
 @Service("AbastecimentoBusiness")
 public class AbastecimentoBusiness {
 
@@ -30,6 +35,11 @@ public class AbastecimentoBusiness {
 	@Autowired
 	@Qualifier("PostoDAO")
 	protected PostoDAO postoDAO;
+	
+	@Autowired
+	@Qualifier("UserDAO")
+	protected UserDAO userDAO;
+
 
 	// CRUD
 
@@ -38,10 +48,17 @@ public class AbastecimentoBusiness {
 	 * 
 	 * @generated
 	 */
-	public Abastecimento post(final Abastecimento entity) throws Exception {
+	public Abastecimento post(final Abastecimento entity, HttpServletRequest req) throws Exception {
 		// begin-user-code  
 		// end-user-code  
-		Abastecimento result = repository.save(entity);
+   String username = (String)req.getSession().getAttribute("username");
+
+    
+    User user = userDAO.userByLogin(username);
+    
+    entity.setUser(user);
+    		
+	  Abastecimento result = repository.save(entity);
 		// begin-user-code
 		// end-user-code
 		return result;

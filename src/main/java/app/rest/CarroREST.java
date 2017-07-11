@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.*;
 import java.util.*;
 import app.entity.*;
 import app.business.*;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Controller para expor serviços REST de Carro
@@ -42,8 +43,8 @@ public class CarroREST {
    * @generated
    */
   @RequestMapping(method = RequestMethod.POST)
-  public Carro post(@Validated @RequestBody final Carro entity) throws Exception {
-    return carroBusiness.post(entity);
+  public Carro post(@Validated @RequestBody final Carro entity, HttpServletRequest req) throws Exception {
+    return carroBusiness.post(entity, req);
   }
 
   /**
@@ -117,10 +118,10 @@ public class CarroREST {
    * @generated
    */  
   @RequestMapping(method = RequestMethod.POST, value="/{carroId}/Abastecimento")
-  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("carroId") java.lang.String carroId) throws Exception {
+  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("carroId") java.lang.String carroId, HttpServletRequest req) throws Exception {
     Carro carro = this.carroBusiness.get(carroId);
     entity.setCarro(carro);
-    return this.abastecimentoBusiness.post(entity);
+    return this.abastecimentoBusiness.post(entity,req);
   }
 
   /**

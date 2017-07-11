@@ -81,7 +81,6 @@ public class AuthorizationConfigurer extends WebSecurityConfigurerAdapter {
 		http.sessionManagement().maximumSessions(1).maxSessionsPreventsLogin(false).expiredUrl("/index.html").and()
 				.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED).invalidSessionUrl("/index.html");
 
-
 		// load Security Permission
 		securityPermission.loadSecurityPermission(http);
 

@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.*;
 import java.util.*;
 import app.entity.*;
 import app.business.*;
-
+import javax.servlet.http.HttpServletRequest;
 /**
  * Controller para expor serviços REST de Abastecimento
  * 
@@ -35,8 +35,8 @@ public class AbastecimentoREST {
    * @generated
    */
   @RequestMapping(method = RequestMethod.POST)
-  public Abastecimento post(@Validated @RequestBody final Abastecimento entity) throws Exception {
-    return abastecimentoBusiness.post(entity);
+  public Abastecimento post(@Validated @RequestBody final Abastecimento entity, HttpServletRequest req) throws Exception {
+    return abastecimentoBusiness.post(entity, req);
   }
 
   /**

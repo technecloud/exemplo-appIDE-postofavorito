@@ -217,7 +217,7 @@
               </ui-select-match>
               <ui-select-choices  repeat="rowData in datasource.data | filter : session.user.email" class="">
                 <div class="" data-container="true">
-                  {{rowData.marca}}  {{$select.selected.modelo}}
+                  {{rowData.marca}}   {{rowData.modelo}}
                 </div>
               </ui-select-choices>
             </ui-select>
