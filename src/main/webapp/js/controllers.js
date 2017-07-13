@@ -128,6 +128,11 @@ app.controller('LivreAcessoController', ['$scope', '$http', '$rootScope', '$stat
             $scope.msg_div_click_false = function(){
               $scope.msg_div = false;
            }
+           
+           $scope.init = function () {
+             $scope.msg_div = false;
+            };
+        
   
   
   
