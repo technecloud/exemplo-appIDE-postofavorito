@@ -91,7 +91,7 @@
           </td>
           <td>
             <div>
-              {{rowData.user.email}}
+              {{rowData.user.login}}
             </div>
           </td>
           <td>
@@ -130,13 +130,13 @@
       <br>
       <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
         <div data-component="crn-textinput" id="crn-textinput-data">
-          <div class="form-group">
+      <!--    <div class="form-group"  >
             <label for="textinput-data">Data</label>
             <div style="position:relative">
-              <input type="text" ng-model="Comentario.active.data" class="form-control" id="textinput-data" ng-click="dataHora()" ng-readonly="" mask="9/9/9999, 99:99:99 AA">
+              <input type="text" ng-model="Comentario.active.data" class="form-control" ng-click="dataHora()" id="textinput-data" ng-readonly="true" >
             </div>
           </div>
-        </div>
+        </div> -->
         <div data-component="crn-textinput" id="crn-textinput-texto">
           <div class="form-group">
             <label for="textinput-texto">Texto</label>
@@ -153,28 +153,13 @@
         <div data-component="crn-datasource" class="component-holder">
           <datasource name="user" entity="api/security/User" keys="id" dependent-by="{{Comentario}}"></datasource>
         </div>
-        <div data-component="crn-combobox" id="crn-combobox-user">
-          <div class="form-group">
-            <label for="combobox-user">User</label>
-            <ui-select ng-model="Comentario.active.user" crn-datasource="user" class="crn-select" id="combobox-user">
-              <ui-select-match>
-                {{$select.selected.email}}
-              </ui-select-match>
-              <ui-select-choices repeat="rowData in datasource.data | filter : $select.search">
-                <div data-container="true">
-                  {{rowData.email}}
-                </div>
-              </ui-select-choices>
-            </ui-select>
-          </div>
-        </div>
         <div data-component="crn-datasource" class="component-holder">
           <datasource name="posto" entity="api/rest/Posto" keys="id" dependent-by="{{Comentario}}"></datasource>
         </div>
         <div data-component="crn-combobox" id="crn-combobox-posto">
           <div class="form-group">
             <label for="combobox-posto">Posto</label>
-            <ui-select ng-model="Comentario.active.posto" crn-datasource="posto" class="crn-select" id="combobox-posto">
+            <ui-select ng-model="Comentario.active.posto" crn-datasource="posto" class="crn-select" id="combobox-posto" required="" title="Por favor, insira o posto">
               <ui-select-match>
                 {{$select.selected.nome}}
               </ui-select-match>
@@ -185,6 +170,7 @@
               </ui-select-choices>
             </ui-select>
           </div>
+        </div>
         </div>
         <!-- NtoN  -->
         <!-- NtoN  end-->

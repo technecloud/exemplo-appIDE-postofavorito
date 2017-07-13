@@ -10,13 +10,13 @@
       </div> 
       <div id="navbar" class="navbar-collapse collapse"> 
         <ul class="nav navbar-nav" style="float:none"> 
-          <li class="dropdown component-holder" data-component=""> <a href="#/home" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-lg fa-home"></i> <span>{{"Home.view.Home" | translate}}</span> </a> </li> 
+          <li class="dropdown component-holder" data-component=""> <a href="#/home" class="dropdown-toggle" ng-click="msg_div_click_false()" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-lg fa-home"></i> <span>{{"Home.view.Home" | translate}}</span> </a> </li> 
           <li class="dropdown component-holder" data-component="crn-menu-item" ng-if="session.root"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-users fa-lg"></i> <span>{{"Home.view.Admin" | translate}}</span> <span class="caret"></span> </a> 
             <ul class="dropdown-menu"> 
-              <li class="active"><a href="#/home/logged/userrole" class="component-holder" data-component="crn-anchor">UserRole</a><a href="#/home/admin/role" class="component-holder" data-component="crn-anchor">{{"Home.view.Roles" | translate}}</a><a href="#/home/admin/user" class="component-holder" data-component="crn-anchor">{{"Home.view.Users" | translate}}</a></li> 
+              <li class=""><a href="#/home/logged/userrole" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">UserRole</a><a href="#/home/admin/role" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">{{"Home.view.Roles" | translate}}</a><a href="#/home/admin/user" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">{{"Home.view.Users" | translate}}</a></li> 
               
               
-            <li><a href="#/home/logged/carro" class="component-holder" data-component="crn-anchor">Carro</a></li><li><a href="#/home/logged/posto" class="component-holder" data-component="crn-anchor">Posto</a></li><li><a href="#/home/logged/abastecimento" class="component-holder" data-component="crn-anchor">Abastecimento</a></li><li><a href="#/home/logged/comentario" class="component-holder" data-component="crn-anchor">Comentário</a></li></ul> </li> 
+            <li class="active"><a href="#/home/logged/carro" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Carro</a></li><li><a href="#/home/logged/posto" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Posto</a></li><li><a href="#/home/logged/abastecimento" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Abastecimento</a></li><li><a href="#/home/logged/comentario" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Comentário</a></li></ul> </li> 
           <li class="dropdown component-holder navbar-right" data-component="crn-menu-item"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-lg fa-gear"></i> <span>{{"ChooseTheme" | translate}}</span> <span class="caret"></span> </a> 
             <ul class="dropdown-menu"> 
               <li ng-repeat="theme in themes" ng-click="changeTheme(theme)"> <a href="javascript:void(0);" ng-class="{'bg-primary': myTheme==theme}">{{theme}} <i class="fa fa-lg fa-check pull-right" ng-if="myTheme==theme"></i></a></li> 
@@ -26,7 +26,7 @@
               <li><a class="component-holder" data-toggle="modal" data-target="#modalPassword" data-component="crn-anchor">{{"Home.view.ChangePassword" | translate}}</a></li> 
               <li ng-click="logout()" class="active"><a href="javascript:void(0);"><span>{{"Home.view.Logout" | translate}}</span></a></li> 
             </ul> </li> 
-        <li class="dropdown component-holder active" data-component="crn-menu-item"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>Menu </span> <span class="caret"></span></a> <ul class="dropdown-menu">   <li><a href="#/home/logged/carro" class="component-holder" data-component="crn-anchor">Meus Carros</a></li> <li><a href="#/home/logged/abastecimento" class="component-holder" data-component="crn-anchor">Meus Abastecimentos</a></li><li class="active"><a href="#/home/logged/posto2" class="component-holder" data-component="crn-anchor">Postos</a></li></ul></li></ul> 
+        <li class="dropdown component-holder active" data-component="crn-menu-item"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>Menu </span> <span class="caret"></span></a> <ul class="dropdown-menu">   <li><a href="#/home/logged/carro" ng-click="msg_div_click()" class="component-holder" data-component="crn-anchor">Meus Carros</a></li> <li><a href="#/home/logged/abastecimento" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Meus Abastecimentos</a></li><li class="active"><a href="#/home/logged/posto2" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Postos</a></li></ul></li></ul> 
       </div> 
     </div> 
   </nav>
@@ -47,13 +47,13 @@
           </div> 
           <div class="list-group list-group-sm"> 
             <div class="list-group-item"> 
-              <input class="form-control no-border" id="oldPassword" placeholder="{Old Password}" type="password" __________________placeholder="{Old Password}" ______placeholder="{Old Password}" _____________________placeholder="{{'Home.view.Old Password' | translate}}"> 
+              <input class="form-control no-border" id="oldPassword" placeholder="{Old Password}" type="password" ________________________placeholder="{Old Password}" ___________________________placeholder="{{'Home.view.Old Password' | translate}}" _______________placeholder="{Old Password}" ___placeholder="{Old Password}"> 
             </div> 
             <div class="list-group-item"> 
-              <input class="form-control no-border" id="newPassword" placeholder="{New Password}" type="password" __________________placeholder="{New Password}" ______placeholder="{New Password}" _____________________placeholder="{{'Home.view.New Password' | translate}}"> 
+              <input class="form-control no-border" id="newPassword" placeholder="{New Password}" type="password" ________________________placeholder="{New Password}" ___________________________placeholder="{{'Home.view.New Password' | translate}}" _______________placeholder="{New Password}" ___placeholder="{New Password}"> 
             </div> 
             <div class="list-group-item"> 
-              <input class="form-control no-border" id="newPasswordConfirmation" placeholder="{Confirmation}" type="password" __________________placeholder="{Confirmation}" ______placeholder="{Confirmation}" _____________________placeholder="{{'Home.view.Confirmation' | translate}}"> 
+              <input class="form-control no-border" id="newPasswordConfirmation" placeholder="{Confirmation}" type="password" ________________________placeholder="{Confirmation}" ___________________________placeholder="{{'Home.view.Confirmation' | translate}}" _______________placeholder="{Confirmation}" ___placeholder="{Confirmation}"> 
             </div> 
           </div> 
         </form> 
@@ -64,4 +64,80 @@
       </div> 
     </div> 
   </div> 
+</div>
+<div ng-hide="msg_div">
+<style>
+body {
+    background: url("img/background.jpg") no-repeat center center fixed;
+  background-size: cover; /*Css padrão*/
+  -webkit-background-size: cover; /*Css safari e chrome*/
+  -moz-background-size: cover; /*Css firefox*/
+  -ms-background-size: cover; /*Css IE não use mer#^@%#*/
+  -o-background-size: cover; /*Css Opera*/
+}
+</style> 
+<div class="container-full" data-container="true"> 
+  
+  <div class="container-fluid" data-container="true"> 
+    <div class="component-holder ng-binding ng-scope" data-component="crn-datasource" data-attribute-preview="" id="crn-datasource-448698">
+    <datasource filter="/listaRankingAbastecimentos" name="Abastecimento" entity="api/rest/Abastecimento" keys="id" rows-per-page="100" delete-message="Deseja remover?"></datasource>
+    </div>
+    <div class="component-holder ng-binding ng-scope" data-component="crn-button" data-attribute-preview="" id="crn-button-502461"></div>
+    <h3 align="center">Postos Campões de Rentabilidade</h3>
+    <div class="component-holder ng-binding ng-scope" data-component="crn-horizontal-container" data-attribute-preview="" id="crn-horizontal-container-509763">
+      <div class="component-holder ng-binding ng-scope" data-component="crn-grid" data-attribute-preview="" id="crn-grid-708015">
+        <div crn-datasource="dsPostos"> 
+          <table class="table  table-bordered table-hover"> 
+            <thead> 
+            </thead> 
+            <tbody>
+              <tr class="table-content" ng-repeat="rowData in datasource.data"> 
+              </tr> 
+            </tbody> 
+          </table> 
+          <div class="table-footer-controls"> 
+          </div> 
+        </div>
+      </div>
+      <div class="component-holder ng-binding ng-scope" data-component="crn-grid" data-attribute-preview="" id="crn-grid-578679">
+        <div crn-datasource="Abastecimento"> 
+          <table class="table  table-bordered table-hover"> 
+            <thead> 
+              <tr class="table-header"> 
+                <th class="active">
+                  <div data-container="true">
+                    Postos
+                  </div></th> 
+                <th>
+                  <div data-container="true">
+                    Média
+                  </div></th> 
+                <th>
+                  <div data-container="true">
+                    Média Total
+                  </div></th>
+              </tr> 
+            </thead> 
+            <tbody>
+              <tr class="table-content" ng-repeat="rowData in datasource.data"> 
+                <td class="active">{{rowData.nomePosto}}</td> 
+                <td>{{rowData.mediaRentabilidadesPosto}}</td> 
+                <td>{{rowData.mediaRentabilidadeGeral}}</td>
+              </tr> 
+            </tbody> 
+          </table> 
+          <div class="table-footer-controls"> 
+            <button class="btn btn-default btn-block btn-clicked" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">Load more...</button> 
+          </div> 
+        </div>
+      </div>
+      <div class="row" data-container="true" draggable="true"> 
+        <div class="column col-md-4">
+          <div class="component-holder ng-binding ng-scope" data-component="crn-combobox-dynamic" data-attribute-preview="" id="crn-combobox-dynamic-775080"></div>
+        </div> 
+        <div class="column col-md-4"></div> 
+      </div>
+    </div> 
+  </div> 
+</div>
 </div>

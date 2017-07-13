@@ -66,9 +66,14 @@ public class PostoBusiness {
   public void delete(java.lang.String id) throws Exception {
     Posto entity = this.get(id);
     // begin-user-code  
-    // end-user-code
-    this.repository.delete(entity);
-    // begin-user-code  
+    try {
+      
+      this.repository.delete(entity);
+     
+      
+    }catch(Exception e) {
+        throw new Exception("Por favor, delete primeiro os abastecimentos desse posto.");
+    } 
     // end-user-code        
   }
   

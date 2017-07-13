@@ -78,14 +78,14 @@ public class AuthorizationConfigurer extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 
 		// session manager
-		http.sessionManagement().maximumSessions(1).maxSessionsPreventsLogin(false).expiredUrl("/index.html").and()
-				.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED).invalidSessionUrl("/index.html");
+		http.sessionManagement().maximumSessions(1).maxSessionsPreventsLogin(false).expiredUrl("/").and()
+				.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED).invalidSessionUrl("/");
 
 		// load Security Permission
 		securityPermission.loadSecurityPermission(http);
 
 		// login/logout
-		http.formLogin().loginProcessingUrl("/auth").loginPage("/index.html").successHandler(successHandler())
+		http.formLogin().loginProcessingUrl("/auth").loginPage("/").successHandler(successHandler())
 				.failureHandler(failureHandler()).and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).invalidateHttpSession(true);
 
@@ -104,6 +104,8 @@ public class AuthorizationConfigurer extends WebSecurityConfigurerAdapter {
 					Authentication authentication) throws IOException, ServletException {
 
 				HttpSession session = req.getSession();
+  
+
 				org.springframework.security.core.userdetails.User authUser = (org.springframework.security.core.userdetails.User) SecurityContextHolder
 						.getContext().getAuthentication().getPrincipal();
 				session.setAttribute("username", authUser.getUsername());

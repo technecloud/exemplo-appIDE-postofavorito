@@ -120,6 +120,14 @@ app.controller('LivreAcessoController', ['$scope', '$http', '$rootScope', '$stat
          $scope.redirectComentarios = function() {
             $state.go("comentarios");
            };
+           
+           $scope.msg_div_click = function(){
+              $scope.msg_div = true;
+           }
+           
+            $scope.msg_div_click_false = function(){
+              $scope.msg_div = false;
+           }
   
   
   

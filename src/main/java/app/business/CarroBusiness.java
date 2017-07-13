@@ -88,10 +88,10 @@ public class CarroBusiness {
     Carro entity = this.get(id);
     // begin-user-code  
     // end-user-code
-     try {
+    try {
     this.repository.delete(entity);
      }catch(Exception e) {
-        throw new Exception("Verifique se existe abastecimento para esse carro");
+        throw new Exception("Por favor, delete primeiro os abastecimentos deste carro.");
     }   
     // begin-user-code  
     // end-user-code        
