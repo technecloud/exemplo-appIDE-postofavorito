@@ -1,13 +1,4 @@
-<style>
-body {
-    background: url("img/background.jpg") no-repeat center center fixed;
-  background-size: cover; /*Css padrão*/
-  -webkit-background-size: cover; /*Css safari e chrome*/
-  -moz-background-size: cover; /*Css firefox*/
-  -ms-background-size: cover; /*Css IE não use mer#^@%#*/
-  -o-background-size: cover; /*Css Opera*/
-}
-</style> 
+
 <div class="container-full" data-container="true"> 
   <div class="component-holder ng-binding ng-scope" data-component="crn-button" data-attribute-preview="" id="crn-button-446253" align="right"> 
     <button class="btn btn-default" type="submit" ng-click="redirectLogin()">Login</button> 
@@ -18,6 +9,35 @@ body {
     </div>
     <div class="component-holder ng-binding ng-scope" data-component="crn-button" data-attribute-preview="" id="crn-button-929129"></div> 
   </div>
+  
+  <nav class="navbar navbar-default navbar-fixed-top"> 
+    <div class="container-fluid"> 
+      <div class="navbar-header"> 
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> 
+        <a class="navbar-brand component-holder" data-component="crn-anchor" href="#">Meu Posto Favorito</a> 
+      </div> 
+      <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+    </div> 
+  </nav> 
+
+
+  <div class="jumbotron">
+      <div class="container">
+        <h1>Seja bem vindo ao meu posto favorito</h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a class="btn btn-primary btn-lg" role="button" type="submit" ng-click="redirectRegister()" user.startinserting()="">Cadastre-se</a></p>
+      </div>
+    </div>
   <div class="container-fluid" data-container="true"> 
     <div class="component-holder ng-binding ng-scope" data-component="crn-datasource" data-attribute-preview="" id="crn-datasource-448698">
     <datasource filter="/listaRankingAbastecimentos" name="Abastecimento" entity="api/rest/Abastecimento" keys="id" rows-per-page="100" delete-message="Deseja remover?"></datasource>
@@ -79,4 +99,22 @@ body {
       </div>
     </div> 
   </div> 
+  <div class="row">
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+        </div>
+      </div>
+
 </div>
