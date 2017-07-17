@@ -3,3 +3,18 @@
 div.jumbotron { 
   background-color: rgb(239, 224, 69);
 }
+
+td.genClass2529 { 
+ }
+
+td.genClass197 { 
+ }
+
+table.table { 
+  font-family: Trebuchet MS,Helvetica,sans-serif;
+  text-align: center;
+}
+
+table.table.table-bordered { 
+  width: 800px;
+}

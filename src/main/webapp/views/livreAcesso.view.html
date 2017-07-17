@@ -14,15 +14,15 @@
     <div class="container-fluid"> 
       <div class="navbar-header"> 
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> 
-        <a class="navbar-brand component-holder" data-component="crn-anchor" href="#">Meu Posto Favorito</a> 
+        <a class="navbar-brand component-holder" data-component="crn-anchor" href="#">Meu Posto Favorito &#x26fd;</a> 
       </div> 
       <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
             <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
+              <input placeholder="Email" class="form-control" type="text">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
+              <input placeholder="Password" class="form-control" type="password">
             </div>
             <button type="submit" class="btn btn-success">Sign in</button>
           </form>
@@ -33,9 +33,9 @@
 
   <div class="jumbotron">
       <div class="container" align="center">
-        <h1>Seja bem vindo ao meu posto favorito</h1>
+        <h1>Seja bem vindo ao meu posto favorito &#x1f396; </h1>
         <p>Encontre fácil e rapidamente a opção mais econômica para abastecer seu carro!</p>
-        <p><a class="btn btn-primary btn-lg" role="button" type="submit" ng-click="redirectRegister()" user.startinserting()="" >Cadastre-se</a></p>
+        <p><a class="btn btn-primary btn-lg" role="button" type="submit" ng-click="redirectRegister()" user.startinserting()="">Cadastre-se</a></p>
       </div>
     </div>
   <div class="container-fluid" data-container="true"> 
@@ -43,11 +43,11 @@
     <datasource filter="/listaRankingAbastecimentos" name="Abastecimento" entity="api/rest/Abastecimento" keys="id" rows-per-page="100" delete-message="Deseja remover?"></datasource>
     </div>
     <div class="component-holder ng-binding ng-scope" data-component="crn-button" data-attribute-preview="" id="crn-button-502461"></div>
-    <h3 align="center">Postos Campões de Rentabilidade</h3>
+    <h3 align="center">Postos Campões de Rentabilidade </h3>
     <div class="component-holder ng-binding ng-scope" data-component="crn-horizontal-container" data-attribute-preview="" id="crn-horizontal-container-509763">
       <div class="component-holder ng-binding ng-scope" data-component="crn-grid" data-attribute-preview="" id="crn-grid-708015">
         <div crn-datasource="dsPostos"> 
-          <table class="table  table-bordered table-hover"> 
+          <table class="table "> 
             <thead> 
             </thead> 
             <tbody>
@@ -60,12 +60,12 @@
         </div>
       </div>
       <div class="component-holder ng-binding ng-scope" data-component="crn-grid" data-attribute-preview="" id="crn-grid-578679">
-        <div crn-datasource="Abastecimento"> 
-          <table class="table  table-bordered table-hover"> 
-            <thead> 
+        <div crn-datasource="Abastecimento" align="center"> 
+          <table class="table table-bordered"> 
+            <thead class=""> 
               <tr class="table-header"> 
                 <th class="active">
-                  <div data-container="true">
+                  <div data-container="true" class="">
                     Postos
                   </div></th> 
                 <th>
@@ -78,11 +78,11 @@
                   </div></th>
               </tr> 
             </thead> 
-            <tbody>
-              <tr class="table-content" ng-repeat="rowData in datasource.data"> 
+            <tbody class="">
+              <tr class="table-active" ng-repeat="rowData in datasource.data"> 
                 <td class="active">{{rowData.nomePosto}}</td> 
-                <td>{{rowData.mediaRentabilidadesPosto}}</td> 
-                <td>{{rowData.mediaRentabilidadeGeral}}</td>
+                <td class="genClass2529">{{rowData.mediaRentabilidadesPosto}}</td> 
+                <td class="genClass197">{{rowData.mediaRentabilidadeGeral}}</td>
               </tr> 
             </tbody> 
           </table> 
@@ -101,17 +101,17 @@
   </div> 
   <div class="row">
         <div class="col-md-4">
-          <h2>Heading</h2>
+          <h2>Postos</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
           <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
         </div>
         <div class="col-md-4">
-          <h2>Heading</h2>
+          <h2>Média</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
           <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
        </div>
         <div class="col-md-4">
-          <h2>Heading</h2>
+          <h2>Média Total</h2>
           <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
           <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
         </div>
