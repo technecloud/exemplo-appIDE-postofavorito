@@ -1,5 +1,7 @@
 package app.business;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -19,10 +21,11 @@ import cloud.CloudManager;
 @Service("UserBusiness")
 public class UserBusiness {
 
+  private static final Logger log = LoggerFactory.getLogger(UserBusiness.class);
   /**
    * Variável privada para verificação da criptofrafia
    * 
-   * @generated 
+   * @generated
    */
   private String ENCRYPT = "$2a$10$";
 
@@ -55,16 +58,14 @@ public class UserBusiness {
     entity.setPassword(encryptionPassword);      
     User result = null;
     byte[] picture = entity.getPicture();
-     try {
-       result = repository.save(entity);
-
-     }catch(Exception e) {
-        throw new Exception("Erro no cadastro, usuário já existente.");
-    }  
-    
-    result.setPicture(picture);
-    this.cloudManager.byEntity(result).build().dropbox(DROPBOX_APP_ACCESS_TOKEN).upload(); 
-       // begin-user-code
+    try {
+      result = repository.save(entity);
+      result.setPicture(picture);
+      this.cloudManager.byEntity(result).build().dropbox(DROPBOX_APP_ACCESS_TOKEN).upload();
+    } catch (Exception e) {
+      log.error(e.getMessage());
+    }
+    // begin-user-code
     // end-user-code
     return result;
   }
@@ -83,10 +84,13 @@ public class UserBusiness {
     entity.setPassword(encryptionPassword);      
     User result = null;
     byte[] picture = entity.getPicture();
-
-    result = repository.saveAndFlush(entity);
-    result.setPicture(picture);
-    this.cloudManager.byEntity(result).build().dropbox(DROPBOX_APP_ACCESS_TOKEN).upload();
+    try {
+      result = repository.saveAndFlush(entity);
+      result.setPicture(picture);
+      this.cloudManager.byEntity(result).build().dropbox(DROPBOX_APP_ACCESS_TOKEN).upload();
+    } catch (Exception e) {
+      log.error(e.getMessage());
+    }
     // begin-user-code
     // end-user-code
     return result;
@@ -98,9 +102,9 @@ public class UserBusiness {
    * @generated
    */
   public void delete(java.lang.String id) throws Exception {
-    User entity = this.get(id);
     // begin-user-code  
     // end-user-code
+    User entity = this.get(id);
     this.repository.delete(entity);
       this.cloudManager.byEntity(entity).build().dropbox(DROPBOX_APP_ACCESS_TOKEN).delete();
     // begin-user-code  
@@ -196,7 +200,7 @@ public class UserBusiness {
    * @generated modifiable
    * OneToMany Relation - Searchable fields - Specific search
    */  
-  public Page<Comentario> findComentarioSpecificSearch(java.lang.String id, java.util.Date data, java.lang.String texto, java.lang.Boolean moderado, Pageable pageable) {
+  public Page<Comentario> findComentarioSpecificSearch(java.lang.String id, java.lang.String data, java.lang.String texto, java.lang.Boolean moderado, Pageable pageable) {
     // begin-user-code
     // end-user-code  
     Page<Comentario> result = repository.findComentarioSpecificSearch(id, data, texto, moderado, pageable);
@@ -296,5 +300,4 @@ public class UserBusiness {
   public Page<User> specificSearch(java.lang.String email, java.lang.String name, java.lang.String login, Pageable pageable) {
     return repository.specificSearch(email, name, login, pageable);
   }
-  
 }

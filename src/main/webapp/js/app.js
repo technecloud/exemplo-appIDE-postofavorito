@@ -56,7 +56,7 @@ var app = (function() {
         positionY: 'top'
       });
 
-      // Set up the states
+    // Set up the states
       $stateProvider
 
         .state('login', {
@@ -67,7 +67,7 @@ var app = (function() {
 
         .state('livreAcesso', {
           url: "",
-          controller: 'LivreAcessoController',
+          controller: 'LoginController',
           templateUrl: 'views/livreAcesso.view.html'
         })
 
@@ -141,7 +141,6 @@ var app = (function() {
             return 'views/error/403.view.html';
           }
         });
-
       // For any unmatched url, redirect to /state1
       $urlRouterProvider.otherwise("/error/404");
     })

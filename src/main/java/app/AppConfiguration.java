@@ -12,9 +12,12 @@ import java.io.File;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+
 /**
  * Classe que configura os beans para persistencia
- * @generated
+ * 
+ * @author Rodrigo Gregorio Neri
+ *
  */
 @Configuration
 @EnableTransactionManagement
@@ -23,7 +26,7 @@ import java.util.regex.Pattern;
         transactionManagerRef = "app-TransactionManager"
 )
 class AppConfiguration {
-
+  
     @Primary
 
     @Bean(name="app-EntityManagerFactory")
@@ -66,4 +69,5 @@ class AppConfiguration {
     return factory;
   
     }
+    
 }

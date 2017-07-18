@@ -41,7 +41,7 @@ public class ChangeTheme {
     if(users.size() > 0) {
       User user = users.get(0);
       
-      
+      user.setTheme(theme);
       userBusiness.put(user);
       return user;
     }

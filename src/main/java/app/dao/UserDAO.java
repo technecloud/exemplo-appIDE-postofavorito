@@ -30,8 +30,6 @@ public interface UserDAO extends JpaRepository<User, java.lang.String> {
    */    
   @Query("SELECT entity FROM User entity WHERE entity.id = :id")
   public User findOne(@Param(value="id") java.lang.String id);
-  
-
 
   /**
    * Remove a instância de User utilizando os identificadores
@@ -69,9 +67,6 @@ public interface UserDAO extends JpaRepository<User, java.lang.String> {
   @Query("select u from User u where u.login = :login")
   public Page<User> findByLogin(@Param(value="login") java.lang.String login, Pageable pageable);
   
-   @Query("select u from User u where u.login = :login")
-   public User userByLogin(@Param(value="login") java.lang.String login);
-  
 
 
   /**
@@ -85,15 +80,15 @@ public interface UserDAO extends JpaRepository<User, java.lang.String> {
    * OneToMany Relation - Searchable fields - General search (Only strings fields)
    * @generated
    */
-  @Query("SELECT entity FROM Comentario entity WHERE entity.user.id = :id AND (entity.texto like concat('%',coalesce(:search,''),'%'))")
+  @Query("SELECT entity FROM Comentario entity WHERE entity.user.id = :id AND (entity.data like concat('%',coalesce(:search,''),'%') OR entity.texto like concat('%',coalesce(:search,''),'%'))")
   public Page<Comentario> findComentarioGeneralSearch(@Param(value="search") java.lang.String search, @Param(value="id") java.lang.String id, Pageable pageable);
 
-  /** 
+  /**
    * OneToMany Relation - Searchable fields - Specific search
    * @generated
    */
-  @Query("SELECT entity FROM Comentario entity WHERE entity.user.id = :id AND (:data is null OR entity.data = :data) AND (:texto is null OR entity.texto like concat('%',:texto,'%')) AND (:moderado is null OR entity.moderado = :moderado)")
-  public Page<Comentario> findComentarioSpecificSearch(@Param(value="id") java.lang.String id, @Param(value="data") java.util.Date data, @Param(value="texto") java.lang.String texto, @Param(value="moderado") java.lang.Boolean moderado, Pageable pageable);
+  @Query("SELECT entity FROM Comentario entity WHERE entity.user.id = :id AND (:data is null OR entity.data like concat('%',:data,'%')) AND (:texto is null OR entity.texto like concat('%',:texto,'%')) AND (:moderado is null OR entity.moderado = :moderado)")
+  public Page<Comentario> findComentarioSpecificSearch(@Param(value="id") java.lang.String id, @Param(value="data") java.lang.String data, @Param(value="texto") java.lang.String texto, @Param(value="moderado") java.lang.Boolean moderado, Pageable pageable);
 
   /**
    * OneToMany Relation

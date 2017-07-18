@@ -13,7 +13,7 @@ import app.business.*;
 
 /**
  * Controller para expor serviços REST de Role
- * 
+ *
  * @generated
  **/
 @RestController
@@ -22,7 +22,7 @@ public class RoleREST {
 
   /**
    * Classe de negócio para manipulação de dados
-   * 
+   *
    * @generated
    */
   @Autowired
@@ -31,7 +31,7 @@ public class RoleREST {
 
   /**
    * Serviço exposto para novo registro de acordo com a entidade fornecida
-   * 
+   *
    * @generated
    */
   @RequestMapping(method = RequestMethod.POST)
@@ -41,7 +41,7 @@ public class RoleREST {
 
   /**
    * Serviço exposto para salvar alterações de acordo com a entidade fornecida
-   * 
+   *
    * @generated
    */
   @RequestMapping(method = RequestMethod.PUT)
@@ -73,18 +73,22 @@ public class RoleREST {
    * NamedQuery list
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET)
-  public HttpEntity<PagedResources<Role>> listParams(Pageable pageable, PagedResourcesAssembler assembler){
-    return new ResponseEntity<>(assembler.toResource(roleBusiness.list(pageable)), HttpStatus.OK);    
+  @RequestMapping(method = RequestMethod.GET
+  )
+  public HttpEntity<PagedResources<Role>> listParams (Pageable pageable, PagedResourcesAssembler assembler){
+    return new ResponseEntity<>(assembler.toResource(roleBusiness.list(pageable)), HttpStatus.OK);
   }
+
+
 
   /**
    * Serviço exposto para recuperar a entidade de acordo com o id fornecido
-   * 
+   *
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET, value = "/{roleId}")
-  public Role get(@PathVariable("roleId") java.lang.String roleId) throws Exception {
-    return roleBusiness.get(roleId);
+  @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+  public Role get(@PathVariable("id") java.lang.String id) throws Exception {
+    return roleBusiness.get(id);
   }
+
 }

@@ -18,33 +18,8 @@
             <resource>
                 <directory>src/main/java</directory>
             </resource>
-            <resource>
-                <directory>src/test/java</directory>
-                <includes>
-                    <include>**</include>
-                </includes>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </resource>
         </resources>
         <plugins>
-            <plugin>
-                <groupId>org.cloudfoundry</groupId>
-                <artifactId>cf-maven-plugin</artifactId>
-                <version>1.1.3</version>
-                <configuration>
-                    <target>https://api.cronapp.io</target>
-                    <org>vanessa.silva@techne.com.br</org>
-                    <space>develop</space>
-                    <appname>meupostofavorito</appname>
-                    <url>meupostofavorito.cronapp.io</url>
-                    <instances>1</instances>
-                    <memory>1024</memory>
-                    <username/>
-                    <password/>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -67,9 +42,14 @@
     </build>
     <repositories>
         <repository>
-            <id>artifactory-cronospaas</id>
+            <id>libs-release</id>
             <name>artifactory-cronospaas-releases</name>
             <url>https://artifactory.cronapp.io/libs-release</url>
+        </repository>
+        <repository>
+            <id>public-release</id>
+            <name>artifactory.cronapp.io-releases</name>
+            <url>https://artifactory.cronapp.io/public-release</url>
         </repository>
     </repositories>
     <dependencies>
@@ -92,6 +72,11 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.187</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -165,24 +150,24 @@
             <version>2.8.0</version>
         </dependency>
         <dependency>
+            <groupId>io.cronapp</groupId>
+            <artifactId>cronapi-java</artifactId>
+            <version>0.0.27</version>
+        </dependency>
+        <dependency>
             <groupId>com.dropbox.core</groupId>
             <artifactId>dropbox-core-sdk</artifactId>
             <version>2.1.2</version>
             <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.35</version>
         </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.cronospass.resource mimetype="folder/src">src/main/java</project.cronospass.resource>
+        <project.cronospass.resource mimetype="folder/libs">lib</project.cronospass.resource>
         <project.cronospass.resource mimetype="folder/servercontext">config</project.cronospass.resource>
         <project.cronospass.resource mimetype="folder/web">src/main/webapp</project.cronospass.resource>
-        <project.cronospass.resource mimetype="folder/libs">lib</project.cronospass.resource>
-        <project.cronospass.resource mimetype="folder/src">src/test/java</project.cronospass.resource>
+        <project.cronospass.resource mimetype="folder/web">src/main/mobileapp/www</project.cronospass.resource>
     </properties>
 </project>
