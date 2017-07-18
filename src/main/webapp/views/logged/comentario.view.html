@@ -1,4 +1,4 @@
-<h3>Comentário</h3>
+<h3 align="center">Comentário</h3>
 
 <style type="text/css">
 
@@ -17,18 +17,18 @@
  
 </style>
 
-<div class="row" ng-hide="Comentario.inserting || Comentario.editing" data-ng-init="msg_div_click()">
+<div class="row" ng-hide="Comentario.inserting || Comentario.editing" data-ng-init="msg_div_click()" >
   
   <div class="col-md-2">
     <div>
       <label for="textinput-filter">{{"template.crud.search" | translate}} Texto</label>
-      <input type="text" ng-model="texto" class="form-control" value="" placeholder="Texto">
+      <input ng-model="texto" class="form-control" value="" placeholder="Texto" type="text">
     </div>
   </div>
   <div class="col-md-2">
     <div>
       <label for="textinput-filter">{{"template.crud.search" | translate}} Moderado</label>
-      <input type="checkbox" ng-model="moderado" class="form-control" value="" placeholder="Moderado">
+      <input ng-model="moderado" class="form-control" value="" placeholder="Moderado" type="checkbox">
     </div>
   </div>
 </div>
@@ -36,10 +36,10 @@
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
   <datasource filter="?texto={{texto}}&amp;moderado={{moderado}}" name="Comentario" entity="api/rest/Comentario/specificSearch" keys="id" rows-per-page="100" delete-message="Deseja remover?"></datasource>
 </div>
-<div data-component="crn-button" id="crn-button-564202">
-  <button class="btn btn-primary" type="submit" onclick="" ng-click="Comentario.startInserting()" ng-hide="Comentario.inserting || Comentario.editing"><i class="fa fa-user"></i> <span>{{"template.crud.new" | translate}}</span></button>
+<div data-component="crn-button" id="crn-button-564202" align="center">
+  <button class="btn btn-primary" type="submit" onclick="" ng-click="Comentario.startInserting()" ng-hide="Comentario.inserting || Comentario.editing"> &#128172; <span>{{"template.crud.new" | translate}}</span></button>
 </div>
-<div class="component-holder" data-component="crn-grid" id="crn-grid-Comentario">
+<div class="component-holder" data-component="crn-grid" id="crn-grid-Comentario" align="center">
   <div crn-datasource="Comentario" ng-hide="Comentario.editing || Comentario.inserting">
     <table class="table  table-bordered table-hover table-striped">
       <thead>
@@ -140,7 +140,7 @@
         <div data-component="crn-textinput" id="crn-textinput-texto">
           <div class="form-group">
             <label for="textinput-texto">Texto</label>
-            <input type="text" ng-model="Comentario.active.texto" class="form-control" id="textinput-texto" placeholder="Texto">
+            <input ng-model="Comentario.active.texto" class="form-control" id="textinput-texto" placeholder="Texto" type="text">
           </div>
         </div>
         <div data-component="crn-textinput" id="crn-textinput-nota">
@@ -176,19 +176,19 @@
         <!-- NtoN  end-->
       </fieldset><div class="form-group">
             <label for="textinput-moderado">Moderado</label>
-            <input type="checkbox" ng-model="Comentario.active.moderado" id="textinput-moderado" placeholder="Moderado">
+            <input ng-model="Comentario.active.moderado" id="textinput-moderado" placeholder="Moderado" type="checkbox">
           </div><label for="combobox-user">Nota</label><div class="form-group">
-            <input type="radio" id="cm_star-empty" name="fb" value="0" checked="">
+            <input id="cm_star-empty" name="fb" value="0" checked="" type="radio">
             <label for="cm_star-1"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-1" name="fb" value="1" ng-model="Comentario.active.nota">
+            <input id="cm_star-1" name="fb" value="1" ng-model="Comentario.active.nota" type="radio">
             <label for="cm_star-2"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-2" ng-model="Comentario.active.nota" name="fb" value="2">
+            <input id="cm_star-2" ng-model="Comentario.active.nota" name="fb" value="2" type="radio">
             <label for="cm_star-3"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-3" ng-model="Comentario.active.nota" name="fb" value="3">
+            <input id="cm_star-3" ng-model="Comentario.active.nota" name="fb" value="3" type="radio">
             <label for="cm_star-4"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-4" name="fb" ng-model="Comentario.active.nota" value="4">
+            <input id="cm_star-4" name="fb" ng-model="Comentario.active.nota" value="4" type="radio">
             <label for="cm_star-5"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-5" name="fb" ng-model="Comentario.active.nota" value="5">
+            <input id="cm_star-5" name="fb" ng-model="Comentario.active.nota" value="5" type="radio">
              
           </div>
     </form>

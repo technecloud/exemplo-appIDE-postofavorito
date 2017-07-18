@@ -18,3 +18,12 @@ table.table {
 table.table.table-bordered { 
   width: 800px;
 }
+
+button.btn.btn-block.btn-warning { 
+  width: 250px;
+}
+
+div.row { 
+  position: relative;
+  left: 0px;
+}
