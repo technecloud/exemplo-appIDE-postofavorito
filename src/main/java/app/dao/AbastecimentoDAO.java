@@ -2,6 +2,7 @@ package app.dao;
 
 import java.util.List;
 
+import app.entity.Posto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -68,8 +69,8 @@ public interface AbastecimentoDAO extends JpaRepository<Abastecimento, String> {
                                                            @Param(value = "modelo") String modelo,
                                                            @Param(value = "ano") Integer ano, Pageable pageable);
   
-  @Query("select distinct a.posto.id from Abastecimento a")
-  List<String> recuperaPostosQueTemAbastecimento();
+  @Query("select a.posto from Abastecimento a")
+  List<Posto> recuperaPostosQueTemAbastecimento();
   
   @Query("select distinct a.carro.id from Abastecimento a")
   List<String> recuperaCarrosQueTemAbastecimento();

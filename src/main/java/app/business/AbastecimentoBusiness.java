@@ -1,18 +1,22 @@
 package app.business;
 
+import app.dao.AbastecimentoDAO;
+import app.dao.PostoDAO;
+import app.dao.UserDAO;
+import app.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import java.util.*;
-import app.dao.*;
-import app.entity.*;
-import org.springframework.data.domain.PageImpl;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Classe que representa a camada de negócios de AbastecimentoBusiness
@@ -162,66 +166,44 @@ public class AbastecimentoBusiness {
 	}
 
 	public Page<AbastecimentoVO> listaRanking(Pageable pageable) {
+		ArrayList<AbastecimentoVO> listaMediaDasRentabilidades = new ArrayList<>();
+		ArrayList<AbastecimentoVO> listaPostosCampeoes = new ArrayList<>();
 
-		AbastecimentoVO abastecimentoVO;
-		List<AbastecimentoVO> listaMediaDasRentabilidades = new ArrayList<AbastecimentoVO>();
-		List<AbastecimentoVO> listaPostosCampeoes = new ArrayList<AbastecimentoVO>();
+		List<Abastecimento> abastecimentos = repository.list(pageable).getContent();
+		List<Posto> postos = abastecimentos.stream().map(Abastecimento::getPosto).distinct().collect(Collectors.toList());
 
-		List<String> postos = repository.recuperaPostosQueTemAbastecimento();
+		for (Posto posto : postos) {
+			double acm = 0.0;
+			double mediaRentabilidade;
 
-		List<Abastecimento> abastecimentosDeUmPosto;
-		Page<Abastecimento> temp;
-		Double acm = 0.0;
-		Double mediaRentabilidade = 0.0;
-
-		Posto posto = null;
-
-		for (String p : postos) {
-
-			posto = postoDAO.findOne(p);
-
-			temp = repository.listaAbastecimentosPorPosto(p, pageable);
-			abastecimentosDeUmPosto = temp.getContent();
-
+			List<Abastecimento> abastecimentosDeUmPosto = abastecimentos.stream()
+					.filter(a -> a.getPosto().equals(posto))
+					.collect(Collectors.toList());
 			for (Abastecimento abastecimento : abastecimentosDeUmPosto) {
 				acm = acm + (abastecimento.getQuilometragemRodada() / abastecimento.getPrecoPorLitro());
 			}
 
 			mediaRentabilidade = acm / abastecimentosDeUmPosto.size();
 
-			abastecimentoVO = new AbastecimentoVO(posto.getId(), posto.getNome(), mediaRentabilidade, 0.0);
+			AbastecimentoVO abastecimentoVO = new AbastecimentoVO(posto.getId(), posto.getNome(), mediaRentabilidade, 0.0);
 			listaMediaDasRentabilidades.add(abastecimentoVO);
-
-			abastecimentoVO = null;
-			acm = 0.0;
-			mediaRentabilidade = 0.0;
 		}
 
-		Double acmDeMedias = 0.0;
+		double acmDeMedias = 0.0;
 		for (AbastecimentoVO a : listaMediaDasRentabilidades) {
 			acmDeMedias = acmDeMedias + a.getMediaRentabilidadesPosto();
 		}
 
-		Double mediaTotal = acmDeMedias / listaMediaDasRentabilidades.size();
-
+		double mediaTotal = acmDeMedias / listaMediaDasRentabilidades.size();
 		for (AbastecimentoVO a : listaMediaDasRentabilidades) {
 			a.setMediaRentabilidadeGeral(mediaTotal);
-			if(a.getMediaRentabilidadesPosto() >= mediaTotal){
-			  listaPostosCampeoes.add(a);
-			  
+			if (a.getMediaRentabilidadesPosto() >= mediaTotal) {
+				listaPostosCampeoes.add(a);
 			}
 		}
 
-		Collections.sort(listaPostosCampeoes, new Comparator<AbastecimentoVO>() {
-			@Override
-			public int compare(AbastecimentoVO a1, AbastecimentoVO a2) {
-				return a1.getMediaRentabilidadesPosto().compareTo(a2.getMediaRentabilidadesPosto());
-			}
-		});
-
-		final Page<AbastecimentoVO> retorno = new PageImpl<>(listaPostosCampeoes);
-
-		return retorno;
+		listaPostosCampeoes.sort(Comparator.comparing(AbastecimentoVO::getMediaRentabilidadesPosto));
+		return new PageImpl<>(listaPostosCampeoes);
 	}
 	
 	public Page<CarroVO2> listaRankingCarro(Pageable pageable){
