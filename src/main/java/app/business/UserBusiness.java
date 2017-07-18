@@ -5,6 +5,8 @@ import app.entity.*;
 import cloud.CloudManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -45,6 +47,7 @@ public class UserBusiness {
      *
      * @generated
      */
+    @CacheEvict(value = "listUsers", allEntries = true)
     public User post(final User entity) throws Exception {
         // begin-user-code
         // end-user-code
@@ -52,14 +55,10 @@ public class UserBusiness {
         String formPassword = entity.getPassword();
         String encryptionPassword = new BCryptPasswordEncoder().encode(formPassword);
         entity.setPassword(encryptionPassword);
-        User result = null;
+        User result;
         byte[] picture = entity.getPicture();
-        try {
-            result = repository.save(entity);
-
-        } catch (Exception e) {
-            throw new Exception("Erro no cadastro, usuário já existente.");
-        }
+        entity.setPicture(null);
+        result = repository.save(entity);
         result.setPicture(picture);
         this.cloudManager.byEntity(result).build().dropbox(DROPBOX_APP_ACCESS_TOKEN).upload();
         // begin-user-code
@@ -72,6 +71,7 @@ public class UserBusiness {
      *
      * @generated
      */
+    @CacheEvict(value = "listUsers", allEntries = true)
     public User put(final User entity) throws Exception {
         // begin-user-code
         // end-user-code
@@ -79,8 +79,9 @@ public class UserBusiness {
         String formPassword = entity.getPassword();
         String encryptionPassword = formPassword.startsWith(ENCRYPT) ? formPassword : new BCryptPasswordEncoder().encode(formPassword);
         entity.setPassword(encryptionPassword);
-        User result = null;
+        User result;
         byte[] picture = entity.getPicture();
+        entity.setPicture(null);
         result = repository.saveAndFlush(entity);
         result.setPicture(picture);
         this.cloudManager.byEntity(result).build().dropbox(DROPBOX_APP_ACCESS_TOKEN).upload();
@@ -94,6 +95,7 @@ public class UserBusiness {
      *
      * @generated
      */
+    @CacheEvict(value = "listUsers", allEntries = true)
     public void delete(java.lang.String id) throws Exception {
         User entity = this.get(id);
         // begin-user-code
@@ -126,6 +128,7 @@ public class UserBusiness {
      *
      * @generated
      */
+    @Cacheable("listUsers")
     public Page<User> list(Pageable pageable) {
         // begin-user-code
         // end-user-code

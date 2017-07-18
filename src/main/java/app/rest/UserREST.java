@@ -1,16 +1,23 @@
 package app.rest;
 
-import org.springframework.data.domain.*;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.validation.annotation.*;
+import app.business.*;
+import app.entity.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedResources;
-import org.springframework.http.*;
-import org.springframework.beans.factory.annotation.*;
-import java.util.*;
-import app.entity.*;
-import app.business.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.async.DeferredResult;
+
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+import java.util.concurrent.CompletableFuture;
 
 
 /**
@@ -103,9 +110,17 @@ public class UserREST {
    * NamedQuery list
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @RequestMapping(method = RequestMethod.GET)
-  public HttpEntity<PagedResources<User>> listParams(Pageable pageable, PagedResourcesAssembler assembler){
-    return new ResponseEntity<>(assembler.toResource(userBusiness.list(pageable)), HttpStatus.OK);    
+  public DeferredResult<HttpEntity<PagedResources<User>>> listParams(Pageable pageable, PagedResourcesAssembler assembler){
+    DeferredResult<HttpEntity<PagedResources<User>>> deferredResult = new DeferredResult<>();
+    CompletableFuture.supplyAsync(() -> {
+      Page<User> userPage = userBusiness.list(pageable);
+      return assembler.toResource(userPage);
+    }).whenCompleteAsync((result, throwable) -> {
+      deferredResult.setResult(new ResponseEntity<>(result, HttpStatus.OK));
+    });
+    return deferredResult;
   }
 
   /**
