@@ -17,16 +17,24 @@
         <a class="navbar-brand component-holder" data-component="crn-anchor" href="#">Meu Posto Favorito ⛽</a> 
       </div> 
       <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
+         <form class="navbar-form navbar-right" ng-submit="login()">
             <div class="form-group">
-              
+              <input type="text" class="form-control" ng-model="username.value" id="username" placeholder="{{'Login.view.Username' | translate}}">
             </div>
             <div class="form-group">
-              
+              <input type="password" class="form-control" ng-model="password.value" id="password" placeholder="{{'Login.view.Password' | translate}}">
             </div>
-            <button type="submit" class="btn btn-success" ng-click="redirectLogin()" >Sign in</button>
+             <div class="form-group" data-container="true"> 
+              <div class="messages"> 
+                <div ng-show="message.error" class="help-block">
+                  {{message.error}}
+                </div> 
+              </div> 
+            </div> 
+
+            <button type="submit" class="btn btn-success" ng-disabled="form.$invalid || vm.dataLoading">{{"Login.view.Login" | translate}}</button> 
           </form>
-        </div><!--/.navbar-collapse -->
+        </div>
     </div> 
   </nav> 
 

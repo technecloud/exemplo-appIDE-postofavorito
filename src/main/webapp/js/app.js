@@ -67,7 +67,7 @@ var app = (function() {
 
         .state('livreAcesso', {
           url: "",
-          controller: 'LivreAcessoController',
+          controller: 'LoginController',
           templateUrl: 'views/livreAcesso.view.html'
         })
 

@@ -45,6 +45,11 @@
         $scope.redirectRegister = function() {
             $state.go("cadastro");
         }; 
+         
+
+        $scope.redirectLogin = function() {
+            $state.go("login");
+  }; 
         
     }]);
 
@@ -81,20 +86,6 @@ $scope.buscarCEP = function(){
   
 }]);
 
-
-app.controller('LivreAcessoController', ['$scope', '$http', '$rootScope', '$state', '$translate', 'Notification', function ($scope, $http, $rootScope, $state, $translate, Notification) {
-  
-  $scope.redirectRegister = function() {
-            $state.go("cadastro");
-  }; 
-  
-   $scope.redirectLogin = function() {
-            $state.go("login");
-  }; 
-  
-
-  
-}]);
 
     app.controller('HomeController', ['$scope', '$http', '$rootScope', '$state', '$translate', 'Notification', function ($scope, $http, $rootScope, $state, $translate, Notification) {
       
