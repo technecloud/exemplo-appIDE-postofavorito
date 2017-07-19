@@ -34,7 +34,7 @@ public final class DropboxService implements CloudService {
             log.warn("File content not found to Dropbox upload");
             return;
         }
-        files.parallelStream().forEach(fileObject -> {
+        files.forEach(fileObject -> {
             try {
                 client.files().uploadBuilder(fileObject.getFileName())
                         .withMode(WriteMode.OVERWRITE)
@@ -47,7 +47,7 @@ public final class DropboxService implements CloudService {
 
     @Override
     public void popule(Object target) {
-        this.files.parallelStream().forEach(fileObject -> {
+        this.files.forEach(fileObject -> {
             try {
                 String fileName = fileObject.getFileName();
                 String[] strings = fileName.split("/");
@@ -69,7 +69,7 @@ public final class DropboxService implements CloudService {
 
     @Override
     public void delete() {
-        this.files.parallelStream().forEach(fileObject -> {
+        this.files.forEach(fileObject -> {
             try {
                 client.files().delete(fileObject.getFileName());
             } catch (DbxException e) {

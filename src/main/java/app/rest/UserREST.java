@@ -1,28 +1,19 @@
 package app.rest;
 
-import app.business.*;
-import app.entity.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.annotation.*;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedResources;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.async.DeferredResult;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
-import java.util.concurrent.CompletableFuture;
-
+import org.springframework.http.*;
+import org.springframework.beans.factory.annotation.*;
+import java.util.*;
+import app.entity.*;
+import app.business.*;
 
 /**
  * Controller para expor serviços REST de User
- * 
+ *
  * @generated
  **/
 @RestController
@@ -31,7 +22,7 @@ public class UserREST {
 
   /**
    * Classe de negócio para manipulação de dados
-   * 
+   *
    * @generated
    */
   @Autowired
@@ -44,31 +35,27 @@ public class UserREST {
   @Autowired
   @Qualifier("PostoBusiness")
   private PostoBusiness postoBusiness;
-
   /**
    * @generated
    */
   @Autowired
   @Qualifier("CarroBusiness")
   private CarroBusiness carroBusiness;
-
   /**
    * @generated
    */
   @Autowired
   @Qualifier("ComentarioBusiness")
   private ComentarioBusiness comentarioBusiness;
-
   /**
    * @generated
    */
   @Autowired
   @Qualifier("AbastecimentoBusiness")
   private AbastecimentoBusiness abastecimentoBusiness;
-
   /**
    * Serviço exposto para novo registro de acordo com a entidade fornecida
-   * 
+   *
    * @generated
    */
   @RequestMapping(method = RequestMethod.POST)
@@ -78,7 +65,7 @@ public class UserREST {
 
   /**
    * Serviço exposto para salvar alterações de acordo com a entidade fornecida
-   * 
+   *
    * @generated
    */
   @RequestMapping(method = RequestMethod.PUT)
@@ -110,231 +97,235 @@ public class UserREST {
    * NamedQuery list
    * @generated
    */
-  @SuppressWarnings("unchecked")
-  @RequestMapping(method = RequestMethod.GET)
-  public DeferredResult<HttpEntity<PagedResources<User>>> listParams(Pageable pageable, PagedResourcesAssembler assembler){
-    DeferredResult<HttpEntity<PagedResources<User>>> deferredResult = new DeferredResult<>();
-    CompletableFuture.supplyAsync(() -> {
-      Page<User> userPage = userBusiness.list(pageable);
-      return assembler.toResource(userPage);
-    }).whenCompleteAsync((result, throwable) -> {
-      deferredResult.setResult(new ResponseEntity<>(result, HttpStatus.OK));
-    });
-    return deferredResult;
+  @RequestMapping(method = RequestMethod.GET
+  )
+  public HttpEntity<PagedResources<User>> listParams (Pageable pageable, PagedResourcesAssembler assembler){
+    return new ResponseEntity<>(assembler.toResource(userBusiness.list(pageable)), HttpStatus.OK);
   }
-
   /**
    * NamedQuery findByRole
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET, value="/findByRole/{roleid}")
-  public HttpEntity<PagedResources<User>> findByRoleParams(@PathVariable("roleid") java.lang.String roleid, Pageable pageable, PagedResourcesAssembler assembler){
-    return new ResponseEntity<>(assembler.toResource(userBusiness.findByRole(roleid, pageable)), HttpStatus.OK);    
+  @RequestMapping(method = RequestMethod.GET
+  , value="/findByRole/{roleid}")
+  public HttpEntity<PagedResources<User>> findByRoleParams (@PathVariable("roleid") java.lang.String roleid, Pageable pageable, PagedResourcesAssembler assembler){
+    return new ResponseEntity<>(assembler.toResource(userBusiness.findByRole(roleid, pageable)), HttpStatus.OK);
   }
-
   /**
    * NamedQuery findByLogin
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET, value="/findByLogin/{login}")
-  public HttpEntity<PagedResources<User>> findByLoginParams(@PathVariable("login") java.lang.String login, Pageable pageable, PagedResourcesAssembler assembler){
-    return new ResponseEntity<>(assembler.toResource(userBusiness.findByLogin(login, pageable)), HttpStatus.OK);    
+  @RequestMapping(method = RequestMethod.GET
+  , value="/findByLogin/{login}")
+  public HttpEntity<PagedResources<User>> findByLoginParams (@PathVariable("login") java.lang.String login, Pageable pageable, PagedResourcesAssembler assembler){
+    return new ResponseEntity<>(assembler.toResource(userBusiness.findByLogin(login, pageable)), HttpStatus.OK);
   }
+
 
   /**
    * OneToMany Relationship GET
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET, value="/{userId}/Carro")    
-  public HttpEntity<PagedResources<Carro>> findCarro(@PathVariable("userId") java.lang.String userId, Pageable pageable, PagedResourcesAssembler assembler) {
-    return new ResponseEntity<>(assembler.toResource(userBusiness.findCarro(userId, pageable)), HttpStatus.OK);
+  @RequestMapping(method = RequestMethod.GET
+  , value="/{instanceId}/Carro")
+  public HttpEntity<PagedResources<Carro>> findCarro(@PathVariable("instanceId") java.lang.String instanceId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(userBusiness.findCarro(instanceId, pageable)), HttpStatus.OK);
   }
 
   /**
-   * OneToMany Relationship DELETE 
+   * OneToMany Relationship DELETE
    * @generated
-   */  
-  @RequestMapping(method = RequestMethod.DELETE, value="/{userId}/Carro/{carroId}")    
-  public void deleteCarro(@PathVariable("carroId") java.lang.String carroId) throws Exception {
-    this.carroBusiness.delete(carroId);
+   */
+  @RequestMapping(method = RequestMethod.DELETE
+  , value="/{instanceId}/Carro/{relationId}")
+  public void deleteCarro(@PathVariable("relationId") java.lang.String relationId) throws Exception {
+    this.carroBusiness.delete(relationId);
   }
-  
+
   /**
    * OneToMany Relationship PUT
    * @generated
-   */  
-  @RequestMapping(method = RequestMethod.PUT, value="/{userId}/Carro")
-  public Carro putCarro(@Validated @RequestBody final Carro entity, @PathVariable("userId") java.lang.String userId) throws Exception {
+   */
+  @RequestMapping(method = RequestMethod.PUT
+  , value="/{instanceId}/Carro/{relationId}")
+  public Carro putCarro(@Validated @RequestBody final Carro entity, @PathVariable("relationId") java.lang.String relationId) throws Exception {
     return this.carroBusiness.put(entity);
-  }  
-  
+  }
+
   /**
    * OneToMany Relationship POST
    * @generated
-   */  
-  @RequestMapping(method = RequestMethod.POST, value="/{userId}/Carro")
-  public Carro postCarro(@Validated @RequestBody final Carro entity, @PathVariable("userId") java.lang.String userId, HttpServletRequest req) throws Exception {
-    User user = this.userBusiness.get(userId);
-    entity.setUser(user);
-    return this.carroBusiness.post(entity, req);
+   */
+  @RequestMapping(method = RequestMethod.POST
+  , value="/{instanceId}/Carro")
+  public Carro postCarro(@Validated @RequestBody final Carro entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
+  User user = this.userBusiness.get(instanceId);
+  entity.setUser(user);
+    return this.carroBusiness.post(entity);
   }
 
   /**
    * OneToMany Relationship GET - Searchable fields - General search (Only strings fields)
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET, value="/{userId}/Comentario/generalSearch")    
-  public HttpEntity<PagedResources<Comentario>> findComentarioGeneralSearch(java.lang.String search, @PathVariable("userId") java.lang.String userId, Pageable pageable, PagedResourcesAssembler assembler) {
-    return new ResponseEntity<>(assembler.toResource(userBusiness.findComentarioGeneralSearch(search, userId, pageable)), HttpStatus.OK);
+  @RequestMapping(method = RequestMethod.GET, value="/{instanceId}/Comentario/generalSearch")
+  public HttpEntity<PagedResources<Comentario>> findComentarioGeneralSearch(java.lang.String search, @PathVariable("instanceId") java.lang.String instanceId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(userBusiness.findComentarioGeneralSearch(search, instanceId, pageable)), HttpStatus.OK);
   }
-  
+
   /**
    * OneToMany Relationship GET - Searchable fields - Specific search
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET, value="/{userId}/Comentario/specificSearch")    
-  public HttpEntity<PagedResources<Comentario>> findComentarioSpecificSearch(@PathVariable("userId") java.lang.String userId, java.lang.String data, java.lang.String texto, java.lang.Boolean moderado, Pageable pageable, PagedResourcesAssembler assembler) {
-    Date dataAux = null;
-    if (data != null && data.length() > 0 ) {
-      try {
-        java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        dataAux = formatter.parse(data);
-      } catch (Exception e) {
-          e.printStackTrace();
-      }
-    }
-    return new ResponseEntity<>(assembler.toResource(userBusiness.findComentarioSpecificSearch(userId, dataAux, texto, moderado, pageable)), HttpStatus.OK);
+  @RequestMapping(method = RequestMethod.GET
+  , value="/{instanceId}/Comentario/specificSearch")
+  public HttpEntity<PagedResources<Comentario>> findComentarioSpecificSearch(@PathVariable("instanceId") java.lang.String instanceId, java.lang.String data, java.lang.String texto, java.lang.Boolean moderado, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(userBusiness.findComentarioSpecificSearch(instanceId, data, texto, moderado, pageable)), HttpStatus.OK);
   }
 
   /**
    * OneToMany Relationship GET
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET, value="/{userId}/Comentario")    
-  public HttpEntity<PagedResources<Comentario>> findComentario(@PathVariable("userId") java.lang.String userId, Pageable pageable, PagedResourcesAssembler assembler) {
-    return new ResponseEntity<>(assembler.toResource(userBusiness.findComentario(userId, pageable)), HttpStatus.OK);
+  @RequestMapping(method = RequestMethod.GET
+  , value="/{instanceId}/Comentario")
+  public HttpEntity<PagedResources<Comentario>> findComentario(@PathVariable("instanceId") java.lang.String instanceId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(userBusiness.findComentario(instanceId, pageable)), HttpStatus.OK);
   }
 
   /**
-   * OneToMany Relationship DELETE 
+   * OneToMany Relationship DELETE
    * @generated
-   */  
-  @RequestMapping(method = RequestMethod.DELETE, value="/{userId}/Comentario/{comentarioId}")    
-  public void deleteComentario(@PathVariable("comentarioId") java.lang.String comentarioId) throws Exception {
-    this.comentarioBusiness.delete(comentarioId);
+   */
+  @RequestMapping(method = RequestMethod.DELETE
+  , value="/{instanceId}/Comentario/{relationId}")
+  public void deleteComentario(@PathVariable("relationId") java.lang.String relationId) throws Exception {
+    this.comentarioBusiness.delete(relationId);
   }
-  
+
   /**
    * OneToMany Relationship PUT
    * @generated
-   */  
-  @RequestMapping(method = RequestMethod.PUT, value="/{userId}/Comentario")
-  public Comentario putComentario(@Validated @RequestBody final Comentario entity, @PathVariable("userId") java.lang.String userId) throws Exception {
+   */
+  @RequestMapping(method = RequestMethod.PUT
+  , value="/{instanceId}/Comentario/{relationId}")
+  public Comentario putComentario(@Validated @RequestBody final Comentario entity, @PathVariable("relationId") java.lang.String relationId) throws Exception {
     return this.comentarioBusiness.put(entity);
-  }  
-  
+  }
+
   /**
    * OneToMany Relationship POST
    * @generated
-   */  
-  @RequestMapping(method = RequestMethod.POST, value="/{userId}/Comentario")
-  public Comentario postComentario(@Validated @RequestBody final Comentario entity, @PathVariable("userId") java.lang.String userId, HttpServletRequest req) throws Exception {
-    User user = this.userBusiness.get(userId);
-    entity.setUser(user);
-    return this.comentarioBusiness.post(entity, req);
+   */
+  @RequestMapping(method = RequestMethod.POST
+  , value="/{instanceId}/Comentario")
+  public Comentario postComentario(@Validated @RequestBody final Comentario entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
+  User user = this.userBusiness.get(instanceId);
+  entity.setUser(user);
+    return this.comentarioBusiness.post(entity);
   }
+
 
   /**
    * OneToMany Relationship GET
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET, value="/{userId}/Abastecimento")    
-  public HttpEntity<PagedResources<Abastecimento>> findAbastecimento(@PathVariable("userId") java.lang.String userId, Pageable pageable, PagedResourcesAssembler assembler) {
-    return new ResponseEntity<>(assembler.toResource(userBusiness.findAbastecimento(userId, pageable)), HttpStatus.OK);
+  @RequestMapping(method = RequestMethod.GET
+  , value="/{instanceId}/Abastecimento")
+  public HttpEntity<PagedResources<Abastecimento>> findAbastecimento(@PathVariable("instanceId") java.lang.String instanceId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(userBusiness.findAbastecimento(instanceId, pageable)), HttpStatus.OK);
   }
 
   /**
-   * OneToMany Relationship DELETE 
+   * OneToMany Relationship DELETE
    * @generated
-   */  
-  @RequestMapping(method = RequestMethod.DELETE, value="/{userId}/Abastecimento/{abastecimentoId}")    
-  public void deleteAbastecimento(@PathVariable("abastecimentoId") java.lang.String abastecimentoId) throws Exception {
-    this.abastecimentoBusiness.delete(abastecimentoId);
+   */
+  @RequestMapping(method = RequestMethod.DELETE
+  , value="/{instanceId}/Abastecimento/{relationId}")
+  public void deleteAbastecimento(@PathVariable("relationId") java.lang.String relationId) throws Exception {
+    this.abastecimentoBusiness.delete(relationId);
   }
-  
+
   /**
    * OneToMany Relationship PUT
    * @generated
-   */  
-  @RequestMapping(method = RequestMethod.PUT, value="/{userId}/Abastecimento")
-  public Abastecimento putAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("userId") java.lang.String userId) throws Exception {
+   */
+  @RequestMapping(method = RequestMethod.PUT
+  , value="/{instanceId}/Abastecimento/{relationId}")
+  public Abastecimento putAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("relationId") java.lang.String relationId) throws Exception {
     return this.abastecimentoBusiness.put(entity);
-  }  
-  
+  }
+
   /**
    * OneToMany Relationship POST
    * @generated
-   */  
-  @RequestMapping(method = RequestMethod.POST, value="/{userId}/Abastecimento")
-  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("userId") java.lang.String userId, HttpServletRequest req) throws Exception {
-    User user = this.userBusiness.get(userId);
-    entity.setUser(user);
-    return this.abastecimentoBusiness.post(entity, req);
+   */
+  @RequestMapping(method = RequestMethod.POST
+  , value="/{instanceId}/Abastecimento")
+  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
+  User user = this.userBusiness.get(instanceId);
+  entity.setUser(user);
+    return this.abastecimentoBusiness.post(entity);
   }
-  
+
   /**
    * ManyToMany Relationship GET - Searchable fields - General search (Only strings fields)
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET,value="/{userId}/Posto/generalSearch")
-  public HttpEntity<PagedResources<Posto>> listPostoGeneralSearch(java.lang.String search, @PathVariable("userId") java.lang.String userId, Pageable pageable, PagedResourcesAssembler assembler) {
-    return new ResponseEntity<>(assembler.toResource(userBusiness.listPostoGeneralSearch(search, userId, pageable)), HttpStatus.OK); 
+  @RequestMapping(method = RequestMethod.GET
+  ,value="/{instanceId}/Posto/generalSearch")
+  public HttpEntity<PagedResources<Posto>> listPostoGeneralSearch(java.lang.String search, @PathVariable("instanceId") java.lang.String instanceId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(userBusiness.listPostoGeneralSearch(search, instanceId, pageable)), HttpStatus.OK);
   }
-  
+
   /**
    * ManyToMany Relationship GET - Searchable fields - Specific search
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET,value="/{userId}/Posto/specificSearch")
-  public HttpEntity<PagedResources<Posto>> listPostoSpecificSearch(@PathVariable("userId") java.lang.String userId, java.lang.String nome, Pageable pageable, PagedResourcesAssembler assembler) {
-    return new ResponseEntity<>(assembler.toResource(userBusiness.listPostoSpecificSearch(userId, nome, pageable)), HttpStatus.OK); 
+  @RequestMapping(method = RequestMethod.GET
+  ,value="/{instanceId}/Posto/specificSearch")
+  public HttpEntity<PagedResources<Posto>> listPostoSpecificSearch(@PathVariable("instanceId") java.lang.String instanceId, java.lang.String nome, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(userBusiness.listPostoSpecificSearch(instanceId, nome, pageable)), HttpStatus.OK);
   }
 
   /**
    * ManyToMany Relationship GET
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET,value="/{userId}/Posto")
-  public HttpEntity<PagedResources<Posto>> listPosto(@PathVariable("userId") java.lang.String userId, Pageable pageable, PagedResourcesAssembler assembler) {
-    return new ResponseEntity<>(assembler.toResource(userBusiness.listPosto(userId, pageable)), HttpStatus.OK); 
+  @RequestMapping(method = RequestMethod.GET
+  ,value="/{instanceId}/Posto")
+  public HttpEntity<PagedResources<Posto>> listPosto(@PathVariable("instanceId") java.lang.String instanceId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(userBusiness.listPosto(instanceId, pageable)), HttpStatus.OK);
   }
 
   /**
    * ManyToMany Relationship POST
    * @generated
-   */  
-  @RequestMapping(method = RequestMethod.POST,value="/{userId}/Posto")
-  public User postPosto(@Validated @RequestBody final Posto entity, @PathVariable("userId") java.lang.String userId, HttpServletRequest req) throws Exception {
+   */
+  @RequestMapping(method = RequestMethod.POST
+  ,value="/{instanceId}/Posto")
+  public User postPosto(@Validated @RequestBody final Posto entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
     Comentario newComentario = new Comentario();
 
-    User user = this.userBusiness.get(userId);
+    User instance = this.userBusiness.get(instanceId);
 
     newComentario.setPosto(entity);
-    newComentario.setUser(user);
-    
-    this.comentarioBusiness.post(newComentario, req);
+    newComentario.setUser(instance);
+
+    this.comentarioBusiness.post(newComentario);
 
     return newComentario.getUser();
-  }   
+  }
 
   /**
    * ManyToMany Relationship DELETE
    * @generated
-   */  
-  @RequestMapping(method = RequestMethod.DELETE,value="/{userId}/Posto/{PostoId}")
-  public void deletePosto(@PathVariable("userId") java.lang.String userId, @PathVariable("PostoId") java.lang.String PostoId) {
-    this.userBusiness.deletePosto(userId, PostoId);
-  }  
+   */
+  @RequestMapping(method = RequestMethod.DELETE
+  ,value="/{instanceId}/Posto/{relationId}")
+  public void deletePosto(@PathVariable("instanceId") java.lang.String instanceId, @PathVariable("relationId") java.lang.String relationId) {
+    this.userBusiness.deletePosto(instanceId, relationId);
+  }
 
   /**
    * Searchable fields - General search (Only strings fields)
@@ -344,7 +335,7 @@ public class UserREST {
   public HttpEntity<PagedResources<User>> generalSearch(java.lang.String search, Pageable pageable, PagedResourcesAssembler assembler) {
     return new ResponseEntity<>(assembler.toResource(userBusiness.generalSearch(search, pageable)), HttpStatus.OK);
   }
-  
+
   /**
    * Searchable fields - Specific search
    * @generated
@@ -356,11 +347,12 @@ public class UserREST {
 
   /**
    * Serviço exposto para recuperar a entidade de acordo com o id fornecido
-   * 
+   *
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET, value = "/{userId}")
-  public User get(@PathVariable("userId") java.lang.String userId) throws Exception {
-    return userBusiness.get(userId);
+  @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+  public User get(@PathVariable("id") java.lang.String id) throws Exception {
+    return userBusiness.get(id);
   }
+
 }

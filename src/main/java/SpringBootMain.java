@@ -4,7 +4,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -15,7 +14,6 @@ import org.springframework.context.annotation.ComponentScan;
  *  - Atualizar o contexto de aplicação para carregar os singletons;
  *  - Executar qualquer bean do tipo CommandLineRunner;
  */
-@EnableCaching
 @SpringBootApplication
 @ComponentScan(basePackages = { "auth.permission", "api.rest.events", "api.rest.webservices", "reports", "app" })
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class })

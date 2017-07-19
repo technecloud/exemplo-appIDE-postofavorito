@@ -56,7 +56,7 @@ var app = (function() {
         positionY: 'top'
       });
 
-      // Set up the states
+    // Set up the states
       $stateProvider
 
         .state('login', {
@@ -141,7 +141,6 @@ var app = (function() {
             return 'views/error/403.view.html';
           }
         });
-
       // For any unmatched url, redirect to /state1
       $urlRouterProvider.otherwise("/error/404");
     })
