@@ -42,6 +42,12 @@ public class UserRole implements Serializable {
   private Role role;
   
   /**
+  * @generated
+  */
+  @Column(name = "theme", nullable = true, unique = false, insertable=true, updatable=true)
+  private java.lang.String theme;
+  
+  /**
    * Construtor
    * @generated
    */
@@ -103,6 +109,25 @@ public class UserRole implements Serializable {
    */
   public UserRole setRole(Role role){
     this.role = role;
+    return this;
+  }
+  
+  /**
+   * Obtém theme
+   * return theme
+   * @generated
+   */
+  public java.lang.String getTheme(){
+    return this.theme;
+  }
+  
+  /**
+   * Define theme
+   * @param theme theme
+   * @generated
+   */
+  public UserRole setTheme(java.lang.String theme){
+    this.theme = theme;
     return this;
   }
   
