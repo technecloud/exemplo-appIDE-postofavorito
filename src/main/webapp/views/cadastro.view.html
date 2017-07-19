@@ -22,26 +22,30 @@
 
 <div data-component="crn-form" id="crn-form-form-User"> 
   <div class="component-holder ng-binding ng-scope" data-component="crn-image" data-attribute-preview="" id="crn-image-329586"></div> 
+
   <div style="background-color:#efe045; margin-top:50px" >
+
+  <div style="background-color:#efe045; margin-top:50px">
+
     <h1 align="center">Seja bem vindo ao Meu Posto Favorito</h1> 
     <h4> O MPF (Meu Posto Favorito) é uma aplicação responsiva para registrar dados sobre o consumo de combustível de carros e para gerenciar os comentários dos usuários sobre postos de combustíveis. </h4> 
     <div style="margin-top:50px;" align="center"> 
       <img src="img/gasolina.png" width="100" height="100"> 
     </div> 
-      <div data-component="crn-datasource" id="crn-datasource-763277"> 
-      <datasource name="User" entity="/api/security/User" keys="id" rows-per-page="10" delete-message="Deseja remover?"   ></datasource> 
+      <div data-component="crn-datasource" id="crn-datasource-tela"> 
+      <datasource name="User" entity="/api/security/User" keys="id" delete-message="Deseja remover?"></datasource> 
     </div> 
    
-   <div style="margin-top:50px;"  align="center"> 
-      <button class="btn btn-sucess" ng-click="User.startInserting()" ng-scope="User.active=null" ><i class="glyphicon glyphicon-ok"></i> Iniciar cadastro</button> 
+   <div style="margin-top:50px;" align="center"> 
+      <button class="btn btn-sucess" ng-click="User.startInserting()" ng-scope="User.active=null"><i class="glyphicon glyphicon-ok"></i> Iniciar cadastro</button> 
   
-    </div >
+    </div>
    
     
   </div> 
-  <div class="form"  ng-show="User.inserting" > 
+  <div class="form" ng-show="User.inserting"> 
     
-    <form crn-datasource="User" > 
+    <form crn-datasource="User"> 
       <!--<div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
         <button class="btn btn-primary" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
         <button class="btn btn-success" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>
