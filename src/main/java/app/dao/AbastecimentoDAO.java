@@ -52,6 +52,11 @@ public interface AbastecimentoDAO extends JpaRepository<Abastecimento, String> {
   @Query("select c from Abastecimento c")
   Page<Abastecimento> list(Pageable pageable);
   
+
+
+
+}
+=======
   @Query("SELECT entity FROM Abastecimento entity WHERE entity.user.id = :id")
   Page<Abastecimento> findAbastecimentosByUser(@Param(value = "id") String id, Pageable pageable);
   
@@ -85,3 +90,4 @@ public interface AbastecimentoDAO extends JpaRepository<Abastecimento, String> {
   List<Integer> recuperaAnosQueTemAbastecimento(@Param(value = "modelo") String modelo);
   
 }
+

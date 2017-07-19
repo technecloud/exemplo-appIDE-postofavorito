@@ -68,18 +68,4 @@ public interface ComentarioDAO extends JpaRepository<Comentario, java.lang.Strin
   @Query("SELECT entity FROM Comentario entity WHERE (:data is null OR entity.data like concat('%',:data,'%')) AND (:texto is null OR entity.texto like concat('%',:texto,'%')) AND (:moderado is null OR entity.moderado = :moderado)")
   public Page<Comentario> specificSearch(@Param(value="data") java.lang.String data, @Param(value="texto") java.lang.String texto, @Param(value="moderado") java.lang.Boolean moderado, Pageable pageable);
   
-  /**
-   * Foreign Key user
-   * @generated
-   */
-  @Query("SELECT entity FROM Comentario entity WHERE entity.user.id = :id")
-  public Page<Comentario> findComentariosByUser(@Param(value="id") java.lang.String id, Pageable pageable);
-
-  /**
-   * Foreign Key posto
-   * @generated
-   */
-  @Query("SELECT entity FROM Comentario entity WHERE entity.posto.id = :id")
-  public Page<Comentario> findComentariosByPosto(@Param(value="id") java.lang.String id, Pageable pageable);
-
 }

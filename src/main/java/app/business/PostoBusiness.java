@@ -1,5 +1,7 @@
 package app.business;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -17,6 +19,7 @@ import app.entity.*;
 @Service("PostoBusiness")
 public class PostoBusiness {
 
+  private static final Logger log = LoggerFactory.getLogger(PostoBusiness.class);
 
 
   /**
@@ -38,7 +41,8 @@ public class PostoBusiness {
   public Posto post(final Posto entity) throws Exception {
     // begin-user-code  
     // end-user-code  
-    Posto result = repository.save(entity);
+    Posto result = null;
+    result = repository.save(entity);
     // begin-user-code
     // end-user-code
     return result;
@@ -52,7 +56,8 @@ public class PostoBusiness {
   public Posto put(final Posto entity) throws Exception {
     // begin-user-code  
     // end-user-code
-    Posto result = repository.saveAndFlush(entity);
+    Posto result = null;
+    result = repository.saveAndFlush(entity);
     // begin-user-code
     // end-user-code
     return result;
@@ -64,16 +69,11 @@ public class PostoBusiness {
    * @generated
    */
   public void delete(java.lang.String id) throws Exception {
-    Posto entity = this.get(id);
     // begin-user-code  
-    try {
-      
-      this.repository.delete(entity);
-     
-      
-    }catch(Exception e) {
-        throw new Exception("Por favor, delete primeiro os abastecimentos desse posto.");
-    } 
+    // end-user-code
+    Posto entity = this.get(id);
+    this.repository.delete(entity);
+    // begin-user-code  
     // end-user-code        
   }
   
@@ -123,7 +123,7 @@ public class PostoBusiness {
    * @generated modifiable
    * OneToMany Relation - Searchable fields - Specific search
    */  
-  public Page<Comentario> findComentarioSpecificSearch(java.lang.String id, java.util.Date data, java.lang.String texto, java.lang.Boolean moderado, Pageable pageable) {
+  public Page<Comentario> findComentarioSpecificSearch(java.lang.String id, java.lang.String data, java.lang.String texto, java.lang.Boolean moderado, Pageable pageable) {
     // begin-user-code
     // end-user-code  
     Page<Comentario> result = repository.findComentarioSpecificSearch(id, data, texto, moderado, pageable);
@@ -223,5 +223,4 @@ public class PostoBusiness {
   public Page<Posto> specificSearch(java.lang.String nome, Pageable pageable) {
     return repository.specificSearch(nome, pageable);
   }
-  
 }
