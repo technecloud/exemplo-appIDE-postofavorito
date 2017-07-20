@@ -20,6 +20,7 @@
       "restPath": "/api/rest",
       "visionLikePackage": false,
       "chkApi": false,
+      "generationType": "drop-and-create-tables",
       "attrs": {}
     },
     {
@@ -33,8 +34,8 @@
         "+ list(): List<Role>"
       ],
       "position": {
-        "x": 24,
-        "y": 258
+        "x": 5,
+        "y": 415
       },
       "size": {
         "width": 159.09375,
@@ -140,11 +141,11 @@
         "+ findByRole(roleid:String): List<UserRole>"
       ],
       "position": {
-        "x": 68,
-        "y": 438
+        "x": 10,
+        "y": 603
       },
       "size": {
-        "width": 266.453125,
+        "width": 267.453125,
         "height": 188.8270492553711
       },
       "angle": 0,
@@ -322,7 +323,7 @@
           "text": "id\nuser\nrole\ntheme\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 172.640625,
+          "ref-x": 171.75,
           "font-size": 11,
           "text": "java.lang.String\nUser\nRole\njava.lang.String\n"
         },
@@ -354,11 +355,11 @@
         "+ findByLogin(login:String): List<User>"
       ],
       "position": {
-        "x": 407,
-        "y": 283
+        "x": 187,
+        "y": 386
       },
       "size": {
-        "width": 240.203125,
+        "width": 241.203125,
         "height": 195.97832489013672
       },
       "angle": 0,
@@ -619,12 +620,12 @@
         "+ list(): List<Carro>"
       ],
       "position": {
-        "x": 885,
-        "y": 351
+        "x": 620,
+        "y": 511
       },
       "size": {
-        "width": 170.4375,
-        "height": 164.34375
+        "width": 173.609375,
+        "height": 163.1875
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -814,7 +815,7 @@
           "text": "id\nmarca\nmodelo\nano\nuser\nplaca\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 70.3125,
+          "ref-x": 71.953125,
           "font-size": 11,
           "text": "java.lang.String\njava.lang.String\njava.lang.String\njava.lang.Integer\nUser\njava.lang.String\n"
         },
@@ -925,12 +926,12 @@
         "+ list(): List<Comentario>"
       ],
       "position": {
-        "x": 133,
-        "y": 23
+        "x": -16,
+        "y": 166
       },
       "size": {
-        "width": 190.28125,
-        "height": 175.2696762084961
+        "width": 192.734375,
+        "height": 174.1134262084961
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -1143,7 +1144,7 @@
           "text": "id\ndata\ntexto\nnota\nmoderado\nuser\nposto\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 84.671875,
+          "ref-x": 85.40625,
           "font-size": 11,
           "text": "java.lang.String\njava.lang.String\njava.lang.String\njava.lang.Integer\njava.lang.Boolean\nUser\nPosto\n"
         },
@@ -1171,11 +1172,11 @@
         "+ list(): List<Posto>"
       ],
       "position": {
-        "x": 405,
-        "y": 17
+        "x": 217,
+        "y": 177
       },
       "size": {
-        "width": 180.40625,
+        "width": 184.171875,
         "height": 185.04956817626953
       },
       "angle": 0,
@@ -1412,7 +1413,7 @@
           "text": "id\nnome\ncep\nlogradouro\nnumero\nbairro\ncidade\nuf\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 86.59375,
+          "ref-x": 88.46875,
           "font-size": 11,
           "text": "java.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\n"
         },
@@ -1431,22 +1432,22 @@
         "data:java.sql.Timestamp",
         "quilometragemRodada:java.lang.Double",
         "litros:java.lang.Double",
-        "combustivel:java.lang.String",
         "precoPorLitro:java.lang.Double",
         "user:User",
         "posto:Posto",
-        "carro:Carro"
+        "carro:Carro",
+        "combustivel:Combustivel"
       ],
       "methods": [
         "+ list(): List<Abastecimento>"
       ],
       "position": {
-        "x": 714,
-        "y": 53
+        "x": 540,
+        "y": 230
       },
       "size": {
-        "width": 258.015625,
-        "height": 197.1501922607422
+        "width": 262.375,
+        "height": 195.9939422607422
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -1535,29 +1536,6 @@
           "dbScale": 2,
           "dbDefaultValue": "",
           "label": "Litros",
-          "mask": "",
-          "isPrimaryKey": false,
-          "isUniqueKey": false,
-          "isNullable": true,
-          "pkType": "",
-          "multitenantContext": "",
-          "jsonIgnore": false,
-          "isTransient": false,
-          "isInsertable": true,
-          "isUpdatable": true,
-          "isEncryption": false,
-          "referencedColumnName": "",
-          "isSearchable": false
-        },
-        {
-          "name": "combustivel",
-          "type": "java.lang.String",
-          "dbName": "combustivel",
-          "dbLength": "",
-          "dbPrecision": "",
-          "dbScale": "",
-          "dbDefaultValue": "",
-          "label": "Combustivel",
           "mask": "",
           "isPrimaryKey": false,
           "isUniqueKey": false,
@@ -1663,6 +1641,25 @@
           "isEncryption": false,
           "referencedColumnName": "",
           "isSearchable": false
+        },
+        {
+          "name": "combustivel",
+          "type": "Combustivel",
+          "dbName": "fk_combustivel",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "multitenantContext": "",
+          "pkType": "",
+          "isIgnore": false,
+          "isTransien": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
         }
       ],
       "queries": [
@@ -1702,12 +1699,12 @@
         },
         ".uml-class-attrs-text": {
           "font-size": 11,
-          "text": "id\ndata\nquilometragemRodada\nlitros\ncombustivel\nprecoPorLitro\nuser\nposto\ncarro\n"
+          "text": "id\ndata\nquilometragemRodada\nlitros\nprecoPorLitro\nuser\nposto\ncarro\ncombustivel\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 145.53125,
+          "ref-x": 148.15625,
           "font-size": 11,
-          "text": "java.lang.String\njava.sql.Timestamp\njava.lang.Double\njava.lang.Double\njava.lang.String\njava.lang.Double\nUser\nPosto\nCarro\n"
+          "text": "java.lang.String\njava.sql.Timestamp\njava.lang.Double\njava.lang.Double\njava.lang.Double\nUser\nPosto\nCarro\nCombustivel\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -1977,6 +1974,283 @@
           "fill": "#cecece"
         }
       }
+    },
+    {
+      "type": "uml.Class",
+      "name": "Combustivel",
+      "attributes": [
+        "id:java.lang.String",
+        "nome:java.lang.String",
+        "preco:java.lang.Double",
+        "data:java.sql.Timestamp",
+        "posto:Posto"
+      ],
+      "methods": [
+        "+ list(): List<Combustivel>"
+      ],
+      "position": {
+        "x": 420,
+        "y": 13
+      },
+      "size": {
+        "width": 179.421875,
+        "height": 152.27445220947266
+      },
+      "angle": 0,
+      "multitenantContextJsonIgnore": "false",
+      "multitenantContextIgnoreEntities": "",
+      "role": "Auto",
+      "isRest": "true",
+      "multitenantContext": "",
+      "restPath": "",
+      "id": "39b6d769-abdd-4bc8-a48f-a450206f34f5",
+      "fields": [
+        {
+          "name": "id",
+          "type": "java.lang.String",
+          "dbName": "id",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "UUID.randomUUID().toString().toUpperCase()",
+          "label": "Id",
+          "mask": "",
+          "isPrimaryKey": true,
+          "isUniqueKey": false,
+          "isNullable": false,
+          "pkType": "UUID",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "nome",
+          "type": "java.lang.String",
+          "dbName": "nome",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Nome",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "preco",
+          "type": "java.lang.Double",
+          "dbName": "preco",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Preco",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "data",
+          "type": "java.sql.Timestamp",
+          "dbName": "data",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Data",
+          "mask": "99/99/9999",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "posto",
+          "type": "Posto",
+          "dbName": "fk_posto",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "multitenantContext": "",
+          "pkType": "",
+          "isIgnore": false,
+          "isTransien": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        }
+      ],
+      "queries": [
+        {
+          "isRest": "true",
+          "name": "list",
+          "query": "select c from $entity c",
+          "void": false,
+          "type": "select"
+        }
+      ],
+      "tableName": null,
+      "runtimeClass": "cronos.widgets.joint.uml.Class",
+      "z": 29,
+      "attrs": {
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
+        },
+        ".uml-class-name-rect": {
+          "height": 50,
+          "transform": "translate(0,0)"
+        },
+        ".uml-class-attrs-rect": {
+          "height": 130,
+          "transform": "translate(0,50)"
+        },
+        ".uml-class-methods-rect": {
+          "height": 50,
+          "transform": "translate(0,180)"
+        },
+        ".uml-class-name-text": {
+          "fill": "#000",
+          "font-size": 12,
+          "text": "Combustivel",
+          "font-weight": "bold"
+        },
+        ".uml-class-attrs-text": {
+          "font-size": 11,
+          "text": "id\nnome\npreco\ndata\nposto\n"
+        },
+        ".uml-class-attrs-value": {
+          "ref-x": 65.203125,
+          "font-size": 11,
+          "text": "java.lang.String\njava.lang.String\njava.lang.Double\njava.sql.Timestamp\nPosto\n"
+        },
+        ".uml-class-methods-text": {
+          "fill": "#0066FF",
+          "font-size": 11,
+          "text": "+ list(): List<Combustivel>"
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "posto:target"
+      ],
+      "name": null,
+      "id": "8bfc8eb2-685e-4abe-b831-75abcbe4a481",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
+      "target": {
+        "id": "39b6d769-abdd-4bc8-a48f-a450206f34f5"
+      },
+      "source": {
+        "id": "39eb9fe4-8921-4d06-bb07-747bd8a69e0f"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "*",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 30,
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "combustivel:target"
+      ],
+      "name": null,
+      "id": "f3b467b2-e171-49ae-aea6-0c918f3998b6",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
+      "target": {
+        "id": "d1f485f1-31e9-4b26-baa0-7421b1d25a1a"
+      },
+      "source": {
+        "id": "39b6d769-abdd-4bc8-a48f-a450206f34f5"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "*",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 31,
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        }
+      }
     }
   ],
   "selectedGroup": "1d7f906f-a526-482d-aaf4-08d227ae8c18",
@@ -2000,7 +2274,8 @@
         "39eb9fe4-8921-4d06-bb07-747bd8a69e0f",
         "1df87f56-c5ba-47f5-8e68-82931f49b989",
         "d1f485f1-31e9-4b26-baa0-7421b1d25a1a",
-        "9fc5adf8-3b7a-437d-b46e-58487bf159f1"
+        "9fc5adf8-3b7a-437d-b46e-58487bf159f1",
+        "39b6d769-abdd-4bc8-a48f-a450206f34f5"
       ]
     }
   ]

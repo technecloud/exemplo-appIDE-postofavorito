@@ -16,15 +16,6 @@
     <build>
         <resources>
             <resource>
-                <directory>src/test/java</directory>
-                <includes>
-                    <include>**</include>
-                </includes>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </resource>
-            <resource>
                 <directory>src/main/java</directory>
             </resource>
         </resources>
@@ -173,11 +164,10 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <project.cronospass.resource mimetype="folder/src">src/main/java</project.cronospass.resource>
-        <project.cronospass.resource mimetype="folder/libs">lib</project.cronospass.resource>
-        <project.cronospass.resource mimetype="folder/servercontext">config</project.cronospass.resource>
         <project.cronospass.resource mimetype="folder/web">src/main/webapp</project.cronospass.resource>
+        <project.cronospass.resource mimetype="folder/servercontext">config</project.cronospass.resource>
+        <project.cronospass.resource mimetype="folder/src">src/main/java</project.cronospass.resource>
         <project.cronospass.resource mimetype="folder/web">src/main/mobileapp/www</project.cronospass.resource>
-
+        <project.cronospass.resource mimetype="folder/libs">lib</project.cronospass.resource>
     </properties>
 </project>
