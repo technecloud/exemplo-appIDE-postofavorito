@@ -54,18 +54,6 @@
     }]);
 
 
-app.controller('CadastroController', ['$scope', '$http', '$rootScope', '$state', '$translate', 'Notification', function ($scope, $http, $rootScope, $state, $translate, Notification) {
-  function General($scope, $element, $http, $filter)  
-  {  
-   $scope.data = $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss');  
-  }  
-  
-}]);
-
-
-
-
-
 
 app.controller('CepController', ['$scope', '$http', '$rootScope', '$state', '$translate', 'Notification', function ($scope, $http, $rootScope, $state, $translate, Notification) {
 
@@ -85,6 +73,7 @@ $scope.buscarCEP = function(){
 
   
 }]);
+
 
 
     app.controller('HomeController', ['$scope', '$http', '$rootScope', '$state', '$translate', 'Notification', function ($scope, $http, $rootScope, $state, $translate, Notification) {

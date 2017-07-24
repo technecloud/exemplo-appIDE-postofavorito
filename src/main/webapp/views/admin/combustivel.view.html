@@ -87,7 +87,10 @@
               ng-model="Combustivel.active.nome"
               class="form-control"
               id="textinput-nome"
-              placeholder="Nome"
+              placeholder="Ex: gasolina"
+              maxlength="50"
+              required="true"
+              oninvalid="setCustomValidity('Por favor, insira o combustível com no máximo 50 caracteres.')" onchange="try{setCustomValidity('')}catch(e){}"
               >
           </div>
         </div>
@@ -99,7 +102,10 @@
               ng-model="Combustivel.active.preco"
               class="form-control"
               id="textinput-preco"
-              placeholder="Preco"
+              placeholder="Ex: 3.99"
+              required="true"
+              ui-money-mask
+              oninvalid="setCustomValidity('Por favor, insira o preço por litro.')" onchange="try{setCustomValidity('')}catch(e){}"
               >
           </div>
         </div>
@@ -109,7 +115,8 @@
             <div style="position:relative">
               <input type="text" as-date
               format="DD/MM/YYYY HH:mm:ss"
-              ng-model="Combustivel.active.data" class="form-control" id="textinput-data" placeholder="Data" >
+              required=""
+              ng-model="Combustivel.active.data" class="form-control" id="textinput-data" placeholder="Ex: 01/01/2001" >
             </div>
           </div>
         </div>

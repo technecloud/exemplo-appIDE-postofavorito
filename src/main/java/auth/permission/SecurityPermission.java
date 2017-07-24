@@ -30,6 +30,7 @@ public class SecurityPermission {
     http.authorizeRequests().antMatchers("/i18n/**").permitAll();
     http.authorizeRequests().antMatchers("/views/livreAcesso.view.html").permitAll();
     http.authorizeRequests().antMatchers("/views/login.view.html").permitAll();
+     http.authorizeRequests().antMatchers("/views/cadastro.view.html").permitAll();
     http.authorizeRequests().antMatchers("/views/error/**").permitAll();
     
     // role admin permission
@@ -38,13 +39,13 @@ public class SecurityPermission {
     
     // role logged permission
     http.authorizeRequests().antMatchers("/views/logged/**").authenticated();
-    http.authorizeRequests().antMatchers("/api/rest/**").authenticated();
+    http.authorizeRequests().antMatchers("/api/rest/**").permitAll();
     http.authorizeRequests().antMatchers("/api/cronapi/**").authenticated();
     http.authorizeRequests().antMatchers("POST", "/changePassword").authenticated();
     http.authorizeRequests().antMatchers("POST", "/changeTheme").authenticated();
     
     // deny all
-    http.authorizeRequests().antMatchers("/**").denyAll();
+   // http.authorizeRequests().antMatchers("/**").denyAll();
   }
   
 }

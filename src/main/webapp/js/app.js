@@ -80,7 +80,7 @@ var app = (function() {
 
         .state('cadastro', {
           url: "/cadastro",
-          controller: 'CadastroController',
+          controller: 'LoginController',
           templateUrl: 'views/cadastro.view.html'
         })
 
