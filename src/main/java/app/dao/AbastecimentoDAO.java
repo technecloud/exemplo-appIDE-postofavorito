@@ -30,6 +30,9 @@ public interface AbastecimentoDAO extends JpaRepository<Abastecimento, java.lang
    */    
   @Query("SELECT entity FROM Abastecimento entity WHERE entity.id = :id")
   public Abastecimento findOne(@Param(value="id") java.lang.String id);
+  
+  @Query("SELECT entity FROM Abastecimento entity WHERE entity.user.id = :id")
+  public Page<Abastecimento> findAbastecimentosByUser(@Param(value="id") java.lang.String id, Pageable pageable);
 
   /**
    * Remove a instância de Abastecimento utilizando os identificadores
@@ -50,6 +53,46 @@ public interface AbastecimentoDAO extends JpaRepository<Abastecimento, java.lang
    */
   @Query("select c from Abastecimento c")
   public Page<Abastecimento> list(Pageable pageable);
+  
+   /**
+    * Foreign Key posto
+ -   * @generated
+ -   */
+   @Query("SELECT entity FROM Abastecimento entity WHERE entity.posto.id = :id")
+   public Page<Abastecimento> findAbastecimentosByPosto(@Param(value="id") java.lang.String id, Pageable pageable);
+ 
+   /**
+ -   * Foreign Key carro
+ -   * @generated
+ -   */
+   @Query("SELECT entity FROM Abastecimento entity WHERE entity.carro.id = :id")
+   public Page<Abastecimento> findAbastecimentosByCarro(@Param(value="id") java.lang.String id, Pageable pageable);
+   
+   
+    @Query("select a from Abastecimento a where a.posto.id = :postoId ")
+   public Page<Abastecimento> listaAbastecimentosPorPosto(@Param(value="postoId") java.lang.String postoId, Pageable pageable);
+   
+   @Query("select a from Abastecimento a where a.carro.marca = :marca and a.carro.modelo = :modelo and a.carro.ano= :ano")
+   public Page<Abastecimento> listaAbastecimentosPorMarcaModeloAno(@Param(value="marca")java.lang.String marca, @Param(value="modelo")java.lang.String modelo, @Param(value="ano")java.lang.Integer ano, Pageable pageable);
+   
+
+  
+  @Query("select distinct a.carro.id from Abastecimento a")
+  public List<String> recuperaCarrosQueTemAbastecimento();
+  
+  @Query("select distinct a.carro.marca from Abastecimento a")
+  public List<String> recuperaMarcasQueTemAbastecimento();
+  
+  
+  @Query("select distinct a.carro.modelo from Abastecimento a where a.carro.marca= :marca")
+  public List<String> recuperaModelosQueTemAbastecimento(@Param(value="marca")java.lang.String marca);
+  
+  @Query("select distinct a.carro.ano from Abastecimento a where a.carro.modelo= :modelo")
+  public List<Integer> recuperaAnosQueTemAbastecimento(@Param(value="modelo")java.lang.String modelo);
+  
+   @Query("select a.posto from Abastecimento a")
+   List<Posto> recuperaPostosQueTemAbastecimento();
+  
   
 
 

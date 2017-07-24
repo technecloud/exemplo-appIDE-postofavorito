@@ -30,6 +30,8 @@ public interface CombustivelDAO extends JpaRepository<Combustivel, java.lang.Str
    */    
   @Query("SELECT entity FROM Combustivel entity WHERE entity.id = :id")
   public Combustivel findOne(@Param(value="id") java.lang.String id);
+  
+  
 
   /**
    * Remove a instância de Combustivel utilizando os identificadores

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.*;
 import java.util.*;
 import app.entity.*;
 import app.business.*;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Controller para expor serviços REST de Posto
@@ -97,21 +98,18 @@ public class PostoREST {
    * NamedQuery list
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET
-  )
-  public HttpEntity<PagedResources<Posto>> listParams (Pageable pageable, PagedResourcesAssembler assembler){
-    return new ResponseEntity<>(assembler.toResource(postoBusiness.list(pageable)), HttpStatus.OK);
-  }
-
+  @RequestMapping(method = RequestMethod.GET)
+   public HttpEntity<PagedResources<Posto>> listParams(Pageable pageable, PagedResourcesAssembler assembler){
+   return new ResponseEntity<>(assembler.toResource(postoBusiness.list(pageable)), HttpStatus.OK);  
+   }
   /**
    * OneToMany Relationship GET - Searchable fields - General search (Only strings fields)
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET, value="/{instanceId}/Comentario/generalSearch")
-  public HttpEntity<PagedResources<Comentario>> findComentarioGeneralSearch(java.lang.String search, @PathVariable("instanceId") java.lang.String instanceId, Pageable pageable, PagedResourcesAssembler assembler) {
-    return new ResponseEntity<>(assembler.toResource(postoBusiness.findComentarioGeneralSearch(search, instanceId, pageable)), HttpStatus.OK);
+ @RequestMapping(method = RequestMethod.GET, value="/{postoId}/Comentario/generalSearch")    
+ public HttpEntity<PagedResources<Comentario>> findComentarioGeneralSearch(java.lang.String search, @PathVariable("postoId") java.lang.String postoId, Pageable pageable, PagedResourcesAssembler assembler) {
+ return new ResponseEntity<>(assembler.toResource(postoBusiness.findComentarioGeneralSearch(search, postoId, pageable)), HttpStatus.OK);
   }
-
   /**
    * OneToMany Relationship GET - Searchable fields - Specific search
    * @generated
@@ -126,29 +124,26 @@ public class PostoREST {
    * OneToMany Relationship GET
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET
-  , value="/{instanceId}/Comentario")
-  public HttpEntity<PagedResources<Comentario>> findComentario(@PathVariable("instanceId") java.lang.String instanceId, Pageable pageable, PagedResourcesAssembler assembler) {
-    return new ResponseEntity<>(assembler.toResource(postoBusiness.findComentario(instanceId, pageable)), HttpStatus.OK);
+  @RequestMapping(method = RequestMethod.GET, value="/{postoId}/Comentario")    
+  public HttpEntity<PagedResources<Comentario>> findComentario(@PathVariable("postoId") java.lang.String postoId, Pageable pageable, PagedResourcesAssembler assembler) {
+  return new ResponseEntity<>(assembler.toResource(postoBusiness.findComentario(postoId, pageable)), HttpStatus.OK);
   }
 
   /**
    * OneToMany Relationship DELETE
    * @generated
    */
-  @RequestMapping(method = RequestMethod.DELETE
-  , value="/{instanceId}/Comentario/{relationId}")
-  public void deleteComentario(@PathVariable("relationId") java.lang.String relationId) throws Exception {
-    this.comentarioBusiness.delete(relationId);
+    @RequestMapping(method = RequestMethod.DELETE, value="/{postoId}/Comentario/{comentarioId}")    
+   public void deleteComentario(@PathVariable("comentarioId") java.lang.String comentarioId) throws Exception {
+    this.comentarioBusiness.delete(comentarioId);
   }
 
   /**
    * OneToMany Relationship PUT
    * @generated
    */
-  @RequestMapping(method = RequestMethod.PUT
-  , value="/{instanceId}/Comentario/{relationId}")
-  public Comentario putComentario(@Validated @RequestBody final Comentario entity, @PathVariable("relationId") java.lang.String relationId) throws Exception {
+    @RequestMapping(method = RequestMethod.PUT, value="/{postoId}/Comentario")
+    public Comentario putComentario(@Validated @RequestBody final Comentario entity, @PathVariable("postoId") java.lang.String postoId) throws Exception {
     return this.comentarioBusiness.put(entity);
   }
 
@@ -156,12 +151,11 @@ public class PostoREST {
    * OneToMany Relationship POST
    * @generated
    */
-  @RequestMapping(method = RequestMethod.POST
-  , value="/{instanceId}/Comentario")
-  public Comentario postComentario(@Validated @RequestBody final Comentario entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
-  Posto posto = this.postoBusiness.get(instanceId);
-  entity.setPosto(posto);
-    return this.comentarioBusiness.post(entity);
+   @RequestMapping(method = RequestMethod.POST, value="/{postoId}/Comentario")
+  public Comentario postComentario(@Validated @RequestBody final Comentario entity, @PathVariable("postoId") java.lang.String postoId, HttpServletRequest req) throws Exception {
+    Posto posto = this.postoBusiness.get(postoId);
+    entity.setPosto(posto);
+    return this.comentarioBusiness.post(entity, req);
   }
 
 
@@ -169,42 +163,40 @@ public class PostoREST {
    * OneToMany Relationship GET
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET
-  , value="/{instanceId}/Abastecimento")
-  public HttpEntity<PagedResources<Abastecimento>> findAbastecimento(@PathVariable("instanceId") java.lang.String instanceId, Pageable pageable, PagedResourcesAssembler assembler) {
-    return new ResponseEntity<>(assembler.toResource(postoBusiness.findAbastecimento(instanceId, pageable)), HttpStatus.OK);
+  @RequestMapping(method = RequestMethod.GET, value="/{postoId}/Abastecimento")    
+   public HttpEntity<PagedResources<Abastecimento>> findAbastecimento(@PathVariable("postoId") java.lang.String postoId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(postoBusiness.findAbastecimento(postoId, pageable)), HttpStatus.OK);
   }
 
   /**
    * OneToMany Relationship DELETE
    * @generated
    */
-  @RequestMapping(method = RequestMethod.DELETE
-  , value="/{instanceId}/Abastecimento/{relationId}")
-  public void deleteAbastecimento(@PathVariable("relationId") java.lang.String relationId) throws Exception {
-    this.abastecimentoBusiness.delete(relationId);
+ @RequestMapping(method = RequestMethod.DELETE, value="/{postoId}/Abastecimento/{abastecimentoId}")    
+   public void deleteAbastecimento(@PathVariable("abastecimentoId") java.lang.String abastecimentoId) throws Exception {
+     this.abastecimentoBusiness.delete(abastecimentoId);
   }
 
   /**
    * OneToMany Relationship PUT
    * @generated
    */
-  @RequestMapping(method = RequestMethod.PUT
-  , value="/{instanceId}/Abastecimento/{relationId}")
-  public Abastecimento putAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("relationId") java.lang.String relationId) throws Exception {
+   @RequestMapping(method = RequestMethod.PUT, value="/{postoId}/Abastecimento")
+   public Abastecimento putAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("postoId") java.lang.String postoId) throws Exception {
     return this.abastecimentoBusiness.put(entity);
-  }
+     
+   }
+  
 
   /**
    * OneToMany Relationship POST
    * @generated
    */
-  @RequestMapping(method = RequestMethod.POST
-  , value="/{instanceId}/Abastecimento")
-  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
-  Posto posto = this.postoBusiness.get(instanceId);
-  entity.setPosto(posto);
-    return this.abastecimentoBusiness.post(entity);
+   @RequestMapping(method = RequestMethod.POST, value="/{postoId}/Abastecimento")
+  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("postoId") java.lang.String postoId, HttpServletRequest req) throws Exception {
+    Posto posto = this.postoBusiness.get(postoId);
+    entity.setPosto(posto);
+    return this.abastecimentoBusiness.post(entity, req);
   }
 
 
@@ -212,10 +204,9 @@ public class PostoREST {
    * OneToMany Relationship GET
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET
-  , value="/{instanceId}/Combustivel")
-  public HttpEntity<PagedResources<Combustivel>> findCombustivel(@PathVariable("instanceId") java.lang.String instanceId, Pageable pageable, PagedResourcesAssembler assembler) {
-    return new ResponseEntity<>(assembler.toResource(postoBusiness.findCombustivel(instanceId, pageable)), HttpStatus.OK);
+  @RequestMapping(method = RequestMethod.GET,value="/{postoId}/User")
+   public HttpEntity<PagedResources<User>> listUser(@PathVariable("postoId") java.lang.String postoId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(postoBusiness.listUser(postoId, pageable)), HttpStatus.OK); 
   }
 
   /**
@@ -242,15 +233,17 @@ public class PostoREST {
    * OneToMany Relationship POST
    * @generated
    */
-  @RequestMapping(method = RequestMethod.POST
-  , value="/{instanceId}/Combustivel")
-  public Combustivel postCombustivel(@Validated @RequestBody final Combustivel entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
-  Posto posto = this.postoBusiness.get(instanceId);
-  entity.setPosto(posto);
-    return this.combustivelBusiness.post(entity);
-  }
-
-  /**
+ @RequestMapping(method = RequestMethod.POST,value="/{postoId}/User")
+  public Posto postUser(@Validated @RequestBody final User entity, @PathVariable("postoId") java.lang.String postoId, HttpServletRequest req) throws Exception {
+   Comentario newComentario = new Comentario();
+   Posto posto = this.postoBusiness.get(postoId);
+    newComentario.setUser(entity);
+    newComentario.setPosto(posto);
+   
+   this.comentarioBusiness.post(newComentario, req);
+   return newComentario.getPosto();
+    
+  }  /**
    * ManyToMany Relationship GET - Searchable fields - General search (Only strings fields)
    * @generated
    */
@@ -274,41 +267,20 @@ public class PostoREST {
    * ManyToMany Relationship GET
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET
-  ,value="/{instanceId}/User")
-  public HttpEntity<PagedResources<User>> listUser(@PathVariable("instanceId") java.lang.String instanceId, Pageable pageable, PagedResourcesAssembler assembler) {
-    return new ResponseEntity<>(assembler.toResource(postoBusiness.listUser(instanceId, pageable)), HttpStatus.OK);
-  }
-
+  
   /**
    * ManyToMany Relationship POST
    * @generated
    */
-  @RequestMapping(method = RequestMethod.POST
-  ,value="/{instanceId}/User")
-  public Posto postUser(@Validated @RequestBody final User entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
-    Comentario newComentario = new Comentario();
-
-    Posto instance = this.postoBusiness.get(instanceId);
-
-    newComentario.setUser(entity);
-    newComentario.setPosto(instance);
-
-    this.comentarioBusiness.post(newComentario);
-
-    return newComentario.getPosto();
-  }
 
   /**
    * ManyToMany Relationship DELETE
    * @generated
    */
-  @RequestMapping(method = RequestMethod.DELETE
-  ,value="/{instanceId}/User/{relationId}")
-  public void deleteUser(@PathVariable("instanceId") java.lang.String instanceId, @PathVariable("relationId") java.lang.String relationId) {
-    this.postoBusiness.deleteUser(instanceId, relationId);
-  }
-
+ @RequestMapping(method = RequestMethod.DELETE,value="/{postoId}/User/{UserId}")
+ public void deleteUser(@PathVariable("postoId") java.lang.String postoId, @PathVariable("UserId") java.lang.String UserId) {
+     this.postoBusiness.deleteUser(postoId, UserId);
+   }  
   /**
    * Searchable fields - General search (Only strings fields)
    * @generated
@@ -332,9 +304,9 @@ public class PostoREST {
    *
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-  public Posto get(@PathVariable("id") java.lang.String id) throws Exception {
-    return postoBusiness.get(id);
-  }
+  @RequestMapping(method = RequestMethod.GET, value = "/{postoId}")
+   public Posto get(@PathVariable("postoId") java.lang.String postoId) throws Exception {
+     return postoBusiness.get(postoId);
+ }
 
 }

@@ -59,5 +59,8 @@ public interface CarroDAO extends JpaRepository<Carro, java.lang.String> {
    */
   @Query("SELECT entity FROM Abastecimento entity WHERE entity.carro.id = :id")
   public Page<Abastecimento> findAbastecimento(@Param(value="id") java.lang.String id, Pageable pageable);
+  
+  @Query("SELECT entity FROM Carro entity WHERE entity.user.id = :id")
+  public Page<Carro> findCarrosByUser(@Param(value="id") java.lang.String id, Pageable pageable);
 
 }
