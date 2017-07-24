@@ -72,7 +72,14 @@ public class PostoBusiness {
     // begin-user-code  
     // end-user-code
     Posto entity = this.get(id);
-    this.repository.delete(entity);
+    try {
+       
+       this.repository.delete(entity);
+      
+       
+     }catch(Exception e) {
+         throw new Exception("Por favor, delete primeiro os abastecimentos desse posto.");
+     }
     // begin-user-code  
     // end-user-code        
   }
@@ -153,6 +160,19 @@ public class PostoBusiness {
     // begin-user-code
     // end-user-code  
     Page<Abastecimento> result = repository.findAbastecimento(id, pageable);
+    // begin-user-code  
+    // end-user-code        
+    return result;    
+  }
+  
+  /**
+   * @generated modifiable
+   * OneToMany Relation
+   */  
+  public Page<Combustivel> findCombustivel(java.lang.String id, Pageable pageable) {
+    // begin-user-code
+    // end-user-code  
+    Page<Combustivel> result = repository.findCombustivel(id, pageable);
     // begin-user-code  
     // end-user-code        
     return result;    

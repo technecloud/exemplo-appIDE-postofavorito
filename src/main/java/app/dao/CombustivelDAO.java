@@ -16,23 +16,25 @@ import org.springframework.transaction.annotation.*;
  * 
  * @generated
  */
-@Repository("CarroDAO")
+@Repository("CombustivelDAO")
 @Transactional(transactionManager="app-TransactionManager")
-public interface CarroDAO extends JpaRepository<Carro, java.lang.String> {
+public interface CombustivelDAO extends JpaRepository<Combustivel, java.lang.String> {
 
   /**
-   * Obtém a instância de Carro utilizando os identificadores
+   * Obtém a instância de Combustivel utilizando os identificadores
    * 
    * @param id
    *          Identificador 
    * @return Instância relacionada com o filtro indicado
    * @generated
    */    
-  @Query("SELECT entity FROM Carro entity WHERE entity.id = :id")
-  public Carro findOne(@Param(value="id") java.lang.String id);
+  @Query("SELECT entity FROM Combustivel entity WHERE entity.id = :id")
+  public Combustivel findOne(@Param(value="id") java.lang.String id);
+  
+  
 
   /**
-   * Remove a instância de Carro utilizando os identificadores
+   * Remove a instância de Combustivel utilizando os identificadores
    * 
    * @param id
    *          Identificador 
@@ -40,7 +42,7 @@ public interface CarroDAO extends JpaRepository<Carro, java.lang.String> {
    * @generated
    */    
   @Modifying
-  @Query("DELETE FROM Carro entity WHERE entity.id = :id")
+  @Query("DELETE FROM Combustivel entity WHERE entity.id = :id")
   public void delete(@Param(value="id") java.lang.String id);
 
   /**
@@ -48,8 +50,8 @@ public interface CarroDAO extends JpaRepository<Carro, java.lang.String> {
    * 
    * @generated
    */
-  @Query("select c from Carro c")
-  public Page<Carro> list(Pageable pageable);
+  @Query("select c from Combustivel c")
+  public Page<Combustivel> list(Pageable pageable);
   
 
 
@@ -57,10 +59,7 @@ public interface CarroDAO extends JpaRepository<Carro, java.lang.String> {
    * OneToMany Relation
    * @generated
    */
-  @Query("SELECT entity FROM Abastecimento entity WHERE entity.carro.id = :id")
+  @Query("SELECT entity FROM Abastecimento entity WHERE entity.combustivel.id = :id")
   public Page<Abastecimento> findAbastecimento(@Param(value="id") java.lang.String id, Pageable pageable);
-  
-  @Query("SELECT entity FROM Carro entity WHERE entity.user.id = :id")
-  public Page<Carro> findCarrosByUser(@Param(value="id") java.lang.String id, Pageable pageable);
 
 }
