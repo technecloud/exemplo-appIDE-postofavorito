@@ -1,0 +1,109 @@
+<ion-view cache-view="false" view-title="Comentario" hide-back-button="true">
+  <ion-nav-buttons side="right">
+    <button class="button button-stable" ng-hide="Comentario.inserting || Comentario.editing" ng-click="Comentario.startInserting()"> <i class="icon ion-plus-round"></i> </button>
+    <button class="button button-stable" ng-show="Comentario.inserting || Comentario.editing" ng-click="Comentario.post()"> <i class="icon ion-checkmark"></i> </button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" ng-hide="Comentario.inserting || Comentario.editing" menu-toggle="left"> </button>
+    <button class="button button-stable" ng-show="Comentario.inserting || Comentario.editing" ng-click="Comentario.cancel()"> <i class="icon ion-android-arrow-back"></i> </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="component-holder ng-binding ng-scope ui-draggable ui-draggable-handle" data-component="crn-datasource" id="crn-datasource-906854">
+      <datasource  name="Comentario" entity="api/rest/Comentario" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+    </div>
+    <div crn-datasource="Comentario" class="" ng-hide="Comentario.editing || Comentario.inserting">
+      <ion-list can-swipe="listCanSwipe">
+        <ion-item ng-repeat="rowData in datasource.data" class="item" ng-click="datasource.startEditing(rowData)">
+          <div class="row">
+            <div class="col">
+              {{rowData.data}}
+            </div>
+            <div class="col">
+              {{rowData.texto}}
+            </div>
+            <div class="col">
+              {{rowData.nota}}
+            </div>
+            <div class="col">
+              {{rowData.moderado}}
+            </div>
+            <div class="col">
+              {{rowData.user.email}}
+            </div>
+            <div class="col">
+              {{rowData.posto.nome}}
+            </div>
+          </div>
+          <ion-option-button class="button-positive" ng-click="datasource.startEditing(rowData)">
+            <i class="icon ion-edit"></i>
+          </ion-option-button>
+          <ion-option-button class="button-assertive" ng-click="datasource.remove(rowData)">
+            &nbsp;
+            <i class="icon ion-trash-a"></i>
+          </ion-option-button>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div ng-show="Comentario.editing || Comentario.inserting">
+      <form crn-datasource="Comentario">
+        <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
+          <div class="list">
+            <!-- data begin -->
+            <label for="textinput-data" class="item item-input item-stacked-label">
+            <span class="input-label">Data</span>
+            <input
+            type="text"
+            placeholder="Data"
+            ng-model="Comentario.active.data"
+            id="textinput-data"
+            name="textinput-data"
+            >
+            </label>
+            <!-- texto begin -->
+            <label for="textinput-texto" class="item item-input item-stacked-label">
+            <span class="input-label">Texto</span>
+            <input
+            type="text"
+            placeholder="Texto"
+            ng-model="Comentario.active.texto"
+            id="textinput-texto"
+            name="textinput-texto"
+            >
+            </label>
+            <!-- nota begin -->
+            <label for="textinput-nota" class="item item-input item-stacked-label">
+            <span class="input-label">Nota</span>
+            <input type="number" ng-model="Comentario.active.nota" class="" id="textinput-nota" name="textinput-nota" placeholder="Nota" >
+            </label>
+            <!-- moderado begin -->
+            <div class="item item-toggle">
+              Moderado
+              <label for="textinput-moderado" class="toggle toggle-assertive">
+                <input type="checkbox" ng-model="Comentario.active.moderado" id="textinput-moderado" name="textinput-moderado" >
+                <div class="track">
+                  <div class="handle"></div>
+                </div>
+              </label>
+            </div>
+            <!-- user begin -->
+            <datasource name="User" entity="api/security/User" keys="id" class=""></datasource>
+            <label for="textinput-user" class="item item-input item-select">
+              <span class="input-label">user</span>
+              <select ng-model="Comentario.active.user" class="form-control" id="textinput-user" name="textinput-user" ng-options="opt as opt.email for opt in User.data track by opt.id" >
+              <option value=''>None</option>
+              </select>
+            </label>
+            <!-- posto begin -->
+            <datasource name="Posto" entity="api/rest/Posto" keys="id" class=""></datasource>
+            <label for="textinput-posto" class="item item-input item-select">
+              <span class="input-label">posto</span>
+              <select ng-model="Comentario.active.posto" class="form-control" id="textinput-posto" name="textinput-posto" ng-options="opt as opt.nome for opt in Posto.data track by opt.id" >
+              <option value=''>None</option>
+              </select>
+            </label>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

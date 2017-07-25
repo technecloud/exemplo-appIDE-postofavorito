@@ -26,18 +26,18 @@
               <div menu-close="" class="item-icon-left item item-complex"> 
                 <a class="component-holder item-content ng-binding" href="#/app/home" data-component="crn-anchor"> <i class="icon ion-home"></i>{{"Home.view.Home" | translate}}</a> 
               </div> 
-              <div class="item item-divider"></div> 
+               
               <div menu-close="" class="item-icon-left item item-complex"> 
                 <a class="component-holder item-content ng-binding" href="#/app/logged/user" data-component="crn-anchor"> <i class="icon ion-ios-person"></i> {{ "Users.view.Users" | translate }}</a> 
               </div> 
               <div class="item item-divider"></div> 
               <div menu-close="" class="item-icon-left item item-complex"> 
-                <a class="component-holder item-content ng-binding" href="#/app/home" ng-click="openChangePassword()" data-component="crn-anchor"> <i class="icon ion-lock-combination"></i>{{"Home.view.ChangePassword" | translate}}</a> 
+                <a href="#/app/logged/abastecimento" class="component-holder item-content ng-binding" data-component="crn-anchor"><i class="icon ion-home"></i> Meus Abastecimentos</a><a href="#/app/logged/carro" class="component-holder item-content ng-binding" data-component="crn-anchor"><i class="icon ion-home"></i> Meus Carros</a><a href="#/app/logged/posto" class="component-holder item-content ng-binding" data-component="crn-anchor"><i class="icon ion-home"></i> Postos</a><a class="component-holder item-content ng-binding" href="#/app/home" ng-click="openChangePassword()" data-component="crn-anchor"> <i class="icon ion-lock-combination"></i>{{"Home.view.ChangePassword" | translate}}</a> 
               </div> 
               <div menu-close="" class="item-icon-left item item-complex"> 
                 <a class="component-holder item-content ng-binding" ng-click="logout()" href="#" data-component="crn-anchor"> <i class="icon icon ion-arrow-left-a"></i>{{"Home.view.Sair" | translate}}</a> 
               </div> 
-            </div> 
+            <div menu-close="" class="item-icon-left item item-complex active"></div> <div menu-close="" class="item-icon-left item item-complex"></div> <div menu-close="" class="item-icon-left item item-complex"></div> </div> 
           </div> 
           <!-- Menu -->  
         </ion-list> 
