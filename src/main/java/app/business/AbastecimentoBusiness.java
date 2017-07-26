@@ -170,7 +170,7 @@ public class AbastecimentoBusiness {
  
  		for (Posto posto : postos) {
  			double acm = 0.0;
- 			double mediaRentabilidade;
+ 			double mediaRentabilidade= 0.0;
  
  			List<Abastecimento> abastecimentosDeUmPosto = abastecimentos.stream()
  					.filter(a -> a.getPosto().equals(posto))
