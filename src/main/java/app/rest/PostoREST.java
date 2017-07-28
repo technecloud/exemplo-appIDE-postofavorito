@@ -51,9 +51,7 @@ public class PostoREST {
   /**
    * @generated
    */
-  @Autowired
-  @Qualifier("CombustivelBusiness")
-  private CombustivelBusiness combustivelBusiness;
+
   /**
    * Serviço exposto para novo registro de acordo com a entidade fornecida
    *
@@ -213,21 +211,11 @@ public class PostoREST {
    * OneToMany Relationship DELETE
    * @generated
    */
-  @RequestMapping(method = RequestMethod.DELETE
-  , value="/{instanceId}/Combustivel/{relationId}")
-  public void deleteCombustivel(@PathVariable("relationId") java.lang.String relationId) throws Exception {
-    this.combustivelBusiness.delete(relationId);
-  }
 
   /**
    * OneToMany Relationship PUT
    * @generated
-   */
-  @RequestMapping(method = RequestMethod.PUT
-  , value="/{instanceId}/Combustivel/{relationId}")
-  public Combustivel putCombustivel(@Validated @RequestBody final Combustivel entity, @PathVariable("relationId") java.lang.String relationId) throws Exception {
-    return this.combustivelBusiness.put(entity);
-  }
+ 
 
   /**
    * OneToMany Relationship POST

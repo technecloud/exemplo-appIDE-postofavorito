@@ -1,0 +1,162 @@
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ABASTECIMENTO" not found; SQL statement:
+ALTER TABLE "ABASTECIMENTO" DROP CONSTRAINT "FK_ABASTECIMENTO_fk_carro" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ABASTECIMENTO" not found; SQL statement:
+ALTER TABLE "ABASTECIMENTO" DROP CONSTRAINT "FK_ABASTECIMENTO_fk_posto" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ABASTECIMENTO" not found; SQL statement:
+ALTER TABLE "ABASTECIMENTO" DROP CONSTRAINT "FK_ABASTECIMENTO_fk_combustivel" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ABASTECIMENTO" not found; SQL statement:
+ALTER TABLE "ABASTECIMENTO" DROP CONSTRAINT "FK_ABASTECIMENTO_fk_user" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COMBUSTIVEL" not found; SQL statement:
+ALTER TABLE "COMBUSTIVEL" DROP CONSTRAINT "FK_COMBUSTIVEL_fk_posto" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "CARRO" not found; SQL statement:
+ALTER TABLE "CARRO" DROP CONSTRAINT "FK_CARRO_fk_user" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USERROLE" not found; SQL statement:
+ALTER TABLE "USERROLE" DROP CONSTRAINT "FK_USERROLE_fk_role" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USERROLE" not found; SQL statement:
+ALTER TABLE "USERROLE" DROP CONSTRAINT "FK_USERROLE_fk_user" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER" not found; SQL statement:
+ALTER TABLE "USER" DROP CONSTRAINT UNQ_"USER"_0 [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COMENTARIO" not found; SQL statement:
+ALTER TABLE "COMENTARIO" DROP CONSTRAINT "FK_COMENTARIO_fk_posto" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COMENTARIO" not found; SQL statement:
+ALTER TABLE "COMENTARIO" DROP CONSTRAINT "FK_COMENTARIO_fk_user" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "POSTO" not found; SQL statement:
+DROP TABLE "POSTO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ABASTECIMENTO" not found; SQL statement:
+DROP TABLE "ABASTECIMENTO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COMBUSTIVEL" not found; SQL statement:
+DROP TABLE "COMBUSTIVEL" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "CARRO" not found; SQL statement:
+DROP TABLE "CARRO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USERROLE" not found; SQL statement:
+DROP TABLE "USERROLE" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER" not found; SQL statement:
+DROP TABLE "USER" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COMENTARIO" not found; SQL statement:
+DROP TABLE "COMENTARIO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ROLE" not found; SQL statement:
+DROP TABLE "ROLE" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "POSTO" not found; SQL statement:
+DROP TABLE "POSTO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ABASTECIMENTO" not found; SQL statement:
+DROP TABLE "ABASTECIMENTO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COMBUSTIVEL" not found; SQL statement:
+DROP TABLE "COMBUSTIVEL" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "CARRO" not found; SQL statement:
+DROP TABLE "CARRO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USERROLE" not found; SQL statement:
+DROP TABLE "USERROLE" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER" not found; SQL statement:
+DROP TABLE "USER" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COMENTARIO" not found; SQL statement:
+DROP TABLE "COMENTARIO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ROLE" not found; SQL statement:
+DROP TABLE "ROLE" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "POSTO" not found; SQL statement:
+DROP TABLE "POSTO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ABASTECIMENTO" not found; SQL statement:
+DROP TABLE "ABASTECIMENTO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COMBUSTIVEL" not found; SQL statement:
+DROP TABLE "COMBUSTIVEL" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "CARRO" not found; SQL statement:
+DROP TABLE "CARRO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USERROLE" not found; SQL statement:
+DROP TABLE "USERROLE" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER" not found; SQL statement:
+DROP TABLE "USER" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COMENTARIO" not found; SQL statement:
+DROP TABLE "COMENTARIO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ROLE" not found; SQL statement:
+DROP TABLE "ROLE" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "POSTO" not found; SQL statement:
+DROP TABLE "POSTO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ABASTECIMENTO" not found; SQL statement:
+DROP TABLE "ABASTECIMENTO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COMBUSTIVEL" not found; SQL statement:
+DROP TABLE "COMBUSTIVEL" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "CARRO" not found; SQL statement:
+DROP TABLE "CARRO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USERROLE" not found; SQL statement:
+DROP TABLE "USERROLE" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER" not found; SQL statement:
+DROP TABLE "USER" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COMENTARIO" not found; SQL statement:
+DROP TABLE "COMENTARIO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ROLE" not found; SQL statement:
+DROP TABLE "ROLE" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "POSTO" not found; SQL statement:
+DROP TABLE "POSTO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ABASTECIMENTO" not found; SQL statement:
+DROP TABLE "ABASTECIMENTO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COMBUSTIVEL" not found; SQL statement:
+DROP TABLE "COMBUSTIVEL" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "CARRO" not found; SQL statement:
+DROP TABLE "CARRO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USERROLE" not found; SQL statement:
+DROP TABLE "USERROLE" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER" not found; SQL statement:
+DROP TABLE "USER" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COMENTARIO" not found; SQL statement:
+DROP TABLE "COMENTARIO" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ROLE" not found; SQL statement:
+DROP TABLE "ROLE" [42102-187]
+07-28 15:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "ALTER TABLE ""USER"" ADD CONSTRAINT UNQ_""USER""[*]_0 UNIQUE (id, login)"; expected "., COMMENT, PRIMARY, INDEX, KEY, CHECK, UNIQUE, FOREIGN"; SQL statement:
+ALTER TABLE "USER" ADD CONSTRAINT UNQ_"USER"_0 UNIQUE (id, login) [42001-187]
+07-28 15:54:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "ALTER TABLE ""USER"" DROP CONSTRAINT UNQ_""USER""[*]_0"; SQL statement:
+ALTER TABLE "USER" DROP CONSTRAINT UNQ_"USER"_0 [42000-187]
+07-28 15:54:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "ALTER TABLE ""USER"" ADD CONSTRAINT UNQ_""USER""[*]_0 UNIQUE (id, login)"; expected "., COMMENT, PRIMARY, INDEX, KEY, CHECK, UNIQUE, FOREIGN"; SQL statement:
+ALTER TABLE "USER" ADD CONSTRAINT UNQ_"USER"_0 UNIQUE (id, login) [42001-187]
