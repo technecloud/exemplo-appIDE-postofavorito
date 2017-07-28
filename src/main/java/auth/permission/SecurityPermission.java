@@ -31,6 +31,7 @@ public class SecurityPermission {
     http.authorizeRequests().antMatchers("/views/livreAcesso.view.html").permitAll();
     http.authorizeRequests().antMatchers("/views/login.view.html").permitAll();
     http.authorizeRequests().antMatchers("/views/error/**").permitAll();
+    http.authorizeRequests().antMatchers("/api/rest/Abastecimento/listaRankingAbastecimentos").permitAll();
     
     // role admin permission
     http.authorizeRequests().antMatchers("/views/admin/**").hasAuthority(ROLE_ADMIN_NAME);
