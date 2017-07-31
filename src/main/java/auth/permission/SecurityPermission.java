@@ -29,10 +29,11 @@ public class SecurityPermission {
     http.authorizeRequests().antMatchers("/img/**").permitAll();
     http.authorizeRequests().antMatchers("/i18n/**").permitAll();
     http.authorizeRequests().antMatchers("/views/livreAcesso.view.html").permitAll();
+    http.authorizeRequests().antMatchers("/views/cadastro.view.html").permitAll();
     http.authorizeRequests().antMatchers("/views/login.view.html").permitAll();
     http.authorizeRequests().antMatchers("/views/error/**").permitAll();
     http.authorizeRequests().antMatchers("/api/rest/Abastecimento/listaRankingAbastecimentos").permitAll();
-    
+    http.authorizeRequests().antMatchers("/api/security/User").permitAll();
     // role admin permission
     http.authorizeRequests().antMatchers("/views/admin/**").hasAuthority(ROLE_ADMIN_NAME);
     http.authorizeRequests().antMatchers("/api/security/**").hasAuthority(ROLE_ADMIN_NAME);
