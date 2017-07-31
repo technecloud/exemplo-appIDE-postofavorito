@@ -20,20 +20,15 @@ import retrofit2.Retrofit;
 
 public class ServiceMarcas {
 
-	public static void main(String args[]) throws IOException {
-		Retrofit retrofit = new Retrofit.Builder().baseUrl(InterfaceMarcas.API_URL)
-				.addConverterFactory(GsonConverterFactory.create()).build();
+	Retrofit retrofit = new Retrofit.Builder().baseUrl(InterfaceMarcas.API_URL)
+			.addConverterFactory(GsonConverterFactory.create()).build();
 
+	public List<Marcas> getListMarcas() throws IOException{
 		InterfaceMarcas marcasinterface = retrofit.create(InterfaceMarcas.class);
 		Call<List<Marcas>> call = marcasinterface.marcas();
 		List<Marcas> marcas = call.execute().body();
-		
-		
-    for (Marcas marca : marcas) {
-      System.out.println(marca.getOrder() + " (" + marca.getFipe_name() + ")");
-    }		
-		
-		
+
+		return marcas;
 	}
 
 }
