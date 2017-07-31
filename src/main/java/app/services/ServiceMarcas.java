@@ -19,9 +19,16 @@ import retrofit2.Retrofit;
  */
 
 public class ServiceMarcas {
+  
+  
+  public ServiceMarcas (){
+	}
 
 	Retrofit retrofit = new Retrofit.Builder().baseUrl(InterfaceMarcas.API_URL)
 			.addConverterFactory(GsonConverterFactory.create()).build();
+			
+			
+			
 
 	public List<Marcas> getListMarcas() throws IOException{
 		InterfaceMarcas marcasinterface = retrofit.create(InterfaceMarcas.class);
