@@ -1,13 +1,10 @@
 package app.services;
 
-import java.io.IOException;
 import java.util.List;
 
 import app.entity.Marcas;
-import app.fibeInterfaces.InterfaceMarcas;
 import retrofit2.Call;
-import retrofit2.GsonConverterFactory;
-import retrofit2.Retrofit;
+import retrofit2.http.GET;
 
 /**
  * Classe que representa ...
@@ -18,22 +15,11 @@ import retrofit2.Retrofit;
  *
  */
 
-public class ServiceMarcas {
+public interface ServiceMarcas {
 
-	public static void main(String args[]) throws IOException {
-		Retrofit retrofit = new Retrofit.Builder().baseUrl(InterfaceMarcas.API_URL)
-				.addConverterFactory(GsonConverterFactory.create()).build();
+	public static final String API_URL = "http://fipeapi.appspot.com/api/1/carros/";
 
-		InterfaceMarcas marcasinterface = retrofit.create(InterfaceMarcas.class);
-		Call<List<Marcas>> call = marcasinterface.marcas();
-		List<Marcas> marcas = call.execute().body();
-		
-		
-    for (Marcas marca : marcas) {
-      System.out.println(marca.getOrder() + " (" + marca.getFipe_name() + ")");
-    }		
-		
-		
-	}
+	@GET("marcas.json")
+	Call<List<Marcas>> listatodasmarcas();
 
 }
