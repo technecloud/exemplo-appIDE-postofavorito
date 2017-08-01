@@ -10,7 +10,7 @@ package app.entity;
  *
  */
  
-public class Marcas {
+public class Marca {
 
 	private  String name;
 	private  String fipe_name;
@@ -18,7 +18,7 @@ public class Marcas {
 	private  String key;
 	private  int id;
 
-	public Marcas(String name, String fipe_name, int order, String key, int id) {
+	public Marca(String name, String fipe_name, int order, String key, int id) {
 	  this.name = name;
 	  this.fipe_name = fipe_name;
 	  this.order = order;
