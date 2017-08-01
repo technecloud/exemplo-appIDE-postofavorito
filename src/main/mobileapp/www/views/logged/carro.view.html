@@ -48,51 +48,35 @@
             <!-- marca begin -->
             <label for="textinput-marca" class="item item-input item-stacked-label">
             <span class="input-label">Marca</span>
-            <input
-            type="text"
-            placeholder="Marca"
-            ng-model="Carro.active.marca"
-            id="textinput-marca"
-            name="textinput-marca"
-            >
+             <input ng-model="Carro.active.marca"
+             class="form-control"
+             pattern=".{1,50}"
+             required="true" oninvalid="setCustomValidity('Por favor, insira a marca com até 50 caracteres.')" onchange="try{setCustomValidity('')}catch(e){}" 
+             id="textinput-marca"
+             placeholder="Ex: Fiat" type="text">
+
+
             </label>
             <!-- modelo begin -->
             <label for="textinput-modelo" class="item item-input item-stacked-label">
             <span class="input-label">Modelo</span>
-            <input
-            type="text"
-            placeholder="Modelo"
-            ng-model="Carro.active.modelo"
-            id="textinput-modelo"
-            name="textinput-modelo"
-            >
+                <input ng-model="Carro.active.modelo"
+                class="form-control"
+                pattern=".{1,50}"
+                required=""
+                title="Escreva um modelo com no máximo 50 caracteres" 
+                id="textinput-modelo" placeholder="Ex: Pálio" type="text">
             </label>
             <!-- ano begin -->
             <label for="textinput-ano" class="item item-input item-stacked-label">
             <span class="input-label">Ano</span>
-            <input type="number" ng-model="Carro.active.ano" class="" id="textinput-ano" name="textinput-ano" placeholder="Ano" >
+            <input ng-model="Carro.active.ano" class="form-control" min="1900" max="2018" pattern="[0-9]{4}" required="" title="Escreva um ano válido" id="textinput-ano" placeholder="Insira um ano entre 1900 e 2018" type="number">
             </label>
             <!-- user begin -->
-            <datasource name="User" entity="api/security/User" keys="id" class=""></datasource>
-            <label for="textinput-user" class="item item-input item-select">
-              <span class="input-label">user</span>
-              <select ng-model="Carro.active.user" class="form-control" id="textinput-user" name="textinput-user" ng-options="opt as opt.email for opt in User.data track by opt.id" >
-              <option value=''>None</option>
-              </select>
-            </label>
             <!-- placa begin -->
             <label for="textinput-placa" class="item item-input item-stacked-label">
             <span class="input-label">Placa</span>
-            <input
-            type="text"
-            placeholder="Placa"
-            ng-model="Carro.active.placa"
-            id="textinput-placa"
-            name="textinput-placa"
-            mask="999.999.999-99"
-            valid="cpf"
-            data-error-message="{{'invalid.cpf' | translate}}"
-            >
+                <input ng-model="Carro.active.placa" class="form-control" id="textinput-placa" onkeyup="maiuscula(this)" placeholder="Ex: ABC-1234" mask="AAA-9999" pattern="[A-Z]{3}-[0-9]{4}" required="" title="Placa deve vir com 3 letras e quatro números." type="text">
             </label>
           </div>
         </fieldset>
