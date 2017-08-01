@@ -2,7 +2,7 @@ package app.test;
 
 import java.io.IOException;
 
-import app.services.ServiceMarcas;
+import app.services.ServiceFipe;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
 
@@ -19,10 +19,10 @@ public class MarcasTest {
 
 	public static void main(String args[]) throws IOException {
 	  
-		Retrofit retrofit = new Retrofit.Builder().baseUrl(ServiceMarcas.API_URL)
+		Retrofit retrofit = new Retrofit.Builder().baseUrl(ServiceFipe.API_URL)
 				.addConverterFactory(GsonConverterFactory.create()).build();
 
-		ServiceMarcas marcasinterface = retrofit.create(ServiceMarcas.class);
+		ServiceFipe marcasinterface = retrofit.create(ServiceFipe.class);
 	//	Call<List<Marcas>> call = marcasinterface.marcas();
 	//	List<Marcas> marcas = call.execute().body();
 
