@@ -76,7 +76,10 @@ public class Abastecimento implements Serializable {
   /**
   * @generated
   */
- 
+  @ManyToOne
+  @JoinColumn(name="fk_combustivel", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
+  private Combustivel combustivel;
+  
   /**
    * Construtor
    * @generated
@@ -242,7 +245,19 @@ public class Abastecimento implements Serializable {
    * return combustivel
    * @generated
    */
+  public Combustivel getCombustivel(){
+    return this.combustivel;
+  }
   
+  /**
+   * Define combustivel
+   * @param combustivel combustivel
+   * @generated
+   */
+  public Abastecimento setCombustivel(Combustivel combustivel){
+    this.combustivel = combustivel;
+    return this;
+  }
   
   /**
    * @generated
