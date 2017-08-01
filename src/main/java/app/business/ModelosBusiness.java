@@ -1,11 +1,10 @@
 package app.business;
 
-
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import app.entity.Veiculos;
+import app.entity.Modelo;
 import app.services.ServiceFipe;
 import retrofit2.Call;
 import retrofit2.GsonConverterFactory;
@@ -19,30 +18,31 @@ import retrofit2.Retrofit;
  * @since 2017-08-01
  *
  */
+ 
 
-@Service("VeiculosBusiness") 
-public class VeiculosBusiness {
+@Service("ModelosBusiness")  
+public class ModelosBusiness {
 
-	public List<Veiculos> listarTodosveiculos( ) {
+	public List<Modelo> listarTodosmodelos( ) {
 		Retrofit retrofit = new Retrofit.Builder().baseUrl(ServiceFipe.API_URL)
 				.addConverterFactory(GsonConverterFactory.create()).build();
-		List<Veiculos> veiculos = null;
-	  ServiceFipe mc = retrofit.create(ServiceFipe.class);
+		List<Modelo> modelos = null;
+	  ServiceFipe md = retrofit.create(ServiceFipe.class);
 		
-		Call<List<Veiculos>> call = mc.listatodosveiculos();
-		Call<List<Veiculos>> call2 = call.clone();
-		Response<List<Veiculos>> response = null;
+		Call<List<Modelo>> call = md.listatodosmodelo();
+		Call<List<Modelo>> call2 = call.clone();
+		Response<List<Modelo>> response = null;
 		try {
 			response = call2.execute();
-			veiculos = response.body();
-			if (veiculos != null) {
-					return veiculos;
+			modelos = response.body();
+			if (modelos != null) {
+					return modelos;
 			}
-			return veiculos;
+			return modelos;
 		} catch (Exception e) {
 			  e.printStackTrace();
 		}
-		return veiculos;
+		return modelos;
 	}
 
 }

@@ -1,16 +1,17 @@
 package app.business;
 
-
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import app.entity.Veiculos;
+import app.entity.Ano;
 import app.services.ServiceFipe;
 import retrofit2.Call;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+
+
 /**
  * Classe que representa ...
  * 
@@ -20,29 +21,30 @@ import retrofit2.Retrofit;
  *
  */
 
-@Service("VeiculosBusiness") 
-public class VeiculosBusiness {
+@Service("AnoBusiness") 
+public class AnoBusiness {
 
-	public List<Veiculos> listarTodosveiculos( ) {
+	public List<Ano> listarTodosVeiculosPorAno( ) {
 		Retrofit retrofit = new Retrofit.Builder().baseUrl(ServiceFipe.API_URL)
 				.addConverterFactory(GsonConverterFactory.create()).build();
-		List<Veiculos> veiculos = null;
-	  ServiceFipe mc = retrofit.create(ServiceFipe.class);
+		List<Ano> anos = null;
+	  ServiceFipe an = retrofit.create(ServiceFipe.class);
 		
-		Call<List<Veiculos>> call = mc.listatodosveiculos();
-		Call<List<Veiculos>> call2 = call.clone();
-		Response<List<Veiculos>> response = null;
+		Call<List<Ano>> call = an.precoCorrenteVeiculo();
+		Call<List<Ano>> call2 = call.clone();
+		Response<List<Ano>> response = null;
 		try {
 			response = call2.execute();
-			veiculos = response.body();
-			if (veiculos != null) {
-					return veiculos;
+			anos = response.body();
+			if (anos != null) {
+			    System.out.println(anos);
+					return anos;
 			}
-			return veiculos;
+			return anos;
 		} catch (Exception e) {
 			  e.printStackTrace();
 		}
-		return veiculos;
+		return anos;
 	}
 
 }

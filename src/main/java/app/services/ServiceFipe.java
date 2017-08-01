@@ -2,8 +2,10 @@ package app.services;
 
 import java.util.List;
 
-import app.entity.Marcas;
+import app.entity.Marca;
 import app.entity.Veiculos;
+import app.entity.Modelo;
+import app.entity.Ano;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -24,7 +26,7 @@ public interface ServiceFipe {
 	 *  Lista todas as marcas
 	 */	
 	@GET("marcas.json")
-	Call<List<Marcas>> listatodasmarcas();
+	Call<List<Marca>> listatodasmarcas();
 	
 	/**
 	 *  Lista todos os veiculos
@@ -36,7 +38,7 @@ public interface ServiceFipe {
 	 *  Lista todos os modelos de acordo com a marca
 	 */	
 	@GET("veiculo/21/4828.json")
-	Call<List<Marcas>> listatodosmodelo();
+	Call<List<Modelo>> listatodosmodelo();
 	
 	
 	/**
@@ -44,7 +46,8 @@ public interface ServiceFipe {
 	 *  Continuando com o exemplo a cima para obter o valor de um veículo do ano 2013 a Gasolina utilizaremos o id 2013-1
 	 */
 	@GET("veiculo/21/4828/2013-1.json")
-	Call<List<Marcas>> precoCorrenteVeiculo();
+	Call<List<Ano>> precoCorrenteVeiculo();
+	
 	
 	
 

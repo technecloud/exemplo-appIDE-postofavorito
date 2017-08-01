@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import app.entity.Marcas;
+import app.entity.Marca;
 import app.services.ServiceFipe;
 import retrofit2.Call;
 import retrofit2.GsonConverterFactory;
@@ -23,15 +23,15 @@ import retrofit2.Retrofit;
 @Service("MarcasBusiness")
 public class MarcasBusiness {
   
-	public List<Marcas> listarTodasMarcas( ) {
+	public List<Marca> listarTodasMarcas( ) {
 		Retrofit retrofit = new Retrofit.Builder().baseUrl(ServiceFipe.API_URL)
 				.addConverterFactory(GsonConverterFactory.create()).build();
-		List<Marcas> marcas = null;
+		List<Marca> marcas = null;
 	  ServiceFipe mc = retrofit.create(ServiceFipe.class);
 		
-		Call<List<Marcas>> call = mc.listatodasmarcas();
-		Call<List<Marcas>> call2 = call.clone();
-		Response<List<Marcas>> response = null;
+		Call<List<Marca>> call = mc.listatodasmarcas();
+		Call<List<Marca>> call2 = call.clone();
+		Response<List<Marca>> response = null;
 		try {
 			response = call2.execute();
 			marcas = response.body();
