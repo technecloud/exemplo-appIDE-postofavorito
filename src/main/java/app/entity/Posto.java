@@ -249,5 +249,6 @@ public class Posto implements Serializable {
     int result = 1;
     result = 31 * result + ((id == null) ? 0 : id.hashCode());
     return result;
-  }  
+  }
+  
 }

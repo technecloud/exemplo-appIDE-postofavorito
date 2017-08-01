@@ -72,14 +72,7 @@ public class PostoBusiness {
     // begin-user-code  
     // end-user-code
     Posto entity = this.get(id);
-    try {
-       
-       this.repository.delete(entity);
-      
-       
-     }catch(Exception e) {
-         throw new Exception("Por favor, delete primeiro os abastecimentos desse posto.");
-     }
+    this.repository.delete(entity);
     // begin-user-code  
     // end-user-code        
   }

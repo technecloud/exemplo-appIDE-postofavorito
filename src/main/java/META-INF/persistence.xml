@@ -3,9 +3,9 @@
     <persistence-unit name="app" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>java:comp/env/jdbc/MeuPostoFavorito</jta-data-source>
+        <class>app.entity.Posto</class>
         <class>app.entity.Abastecimento</class>
         <class>app.entity.Combustivel</class>
-        <class>app.entity.Posto</class>
         <class>app.entity.Carro</class>
         <class>app.entity.UserRole</class>
         <class>app.entity.User</class>
