@@ -57,65 +57,69 @@
             <!-- data begin -->
             <label for="textinput-data" class="item item-input item-stacked-label">
             <span class="input-label">Data</span>
-            <input type="time" placeholder="Data" ng-model="Abastecimento.active.data" id="textinput-data" name="textinput-data"  >
+            <input type="text" as-date
+              format="DD/MM/YYYY HH:mm:ss"
+              required=""
+              ng-model="Abastecimento.active.data" class="form-control" id="textinput-data" placeholder="Ex: 01/01/2001" 
+              oninvalid="setCustomValidity('Por favor, insira a data.')" onchange="try{setCustomValidity('')}catch(e){}">
+            </label>
+             <datasource name="Combustivel" entity="api/rest/Combustivel" keys="id" class=""></datasource>
+            <label for="textinput-combustivel" class="item item-input item-select">
+              <span class="input-label">combustível</span>
+              <select ng-model="Abastecimento.active.combustível" class="form-control" id="textinput-combustivel" name="textinput-combustivel" ng-options="opt as opt.nome for opt in Combustivel.data track by opt.id" required="">
+              <option value=''>None</option>
+              </select>
             </label>
             <!-- quilometragemRodada begin -->
             <label for="textinput-quilometragemRodada" class="item item-input item-stacked-label">
             <span class="input-label">Quilometragem Rodada</span>
-            <input
-            type="text"
-            placeholder="Quilometragem Rodada"
-            ng-model="Abastecimento.active.quilometragemRodada"
-            id="textinput-quilometragemRodada"
-            name="textinput-quilometragemRodada"
-            >
+           <input
+              type="text"
+              ng-model="Abastecimento.active.quilometragemRodada"
+              class="form-control"
+              id="textinput-quilometragemRodada"
+              placeholder="Ex: 10"
+              required="true"
+              min=0
+              onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" step="0.01" value="0.00" title="Por favor, insira a quilometragem rodada."
+              >
             </label>
             <!-- litros begin -->
             <label for="textinput-litros" class="item item-input item-stacked-label">
             <span class="input-label">Litros</span>
-            <input
-            type="text"
-            placeholder="Litros"
-            ng-model="Abastecimento.active.litros"
-            id="textinput-litros"
-            name="textinput-litros"
-            >
+           <input
+              type="text"
+              ng-model="Abastecimento.active.litros"
+              class="form-control"
+              id="textinput-litros"
+              placeholder="Ex: 1.5"
+              onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" step="0.01" value="0.00" required="true" title="Por favor, insira a quantidade de litros."
+              >
             </label>
             <!-- combustivel begin -->
-            <label for="textinput-combustivel" class="item item-input item-stacked-label">
-            <span class="input-label">Combustivel</span>
-            <input
-            type="text"
-            placeholder="Combustivel"
-            ng-model="Abastecimento.active.combustivel"
-            id="textinput-combustivel"
-            name="textinput-combustivel"
-            >
-            </label>
+           
             <!-- precoPorLitro begin -->
             <label for="textinput-precoPorLitro" class="item item-input item-stacked-label">
             <span class="input-label">Preco Por Litro</span>
+            <label for="textinput-precoPorLitro" class="">Preco Por Litro</label>
             <input
-            type="text"
-            placeholder="Preco Por Litro"
-            ng-model="Abastecimento.active.precoPorLitro"
-            id="textinput-precoPorLitro"
-            name="textinput-precoPorLitro"
-            >
+              type="text"
+              ng-model="Abastecimento.active.precoPorLitro"
+              class="form-control"
+              id="textinput-precoPorLitro"
+              placeholder="Ex: 3.99"
+              required="true"
+              ui-money-mask
+              oninvalid="setCustomValidity('Por favor, insira o preço por litro.')" onchange="try{setCustomValidity('')}catch(e){}"
+              >
             </label>
             <!-- user begin -->
             <datasource name="User" entity="api/security/User" keys="id" class=""></datasource>
-            <label for="textinput-user" class="item item-input item-select">
-              <span class="input-label">user</span>
-              <select ng-model="Abastecimento.active.user" class="form-control" id="textinput-user" name="textinput-user" ng-options="opt as opt.email for opt in User.data track by opt.id" >
-              <option value=''>None</option>
-              </select>
-            </label>
             <!-- posto begin -->
             <datasource name="Posto" entity="api/rest/Posto" keys="id" class=""></datasource>
             <label for="textinput-posto" class="item item-input item-select">
               <span class="input-label">posto</span>
-              <select ng-model="Abastecimento.active.posto" class="form-control" id="textinput-posto" name="textinput-posto" ng-options="opt as opt.nome for opt in Posto.data track by opt.id" >
+              <select ng-model="Abastecimento.active.posto" class="form-control" id="textinput-posto" name="textinput-posto" required="" ng-options="opt as opt.nome for opt in Posto.data track by opt.id" >
               <option value=''>None</option>
               </select>
             </label>
