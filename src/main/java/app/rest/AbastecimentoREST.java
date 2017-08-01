@@ -113,5 +113,4 @@ public class AbastecimentoREST {
   public Abastecimento get(@PathVariable("id") java.lang.String id) throws Exception {
     return abastecimentoBusiness.get(id);
   }
-
 }
