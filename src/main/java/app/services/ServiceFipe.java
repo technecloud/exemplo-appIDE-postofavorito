@@ -46,7 +46,7 @@ public interface ServiceFipe {
 	 *  Continuando com o exemplo a cima para obter o valor de um veículo do ano 2013 a Gasolina utilizaremos o id 2013-1
 	 */
 	@GET("veiculo/21/4828/2013-1.json")
-	Call<List<Ano>> precoCorrenteVeiculo();
+	Call<Ano> precoCorrenteVeiculo();
 	
 	
 	
