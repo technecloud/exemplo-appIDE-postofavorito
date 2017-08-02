@@ -12,6 +12,7 @@ var app = (function() {
       'ui-notification',
       'ngInputDate',
       'ngCordova',
+      'ui.mask',
       'ngFileUpload'
     ])
 

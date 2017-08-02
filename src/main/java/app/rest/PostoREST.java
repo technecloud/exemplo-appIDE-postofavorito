@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.*;
 import java.util.*;
 import app.entity.*;
 import app.business.*;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Controller para expor serviços REST de Posto
@@ -47,6 +48,12 @@ public class PostoREST {
   @Autowired
   @Qualifier("AbastecimentoBusiness")
   private AbastecimentoBusiness abastecimentoBusiness;
+  /**
+   * @generated
+   */
+  @Autowired
+  @Qualifier("CombustivelBusiness")
+  private CombustivelBusiness combustivelBusiness;
   /**
    * Serviço exposto para novo registro de acordo com a entidade fornecida
    *
@@ -152,10 +159,10 @@ public class PostoREST {
    */
   @RequestMapping(method = RequestMethod.POST
   , value="/{instanceId}/Comentario")
-  public Comentario postComentario(@Validated @RequestBody final Comentario entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
+  public Comentario postComentario(@Validated @RequestBody final Comentario entity, @PathVariable("instanceId") java.lang.String instanceId, HttpServletRequest req) throws Exception {
   Posto posto = this.postoBusiness.get(instanceId);
   entity.setPosto(posto);
-    return this.comentarioBusiness.post(entity);
+    return this.comentarioBusiness.post(entity, req);
   }
 
 
@@ -195,10 +202,53 @@ public class PostoREST {
    */
   @RequestMapping(method = RequestMethod.POST
   , value="/{instanceId}/Abastecimento")
-  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
+  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("instanceId") java.lang.String instanceId,  HttpServletRequest req) throws Exception {
   Posto posto = this.postoBusiness.get(instanceId);
   entity.setPosto(posto);
-    return this.abastecimentoBusiness.post(entity);
+    return this.abastecimentoBusiness.post(entity, req);
+  }
+
+
+  /**
+   * OneToMany Relationship GET
+   * @generated
+   */
+  @RequestMapping(method = RequestMethod.GET
+  , value="/{instanceId}/Combustivel")
+  public HttpEntity<PagedResources<Combustivel>> findCombustivel(@PathVariable("instanceId") java.lang.String instanceId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(postoBusiness.findCombustivel(instanceId, pageable)), HttpStatus.OK);
+  }
+
+  /**
+   * OneToMany Relationship DELETE
+   * @generated
+   */
+  @RequestMapping(method = RequestMethod.DELETE
+  , value="/{instanceId}/Combustivel/{relationId}")
+  public void deleteCombustivel(@PathVariable("relationId") java.lang.String relationId) throws Exception {
+    this.combustivelBusiness.delete(relationId);
+  }
+
+  /**
+   * OneToMany Relationship PUT
+   * @generated
+   */
+  @RequestMapping(method = RequestMethod.PUT
+  , value="/{instanceId}/Combustivel/{relationId}")
+  public Combustivel putCombustivel(@Validated @RequestBody final Combustivel entity, @PathVariable("relationId") java.lang.String relationId) throws Exception {
+    return this.combustivelBusiness.put(entity);
+  }
+
+  /**
+   * OneToMany Relationship POST
+   * @generated
+   */
+  @RequestMapping(method = RequestMethod.POST
+  , value="/{instanceId}/Combustivel")
+  public Combustivel postCombustivel(@Validated @RequestBody final Combustivel entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
+  Posto posto = this.postoBusiness.get(instanceId);
+  entity.setPosto(posto);
+    return this.combustivelBusiness.post(entity);
   }
 
   /**
@@ -237,7 +287,7 @@ public class PostoREST {
    */
   @RequestMapping(method = RequestMethod.POST
   ,value="/{instanceId}/User")
-  public Posto postUser(@Validated @RequestBody final User entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
+  public Posto postUser(@Validated @RequestBody final User entity, @PathVariable("instanceId") java.lang.String instanceId,  HttpServletRequest req) throws Exception {
     Comentario newComentario = new Comentario();
 
     Posto instance = this.postoBusiness.get(instanceId);
@@ -245,7 +295,7 @@ public class PostoREST {
     newComentario.setUser(entity);
     newComentario.setPosto(instance);
 
-    this.comentarioBusiness.post(newComentario);
+    this.comentarioBusiness.post(newComentario, req);
 
     return newComentario.getPosto();
   }

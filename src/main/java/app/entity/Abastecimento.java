@@ -49,12 +49,6 @@ public class Abastecimento implements Serializable {
   /**
   * @generated
   */
-  @Column(name = "combustivel", nullable = true, unique = false, insertable=true, updatable=true)
-  private java.lang.String combustivel;
-  
-  /**
-  * @generated
-  */
   @Column(name = "precoPorLitro", nullable = true, unique = false, scale=2, insertable=true, updatable=true)
   private java.lang.Double precoPorLitro;
   
@@ -78,6 +72,13 @@ public class Abastecimento implements Serializable {
   @ManyToOne
   @JoinColumn(name="fk_carro", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
   private Carro carro;
+  
+  /**
+  * @generated
+  */
+  @ManyToOne
+  @JoinColumn(name="fk_combustivel", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
+  private Combustivel combustivel;
   
   /**
    * Construtor
@@ -164,25 +165,6 @@ public class Abastecimento implements Serializable {
   }
   
   /**
-   * Obtém combustivel
-   * return combustivel
-   * @generated
-   */
-  public java.lang.String getCombustivel(){
-    return this.combustivel;
-  }
-  
-  /**
-   * Define combustivel
-   * @param combustivel combustivel
-   * @generated
-   */
-  public Abastecimento setCombustivel(java.lang.String combustivel){
-    this.combustivel = combustivel;
-    return this;
-  }
-  
-  /**
    * Obtém precoPorLitro
    * return precoPorLitro
    * @generated
@@ -255,6 +237,25 @@ public class Abastecimento implements Serializable {
    */
   public Abastecimento setCarro(Carro carro){
     this.carro = carro;
+    return this;
+  }
+  
+  /**
+   * Obtém combustivel
+   * return combustivel
+   * @generated
+   */
+  public Combustivel getCombustivel(){
+    return this.combustivel;
+  }
+  
+  /**
+   * Define combustivel
+   * @param combustivel combustivel
+   * @generated
+   */
+  public Abastecimento setCombustivel(Combustivel combustivel){
+    this.combustivel = combustivel;
     return this;
   }
   

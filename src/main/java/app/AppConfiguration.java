@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 /**
  * Classe que configura os beans para persistencia
  * 
- * @author Rodrigo Gregorio Neri
+ * @author vanessa.silva@techne.com.br
  *
  */
 @Configuration

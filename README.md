@@ -13,6 +13,7 @@ Aplicação Web com Spring e módulos: **Data** e **Security**.
 2. Descompacte
 3. Entre na pasta
 4. Execute 
+5. Teste 3x.
 
 ```
 mvn spring-boot:run -Dserver.port=8080

@@ -59,6 +59,10 @@ public interface UserDAO extends JpaRepository<User, java.lang.String> {
   @Query("select u.user from UserRole u where u.role.id = :roleid")
   public Page<User> findByRole(@Param(value="roleid") java.lang.String roleid, Pageable pageable);
   
+  
+  @Query("select u from User u where u.login = :login")
+  public User userByLogin(@Param(value="login") java.lang.String login);
+  
   /**
    * Lista com paginação de acordo com a NamedQuery
    * 

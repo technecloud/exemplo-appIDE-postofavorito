@@ -1,5 +1,6 @@
 package app.business;
 
+import java.text.SimpleDateFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,12 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import app.dao.*;
 import app.entity.*;
+
+import app.dao.UserDAO;
+import app.entity.Comentario;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Classe que representa a camada de negócios de ComentarioBusiness
@@ -30,6 +37,10 @@ public class ComentarioBusiness {
   @Autowired
   @Qualifier("ComentarioDAO")
   protected ComentarioDAO repository;
+  
+  @Autowired
+  @Qualifier("UserDAO")
+  protected UserDAO userDAO;
 
   // CRUD
 
@@ -38,11 +49,28 @@ public class ComentarioBusiness {
    * 
    * @generated
    */
-  public Comentario post(final Comentario entity) throws Exception {
+  public Comentario post(final Comentario entity, HttpServletRequest req) throws Exception {
     // begin-user-code  
     // end-user-code  
-    Comentario result = null;
-    result = repository.save(entity);
+   String data = "dd/MM/yyyy";
+   String hora = "h:mm - a";
+ 	String data1, hora1;
+ 	java.util.Date agora = new java.util.Date();;
+ 		SimpleDateFormat formata = new SimpleDateFormat(data);
+ 		data1 = formata.format(agora);
+ 		formata = new SimpleDateFormat(hora);
+ 		hora1 = formata.format(agora);
+ 
+     
+     entity.setData(data1+" "+hora1); 
+     
+     
+     String username = (String)req.getSession().getAttribute("username");
+ 
+     User user = userDAO.userByLogin(username);
+     entity.setUser(user);
+    
+     Comentario result = repository.save(entity);
     // begin-user-code
     // end-user-code
     return result;
@@ -121,4 +149,26 @@ public class ComentarioBusiness {
   public Page<Comentario> specificSearch(java.lang.String data, java.lang.String texto, java.lang.Boolean moderado, Pageable pageable) {
     return repository.specificSearch(data, texto, moderado, pageable);
   }
+  
+   public Page<Comentario> findComentariosByUser(java.lang.String instanceId, Pageable pageable) {
+     // begin-user-code
+     // end-user-code  
+     Page<Comentario> result = repository.findComentariosByUser(instanceId, pageable);
+     // begin-user-code  
+     // end-user-code        
+     return result;
+   }
+   
+   /**
+    * Foreign Key posto
+ -   * @generated
+ -   */
+   public Page<Comentario> findComentariosByPosto(java.lang.String instanceId, Pageable pageable) {
+     // begin-user-code
+     // end-user-code  
+     Page<Comentario> result = repository.findComentariosByPosto(instanceId, pageable);
+     // begin-user-code  
+     // end-user-code        
+     return result;
+   }
 }

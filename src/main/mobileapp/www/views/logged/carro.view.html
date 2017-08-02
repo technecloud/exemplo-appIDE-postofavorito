@@ -1,0 +1,102 @@
+<ion-view cache-view="false" view-title="Carro" hide-back-button="true">
+  <ion-nav-buttons side="right">
+    <button class="button button-stable" ng-hide="Carro.inserting || Carro.editing" ng-click="Carro.startInserting()"> <i class="icon ion-plus-round"></i> </button>
+    <button class="button button-stable" ng-show="Carro.inserting || Carro.editing" ng-click="Carro.post()" ng-disabled="carro.$invalid"> <i class="icon ion-checkmark"></i> </button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" ng-hide="Carro.inserting || Carro.editing" menu-toggle="left"> </button>
+    <button class="button button-stable" ng-show="Carro.inserting || Carro.editing" ng-click="Carro.cancel()"> <i class="icon ion-android-arrow-back"></i> </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="component-holder ng-binding ng-scope ui-draggable ui-draggable-handle" data-component="crn-datasource" id="crn-datasource-906854">
+      <datasource  name="Carro" entity="api/rest/Carro" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+    </div>
+    <div crn-datasource="Carro" class="" ng-hide="Carro.editing || Carro.inserting">
+      <ion-list can-swipe="listCanSwipe">
+        <ion-item ng-repeat="rowData in datasource.data" class="item" ng-click="datasource.startEditing(rowData)">
+          <div class="row">
+            <div class="col">
+              {{rowData.marca}}
+            </div>
+            <div class="col">
+              {{rowData.modelo}}
+            </div>
+            <div class="col">
+              {{rowData.ano}}
+            </div>
+            <div class="col">
+              {{rowData.user.email}}
+            </div>
+            <div class="col">
+              {{rowData.placa}}
+            </div>
+          </div>
+          <ion-option-button class="button-positive" ng-click="datasource.startEditing(rowData)">
+            <i class="icon ion-edit"></i>
+          </ion-option-button>
+          <ion-option-button class="button-assertive" ng-click="datasource.remove(rowData)">
+            &nbsp;
+            <i class="icon ion-trash-a"></i>
+          </ion-option-button>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div ng-show="Carro.editing || Carro.inserting">
+      <form crn-datasource="Carro" name="carro" novalidate>
+        <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
+          <div class="list"  name="carro">
+            <!-- marca begin -->
+           <label for="textinput-marca" class="item item-input item-stacked-label">
+            <span class="input-label">Marca</span>
+             <input ng-model="Carro.active.marca"
+             name="marca"
+             class="form-control"
+             required 
+             id="textinput-marca"
+             placeholder="Ex: Fiat"
+             maxlength="10"
+             type="text"> 
+             </label>
+             <span class="error" ng-show="carro.marca.$error.required  && !carro.marca.$pristine">Marca é obrigatório</span>
+             <span class="error" ng-show="carro.marca.$error.maxlength && !carro.marca.$pristine">No máximo 10 caracteres</span>
+
+            
+            <!-- modelo begin -->
+            <label for="textinput-modelo" class="item item-input item-stacked-label">
+            <span class="input-label">Modelo</span>
+                <input ng-model="Carro.active.modelo"
+                class="form-control"
+                name="modelo"
+                required
+                maxlength="20"
+                id="textinput-modelo" placeholder="Ex: Pálio" type="text">
+            </label>
+             <span class="error" ng-show="carro.modelo.$error.required  && !carro.modelo.$pristine">Modelo é obrigatório</span>
+             <span class="error" ng-show="carro.modelo.$error.maxlength && !carro.modelo.$pristine">No máximo 20 caracteres</span>
+            <!-- ano begin -->
+            <label for="textinput-ano" class="item item-input item-stacked-label">
+            <span class="input-label">Ano</span>
+            <input ng-model="Carro.active.ano" class="form-control" 
+            required  
+            id="textinput-ano" 
+            min="1900"
+            max="2018"
+            placeholder="Insira um ano entre 1900 e 2018"
+            type="number"
+            name="ano">
+            </label>
+            <span class="error" ng-show="carro.ano.$error.required  && !carro.ano.$pristine">Ano é obrigatório</span>
+             <span class="error" ng-show="carro.ano.$error.max && !carro.ano.$pristine">Insira um ano até 2018</span>
+             <span class="error" ng-show="carro.ano.$error.min && !carro.ano.$pristine">Insira um ano a partir de 1900</span>
+            <!-- user begin -->
+            <!-- placa begin -->
+            <label for="textinput-placa" class="item item-input item-stacked-label">
+            <span class="input-label">Placa</span>
+                <input ng-model="Carro.active.placa" class="form-control" id="textinput-placa"  placeholder="Ex: ABC-1234" ui-mask="AAA-9999" ng-pattern="[A-Z]{3}-[0-9]{4}" required="" title="Placa deve vir com 3 letras e quatro números." type="text">
+            </label>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>
