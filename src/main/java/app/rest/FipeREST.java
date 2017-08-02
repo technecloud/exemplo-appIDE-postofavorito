@@ -4,20 +4,22 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
 
-import app.business.MarcasBusiness;
-import app.business.VeiculosBusiness;
-import app.business.ModelosBusiness;
 import app.business.AnoBusiness;
-import app.entity.Marca;
-import app.entity.Veiculos;
-import app.entity.Modelo;
+import app.business.MarcasBusiness;
+import app.business.ModelosBusiness;
+import app.business.VeiculosBusiness;
 import app.entity.Ano;
+import app.entity.Marca;
+import app.entity.Modelo;
+import app.entity.Veiculos;
 
 /**
  * Classe que representa ...
@@ -56,9 +58,9 @@ public class FipeREST {
 					: ResponseEntity.status(HttpStatus.CREATED).body(marcasResponse);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/posto/todosVeiculos")
-	public ResponseEntity<?> getVeiculos() {
-		List<Veiculos> veiculosResponse = veiculosBusiness.listarTodosveiculos();
+	@RequestMapping(method = RequestMethod.GET, value = "/posto/todosVeiculos/{marca}")
+	public ResponseEntity<?> getVeiculos(@PathVariable("marca") String marca) {
+		List<Veiculos> veiculosResponse = veiculosBusiness.listarTodosveiculos(marca);
 		
 		return	veiculosResponse == null ? ResponseEntity.status(400).build()
 					: ResponseEntity.status(HttpStatus.CREATED).body(veiculosResponse);
