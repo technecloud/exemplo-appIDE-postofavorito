@@ -54,7 +54,6 @@ public class FipeREST {
 		
 	return	marcasResponse == null ? ResponseEntity.status(400).build()
 					: ResponseEntity.status(HttpStatus.CREATED).body(marcasResponse);
-
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/posto/todosVeiculos")
@@ -63,7 +62,6 @@ public class FipeREST {
 		
 		return	veiculosResponse == null ? ResponseEntity.status(400).build()
 					: ResponseEntity.status(HttpStatus.CREATED).body(veiculosResponse);
-
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/posto/todosModelos")
@@ -72,19 +70,14 @@ public class FipeREST {
 		
 		return	modelosResponse == null ? ResponseEntity.status(400).build()
 					: ResponseEntity.status(HttpStatus.CREATED).body(modelosResponse);
-		
-
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/posto/todosModelosPorAno")
 	public ResponseEntity<?> getModelosPorAno() {
-		System.out.println("erro "+anoBusiness.listarTodosVeiculosPorAno());
-		List<Ano> anoResponse = anoBusiness.listarTodosVeiculosPorAno();
-		System.out.println(anoResponse);
+		Ano anoResponse = anoBusiness.listarTodosVeiculosPorAno();
 		
 		return	anoResponse == null ? ResponseEntity.status(400).build()
 					: ResponseEntity.status(HttpStatus.CREATED).body(anoResponse);
-	
 	}
 
 }
