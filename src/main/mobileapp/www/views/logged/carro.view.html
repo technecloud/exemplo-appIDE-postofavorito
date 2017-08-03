@@ -92,8 +92,9 @@
             <!-- placa begin -->
             <label for="textinput-placa" class="item item-input item-stacked-label">
             <span class="input-label">Placa</span>
-                <input ng-model="Carro.active.placa" class="form-control" id="textinput-placa"  placeholder="Ex: ABC-1234" ui-mask="AAA-9999" ng-pattern="[A-Z]{3}-[0-9]{4}" required="" title="Placa deve vir com 3 letras e quatro números." type="text">
+                <input ng-model="Carro.active.placa" name="placa" class="form-control" id="textinput-placa"  ui-br-car-plate-mask required type="text">
             </label>
+             <span class="error" ng-show="carro.placa.$error.required  && !carro.placa.$pristine">Placa é obrigatório</span>
           </div>
         </fieldset>
       </form>

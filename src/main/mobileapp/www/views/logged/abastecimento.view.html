@@ -59,14 +59,16 @@
             <span class="input-label">Data</span>
             <input type="text" as-date
               format="DD/MM/YYYY HH:mm:ss"
-              required=""
+              ui-mask="DD/MM/YYYY HH:mm:ss"
+              required
+              name="data"
               ng-model="Abastecimento.active.data" class="form-control" id="textinput-data" placeholder="Ex: 01/01/2001" 
-              oninvalid="setCustomValidity('Por favor, insira a data.')" onchange="try{setCustomValidity('')}catch(e){}">
+              >
             </label>
              <datasource name="Combustivel" entity="api/rest/Combustivel" keys="id" class=""></datasource>
             <label for="textinput-combustivel" class="item item-input item-select">
               <span class="input-label">combustível</span>
-              <select ng-model="Abastecimento.active.combustível" class="form-control" id="textinput-combustivel" name="textinput-combustivel" ng-options="opt as opt.nome for opt in Combustivel.data track by opt.id" required="">
+              <select ng-model="Abastecimento.active.combustível"  class="form-control" id="textinput-combustivel" name="combustivel" ng-options="opt as opt.nome for opt in Combustivel.data track by opt.id" required="">
               <option value=''>None</option>
               </select>
             </label>
