@@ -38,18 +38,18 @@ public interface ServiceFipe {
 	/**
 	 *  Lista todos os modelos de acordo com a marca
 	 */	
-	@GET("veiculo/21/4828.json")
-	Call<List<Modelo>> listatodosmodelo();
+	@GET("veiculo/{idveiculos}/{idVeiculosMarcas}.json")
+	Call<List<Modelo>> listatodosmodelo(@Path("idveiculos") String idveiculos, @Path("idVeiculosMarcas") String idVeiculosMarcas);
 	
 	
 	/**
 	 *  visualizar o preço corrente da Tabela FIPE para este veículo/modelo/ano. 
 	 *  Continuando com o exemplo a cima para obter o valor de um veículo do ano 2013 a Gasolina utilizaremos o id 2013-1
 	 */
-	@GET("veiculo/21/4828/2013-1.json")
-	Call<Ano> precoCorrenteVeiculo();
+	@GET("veiculo/{idDoVeiculo}/{idDoVeiculosMarcas}/{idDoAno}.json")
+	Call<Ano> precoCorrenteVeiculo(@Path("idDoVeiculo") String idDoVeiculo, @Path("idDoVeiculosMarcas") String idDoVeiculosMarcas,@Path("idDoAno") String idDoAno);
 	
-	
+
 	
 
 }

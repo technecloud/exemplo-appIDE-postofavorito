@@ -23,13 +23,13 @@ import retrofit2.Retrofit;
 @Service("AnoBusiness") 
 public class AnoBusiness {
 
-	public Ano listarTodosVeiculosPorAno( ) {
+	public Ano listarTodosVeiculosPorAno(String idDoVeiculo, String idDoVeiculosMarcas, String idDoAno ) {
 		Retrofit retrofit = new Retrofit.Builder().baseUrl(ServiceFipe.API_URL)
 				.addConverterFactory(GsonConverterFactory.create()).build();
 		Ano anos = null;
 	  ServiceFipe an = retrofit.create(ServiceFipe.class);
 		
-		Call<Ano> call = an.precoCorrenteVeiculo();
+		Call<Ano> call = an.precoCorrenteVeiculo(idDoVeiculo,idDoVeiculosMarcas,idDoAno);
 		Call<Ano> call2 = call.clone();
 		Response response = null;
 		try {
