@@ -1,0 +1,6 @@
+<div ng-controller="Ctrlfipe"> 
+  <form name="myForm"> 
+    <label for="repeatSelect"> Marcas: </label> 
+    <select class="form-control" name="repeatSelect" id="repeatSelect" ng-model="data.model"> <option ng-repeat="option in availableOptions" value="{{option.id}}">{{option.name}}</option> </select> 
+  </form> 
+</div>
