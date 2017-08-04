@@ -11,7 +11,6 @@ import retrofit2.GsonConverterFactory;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-
 /**
  * Classe que representa ...
  * 
@@ -24,22 +23,24 @@ import retrofit2.Retrofit;
 @Service("AnoBusiness") 
 public class AnoBusiness {
 
-	public List<Ano> listarTodosVeiculosPorAno( ) {
+	public Ano listarTodosVeiculosPorAno(String idDoVeiculo, String idDoVeiculosMarcas, String idDoAno ) {
 		Retrofit retrofit = new Retrofit.Builder().baseUrl(ServiceFipe.API_URL)
 				.addConverterFactory(GsonConverterFactory.create()).build();
-		List<Ano> anos = null;
+		Ano anos = null;
 	  ServiceFipe an = retrofit.create(ServiceFipe.class);
 		
-		Call<List<Ano>> call = an.precoCorrenteVeiculo();
-		Call<List<Ano>> call2 = call.clone();
-		Response<List<Ano>> response = null;
+		Call<Ano> call = an.precoCorrenteVeiculo(idDoVeiculo,idDoVeiculosMarcas,idDoAno);
+		Call<Ano> call2 = call.clone();
+		Response response = null;
 		try {
 			response = call2.execute();
-			anos = response.body();
+			anos = (Ano) response.body();
+			System.out.println("entrou1");
 			if (anos != null) {
-			    System.out.println(anos);
+			    System.out.println("entrou2");
 					return anos;
 			}
+			System.out.println("entrou3");
 			return anos;
 		} catch (Exception e) {
 			  e.printStackTrace();

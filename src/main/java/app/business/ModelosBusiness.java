@@ -23,13 +23,13 @@ import retrofit2.Retrofit;
 @Service("ModelosBusiness")  
 public class ModelosBusiness {
 
-	public List<Modelo> listarTodosmodelos( ) {
+	public List<Modelo> listarTodosmodelos(String idveiculos, String idVeiculosMarcas) {
 		Retrofit retrofit = new Retrofit.Builder().baseUrl(ServiceFipe.API_URL)
 				.addConverterFactory(GsonConverterFactory.create()).build();
 		List<Modelo> modelos = null;
 	  ServiceFipe md = retrofit.create(ServiceFipe.class);
 		
-		Call<List<Modelo>> call = md.listatodosmodelo();
+		Call<List<Modelo>> call = md.listatodosmodelo(idveiculos, idVeiculosMarcas);
 		Call<List<Modelo>> call2 = call.clone();
 		Response<List<Modelo>> response = null;
 		try {
