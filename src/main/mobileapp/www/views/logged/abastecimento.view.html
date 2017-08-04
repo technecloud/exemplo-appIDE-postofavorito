@@ -25,19 +25,16 @@
               {{rowData.litros}}
             </div>
             <div class="col">
-              {{rowData.combustivel}}
-            </div>
-            <div class="col">
               {{rowData.precoPorLitro}}
-            </div>
-            <div class="col">
-              {{rowData.user.email}}
             </div>
             <div class="col">
               {{rowData.posto.nome}}
             </div>
             <div class="col">
               {{rowData.carro.marca}}
+            </div>
+            <div class="col">
+              {{rowData.combustivel.nome}}
             </div>
           </div>
           <ion-option-button class="button-positive" ng-click="datasource.startEditing(rowData)">
@@ -57,82 +54,80 @@
             <!-- data begin -->
             <label for="textinput-data" class="item item-input item-stacked-label">
             <span class="input-label">Data</span>
-            <input type="text" as-date
-              format="DD/MM/YYYY HH:mm:ss"
-              ui-mask="DD/MM/YYYY HH:mm:ss"
-              required
-              name="data"
-              ng-model="Abastecimento.active.data" class="form-control" id="textinput-data" placeholder="Ex: 01/01/2001" 
-              >
+             <input type="date" as date id="textinput-data" name="data" ng-click="dataAtual()" ng-model="Abastecimento.active.data"
+      placeholder="yyyy-MM-ddTHH:mm:ss" required />
             </label>
-             <datasource name="Combustivel" entity="api/rest/Combustivel" keys="id" class=""></datasource>
-            <label for="textinput-combustivel" class="item item-input item-select">
-              <span class="input-label">combustível</span>
-              <select ng-model="Abastecimento.active.combustível"  class="form-control" id="textinput-combustivel" name="combustivel" ng-options="opt as opt.nome for opt in Combustivel.data track by opt.id" required="">
-              <option value=''>None</option>
-              </select>
-            </label>
-            <!-- quilometragemRodada begin -->
-            <label for="textinput-quilometragemRodada" class="item item-input item-stacked-label">
-            <span class="input-label">Quilometragem Rodada</span>
-           <input
-              type="text"
-              ng-model="Abastecimento.active.quilometragemRodada"
-              class="form-control"
-              id="textinput-quilometragemRodada"
-              placeholder="Ex: 10"
-              required="true"
-              min=0
-              onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" step="0.01" value="0.00" title="Por favor, insira a quilometragem rodada."
-              >
-            </label>
-            <!-- litros begin -->
-            <label for="textinput-litros" class="item item-input item-stacked-label">
-            <span class="input-label">Litros</span>
-           <input
-              type="text"
-              ng-model="Abastecimento.active.litros"
-              class="form-control"
-              id="textinput-litros"
-              placeholder="Ex: 1.5"
-              onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" step="0.01" value="0.00" required="true" title="Por favor, insira a quantidade de litros."
-              >
-            </label>
-            <!-- combustivel begin -->
-           
-            <!-- precoPorLitro begin -->
-            <label for="textinput-precoPorLitro" class="item item-input item-stacked-label">
-            <span class="input-label">Preco Por Litro</span>
-            <label for="textinput-precoPorLitro" class="">Preco Por Litro</label>
-            <input
-              type="text"
-              ng-model="Abastecimento.active.precoPorLitro"
-              class="form-control"
-              id="textinput-precoPorLitro"
-              placeholder="Ex: 3.99"
-              required="true"
-              ui-money-mask
-              oninvalid="setCustomValidity('Por favor, insira o preço por litro.')" onchange="try{setCustomValidity('')}catch(e){}"
-              >
-            </label>
-            <!-- user begin -->
-            <datasource name="User" entity="api/security/User" keys="id" class=""></datasource>
+            <span class="error" ng-show="abastecimento.data.$error.required  && abastecimento.data.$touched">Data é obrigatória</span>
             <!-- posto begin -->
             <datasource name="Posto" entity="api/rest/Posto" keys="id" class=""></datasource>
             <label for="textinput-posto" class="item item-input item-select">
               <span class="input-label">posto</span>
-              <select ng-model="Abastecimento.active.posto" class="form-control" id="textinput-posto" name="textinput-posto" required="" ng-options="opt as opt.nome for opt in Posto.data track by opt.id" >
+              <select ng-model="Abastecimento.active.posto" class="form-control" id="textinput-posto" name="posto" ng-options="opt as opt.nome for opt in Posto.data track by opt.id" required >
               <option value=''>None</option>
               </select>
+            </label>
+            <span class="error" ng-show="abastecimento.posto.$error.required  && abastecimento.posto.$touched">Posto é obrigatório</span>
+             <!-- combustivel begin -->
+            <datasource name="Combustivel" entity="api/rest/Combustivel" keys="id" class=""></datasource>
+            <label for="textinput-combustivel" class="item item-input item-select">
+              <span class="input-label">combustivel</span>
+              <select ng-model="Abastecimento.active.combustivel" class="form-control" id="combustivel" name="combustivel" required ng-options="opt as opt.nome for opt in Combustivel.data track by opt.id" >
+              <option value=''>None</option>
+              </select>
+            </label>
+            <span class="error" ng-show="abastecimento.combustivel.$error.required  && abastecimento.combustivel.$touched">Combustivel é obrigatório</span>
+            
+            <!-- quilometragemRodada begin -->
+            <label for="textinput-quilometragemRodada" class="item item-input item-stacked-label">
+            <span class="input-label">Quilometragem Rodada</span>
+            <input
+            type="text"
+            ng-model="Abastecimento.active.quilometragemRodada"
+            id="textinput-quilometragemRodada"
+            name="quilometragemRodada"
+            required
+            ui-number-mask="2"
+            placeholder="Ex: 100.00"
+            >
+            </label>
+             <span class="error" ng-show="abastecimento.quilometragemRodada.$error.required  && abastecimento.quilometragemRodada.$touched">Quilometragem Rodada  é obrigatória</span>
+            <!-- litros begin -->
+            <label for="textinput-litros" class="item item-input item-stacked-label">
+            <span class="input-label">Litros</span>
+            <input
+            type="text"
+            placeholder="Ex: 2.0"
+            ng-model="Abastecimento.active.litros"
+            id="textinput-litros"
+            name="litros"
+            min="1.0" 
+            ui-number-mask="2"
+            required
+            >
+            </label>
+            <span class="error" ng-show="abastecimento.litros.$error.required  && abastecimento.litros.$touched">Litros é obrigatório</span>
+            <span class="error" ng-show="abastecimento.litros.$error.min  && abastecimento.litros.$touched">Insira um valor a partir de 1.0</span>
+
+            <!-- precoPorLitro begin -->
+            <label for="textinput-precoPorLitro" class="item item-input item-stacked-label">
+            <span class="input-label">Preco Por Litro</span>
+            <input
+            type="text"
+            placeholder="Preco Por Litro"
+            ng-model="Abastecimento.active.precoPorLitro"
+            id="textinput-precoPorLitro"
+            name="precoPorLitro"
+            >
             </label>
             <!-- carro begin -->
             <datasource name="Carro" entity="api/rest/Carro" keys="id" class=""></datasource>
             <label for="textinput-carro" class="item item-input item-select">
               <span class="input-label">carro</span>
-              <select ng-model="Abastecimento.active.carro" class="form-control" id="textinput-carro" name="textinput-carro" ng-options="opt as opt.marca for opt in Carro.data track by opt.id" >
+              <select ng-model="Abastecimento.active.carro" class="form-control" id="textinput-carro" required name="carro" ng-options="opt as opt.marca opt.modelo for opt in Carro.data track by opt.id" >
               <option value=''>None</option>
               </select>
             </label>
+            <span class="error" ng-show="abastecimento.carro.$error.required  && abastecimento.carro.$touched">Carro é obrigatório</span>
           </div>
         </fieldset>
       </form>

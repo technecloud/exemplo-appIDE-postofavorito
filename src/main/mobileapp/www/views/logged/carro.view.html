@@ -57,8 +57,8 @@
              maxlength="10"
              type="text"> 
              </label>
-             <span class="error" ng-show="carro.marca.$error.required  && !carro.marca.$pristine">Marca é obrigatório</span>
-             <span class="error" ng-show="carro.marca.$error.maxlength && !carro.marca.$pristine">No máximo 10 caracteres</span>
+             <span class="error" ng-show="carro.marca.$error.required  && carro.marca.$touched">Marca é obrigatório</span>
+             <span class="error" ng-show="carro.marca.$error.maxlength && carro.marca.$touched">No máximo 10 caracteres</span>
 
             
             <!-- modelo begin -->
@@ -71,8 +71,8 @@
                 maxlength="20"
                 id="textinput-modelo" placeholder="Ex: Pálio" type="text">
             </label>
-             <span class="error" ng-show="carro.modelo.$error.required  && !carro.modelo.$pristine">Modelo é obrigatório</span>
-             <span class="error" ng-show="carro.modelo.$error.maxlength && !carro.modelo.$pristine">No máximo 20 caracteres</span>
+             <span class="error" ng-show="carro.modelo.$error.required  && carro.modelo.$touched">Modelo é obrigatório</span>
+             <span class="error" ng-show="carro.modelo.$error.maxlength && carro.modelo.$touched">No máximo 20 caracteres</span>
             <!-- ano begin -->
             <label for="textinput-ano" class="item item-input item-stacked-label">
             <span class="input-label">Ano</span>
@@ -86,15 +86,15 @@
             name="ano">
             </label>
             <span class="error" ng-show="carro.ano.$error.required  && !carro.ano.$pristine">Ano é obrigatório</span>
-             <span class="error" ng-show="carro.ano.$error.max && !carro.ano.$pristine">Insira um ano até 2018</span>
-             <span class="error" ng-show="carro.ano.$error.min && !carro.ano.$pristine">Insira um ano a partir de 1900</span>
+             <span class="error" ng-show="carro.ano.$error.max && carro.ano.$touched">Insira um ano até 2018</span>
+             <span class="error" ng-show="carro.ano.$error.min && carro.ano.$touched">Insira um ano a partir de 1900</span>
             <!-- user begin -->
             <!-- placa begin -->
             <label for="textinput-placa" class="item item-input item-stacked-label">
             <span class="input-label">Placa</span>
-                <input ng-model="Carro.active.placa" name="placa" class="form-control" id="textinput-placa"  ui-br-car-plate-mask required type="text">
+                <input ng-model="Carro.active.placa" name="placa" class="form-control" id="textinput-placa"  ui-br-car-plate-mask placeholder="Ex: ABC-1234" required type="text">
             </label>
-             <span class="error" ng-show="carro.placa.$error.required  && !carro.placa.$pristine">Placa é obrigatório</span>
+             <span class="error" ng-show="carro.placa.$error.required  && carro.placa.$touched">Placa é obrigatório</span>
           </div>
         </fieldset>
       </form>
