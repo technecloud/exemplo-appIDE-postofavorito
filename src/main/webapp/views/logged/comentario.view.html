@@ -4,6 +4,7 @@
 
 .form-group input[type=radio] {
   display: none;
+  
 }
 .form-group label i.fa:before {
   content:'\f005';
@@ -17,15 +18,15 @@
  
 </style>
 
-<div class="row" ng-hide="Comentario.inserting || Comentario.editing" data-ng-init="msg_div_click()" >
-  <div class="span" style="float: center; margin: 0 right;">
-  <div class="col-md-4">
+<div class="row" ng-hide="Comentario.inserting || Comentario.editing" data-ng-init="msg_div_click()">
+  <div class="span" style="float: center; margin: 0 left;">
+  <div class="col-md-5" align="center">
     <div>
       <label for="textinput-filter">{{"template.crud.search" | translate}} Texto</label>
       <input ng-model="texto" class="form-control" value="" placeholder="Texto" type="text">
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-5" align="center">
     <div>
       <label for="textinput-filter">{{"template.crud.search" | translate}} Moderado</label>
       <input ng-model="moderado" class="form-control" value="" placeholder="Moderado" type="checkbox">
