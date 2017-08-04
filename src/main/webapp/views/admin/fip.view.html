@@ -18,7 +18,7 @@
     </div> 
   </div> 
   <div class="component-holder ng-binding ng-scope" data-component="crn-datasource" data-attribute-preview="" id="crn-datasource-1045099"> 
-    <datasource name="{idMarca}" entity="api/rest/Carros/posto/todosVeiculos/{{todasMarcas.active.id}}" filter=""></datasource> 
+    <datasource name="{idMarca}" entity="api/rest/Carros/posto/todosVeiculos/{{todasMarcas.active.id !== 6 ? todasMarcas.active.id : 6 }}" filter="" dependent-by="{{todasMarcas}}"></datasource> 
   </div> 
   <div class="component-holder ng-binding ng-scope" data-component="crn-combobox-dynamic" data-attribute-preview="" id="crn-combobox-dynamic-240302"> 
     <div class="form-group"> 
