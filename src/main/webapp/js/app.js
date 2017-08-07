@@ -101,20 +101,19 @@ var app = (function() {
           controller: 'HomeController',
           templateUrl: 'views/logged/comentarios.view.html'
         })
-
-
-
+        
+        .state('consumoMedio', {
+          url: "/home/logged/consumoMedio",
+          controller: 'HomeController',
+          templateUrl: 'views/logged/consumoMedio.view.html'
+        })
+        
         .state('mediaRentabilidadeCarro', {
           url: "/home/logged/mediaRentabilidadeCarro",
           controller: 'HomeController',
           templateUrl: 'views/logged/mediaRentabilidadeCarro.view.html'
         })
 
-        .state('consumoMedio', {
-          url: "/home/logged/consumoMedio",
-          controller: 'HomeController',
-          templateUrl: 'views/logged/consumoMedio.view.html'
-        })
 
         .state('home.pages', {
           url: "/{name:.*}",
@@ -224,6 +223,7 @@ var app = (function() {
       });
     });
 
+
 }(window));
 
 app.userEvents = {};
@@ -234,10 +234,15 @@ app.config.datasourceApiVersion = 2;
 
 //Components personalization jquery
 var registerComponentScripts = function() {
-  //carousel slider
-  $('.carousel-indicators li').on('click', function() {
-    var currentCarousel = '#' + $(this).parent().parent().parent().attr('id');
-    var index = $(currentCarousel + ' .carousel-indicators li').index(this);
-    $(currentCarousel + ' #carousel-example-generic').carousel(index);
-  });
+	//carousel slider
+	$('.carousel-indicators li').on(
+			'click',
+			function() {
+				var currentCarousel = '#'
+						+ $(this).parent().parent().parent().attr('id');
+				var index = $(currentCarousel + ' .carousel-indicators li')
+						.index(this);
+				$(currentCarousel + ' #carousel-example-generic').carousel(
+						index);
+			});
 }

@@ -13,6 +13,7 @@ var app = (function() {
       'ngInputDate',
       'ngCordova',
       'ui.mask',
+      'ui.utils.masks',
       'ngFileUpload'
     ])
 

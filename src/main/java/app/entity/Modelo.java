@@ -1,5 +1,11 @@
 package app.entity;
 
+
+import java.io.*;
+import javax.persistence.*;
+import java.util.*;
+import javax.xml.bind.annotation.*;
+
 /**
  * Classe que representa ...
  * 
@@ -9,79 +15,94 @@ package app.entity;
  *
  */
 
+
+@Entity
+@Table(name = "\"MODELO\"")
+@XmlRootElement
 public class Modelo {
 
-	private String fipe_marca;
-	private String fipe_codigo;
-	private String name;
-	private String marca;
-	private String key;
-	private String veiculo;
-	private String id;
 
-	public Modelo(String fipe_marca, String fipe_codigo, String name, String marca, String key, String veiculo, String id) {
-	  this.fipe_marca = fipe_marca;
-	  this.fipe_codigo = fipe_codigo;
-	  this.name = name;
-	  this.marca = marca;
-	  this.key = key;
-	  this.veiculo = veiculo;
-	  this.id = id;
+	@Id
+  @Column(name = "id", nullable = false, insertable=true, updatable=true)
+	private java.lang.String id;
+	
+	@Column(name = "fipe_marca", nullable = true, unique = false, insertable=true, updatable=true)
+	private java.lang.String fipe_marca;
+	
+	@Column(name = "fipe_codigo", nullable = true, unique = false, insertable=true, updatable=true)
+	private java.lang.String fipe_codigo;
+	
+	@Column(name = "name", nullable = true, unique = false, insertable=true, updatable=true)
+	private java.lang.String name;
+	
+	@Column(name = "marca", nullable = true, unique = false, insertable=true, updatable=true)
+	private java.lang.String marca;
+	
+	@Column(name = "key", nullable = true, unique = false, insertable=true, updatable=true)
+	private java.lang.String key;
+	
+	@Column(name = "veiculo", nullable = true, unique = false, insertable=true, updatable=true)
+	private java.lang.String veiculo;
+	
+
+
+	public Modelo() {
+
 	}
 
-	public String getFipe_marca() {
+	public java.lang.String getFipe_marca() {
 		return fipe_marca;
 	}
 
-	public void setFipe_marca(String fipe_marca) {
+	public void setFipe_marca(java.lang.String fipe_marca) {
 		this.fipe_marca = fipe_marca;
 	}
 
-	public String getFipe_codigo() {
+	public java.lang.String getFipe_codigo() {
 		return fipe_codigo;
 	}
 
-	public void setFipe_codigo(String fipe_codigo) {
+	public void setFipe_codigo(java.lang.String fipe_codigo) {
 		this.fipe_codigo = fipe_codigo;
 	}
 
-	public String getName() {
+	public java.lang.String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(java.lang.String name) {
 		this.name = name;
 	}
 
-	public String getMarca() {
+	public java.lang.String getMarca() {
 		return marca;
 	}
 
-	public void setMarca(String marca) {
+	public void setMarca(java.lang.String marca) {
 		this.marca = marca;
 	}
 
-	public String getKey() {
+	public java.lang.String getKey() {
 		return key;
 	}
 
-	public void setKey(String key) {
+	public void setKey(java.lang.String key) {
 		this.key = key;
 	}
 
-	public String getVeiculo() {
+	public java.lang.String getVeiculo() {
 		return veiculo;
 	}
 
-	public void setVeiculo(String veiculo) {
+	public void setVeiculo(java.lang.String veiculo) {
 		this.veiculo = veiculo;
 	}
 
-	public String getId() {
+	public java.lang.String getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(java.lang.String id) {
 		this.id = id;
 	}
 

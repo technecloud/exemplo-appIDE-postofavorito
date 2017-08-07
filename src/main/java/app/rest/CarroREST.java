@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * Controller para expor serviços REST de Carro
- *
+ * 
  * @generated
  **/
 @RestController
@@ -23,7 +23,7 @@ public class CarroREST {
 
   /**
    * Classe de negócio para manipulação de dados
-   *
+   * 
    * @generated
    */
   @Autowired
@@ -36,19 +36,20 @@ public class CarroREST {
   @Autowired
   @Qualifier("AbastecimentoBusiness")
   private AbastecimentoBusiness abastecimentoBusiness;
+
   /**
    * Serviço exposto para novo registro de acordo com a entidade fornecida
-   *
+   * 
    * @generated
    */
   @RequestMapping(method = RequestMethod.POST)
-   public Carro post(@Validated @RequestBody final Carro entity, HttpServletRequest req) throws Exception {
-     return carroBusiness.post(entity, req);
+  public Carro post(@Validated @RequestBody final Carro entity, HttpServletRequest req) throws Exception {
+    return carroBusiness.post(entity, req);
   }
 
   /**
    * Serviço exposto para salvar alterações de acordo com a entidade fornecida
-   *
+   * 
    * @generated
    */
   @RequestMapping(method = RequestMethod.PUT)
@@ -80,70 +81,71 @@ public class CarroREST {
    * NamedQuery list
    * @generated
    */
-  @RequestMapping(method = RequestMethod.GET
-  )
-  public HttpEntity<PagedResources<Carro>> listParams (Pageable pageable, PagedResourcesAssembler assembler){
-    return new ResponseEntity<>(assembler.toResource(carroBusiness.list(pageable)), HttpStatus.OK);
+  @RequestMapping(method = RequestMethod.GET)
+  public HttpEntity<PagedResources<Carro>> listParams(Pageable pageable, PagedResourcesAssembler assembler){
+    return new ResponseEntity<>(assembler.toResource(carroBusiness.list(pageable)), HttpStatus.OK);    
   }
-
 
   /**
    * OneToMany Relationship GET
    * @generated
    */
- 
- @RequestMapping(method = RequestMethod.GET, value="/{carroId}/Abastecimento")    
+  @RequestMapping(method = RequestMethod.GET, value="/{carroId}/Abastecimento")    
   public HttpEntity<PagedResources<Abastecimento>> findAbastecimento(@PathVariable("carroId") java.lang.String carroId, Pageable pageable, PagedResourcesAssembler assembler) {
-  return new ResponseEntity<>(assembler.toResource(carroBusiness.findAbastecimento(carroId, pageable)), HttpStatus.OK);
+    return new ResponseEntity<>(assembler.toResource(carroBusiness.findAbastecimento(carroId, pageable)), HttpStatus.OK);
   }
 
   /**
-   * OneToMany Relationship DELETE
+   * OneToMany Relationship DELETE 
    * @generated
-   */
-   @RequestMapping(method = RequestMethod.DELETE, value="/{carroId}/Abastecimento/{abastecimentoId}")    
+   */  
+  @RequestMapping(method = RequestMethod.DELETE, value="/{carroId}/Abastecimento/{abastecimentoId}")    
   public void deleteAbastecimento(@PathVariable("abastecimentoId") java.lang.String abastecimentoId) throws Exception {
-  this.abastecimentoBusiness.delete(abastecimentoId);
+    this.abastecimentoBusiness.delete(abastecimentoId);
   }
-
+  
   /**
    * OneToMany Relationship PUT
    * @generated
-   */
-   @RequestMapping(method = RequestMethod.PUT, value="/{carroId}/Abastecimento")
-   public Abastecimento putAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("carroId") java.lang.String carroId) throws Exception {
+   */  
+  @RequestMapping(method = RequestMethod.PUT, value="/{carroId}/Abastecimento")
+  public Abastecimento putAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("carroId") java.lang.String carroId) throws Exception {
     return this.abastecimentoBusiness.put(entity);
-  }
-
+  }  
+  
   /**
    * OneToMany Relationship POST
    * @generated
-   */
+   */  
   @RequestMapping(method = RequestMethod.POST, value="/{carroId}/Abastecimento")
   public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("carroId") java.lang.String carroId, HttpServletRequest req) throws Exception {
     Carro carro = this.carroBusiness.get(carroId);
     entity.setCarro(carro);
     return this.abastecimentoBusiness.post(entity,req);
-    }
-    
-    @RequestMapping(method = RequestMethod.GET, value = "/{carroId}")
-   public Carro get(@PathVariable("carroId") java.lang.String carroId) throws Exception {
-   return carroBusiness.get(carroId);
-   }
-   
-   
-  @RequestMapping(method = RequestMethod.GET, value="/User/{userId}")    
-  public HttpEntity<PagedResources<Carro>> findCarrosByUser(@PathVariable("userId") java.lang.String userId, Pageable pageable, PagedResourcesAssembler assembler) {
-   return new ResponseEntity<>(assembler.toResource(carroBusiness.findCarrosByUser(userId, pageable)), HttpStatus.OK);
   }
-
 
   /**
    * Serviço exposto para recuperar a entidade de acordo com o id fornecido
-   *
+   * 
    * @generated
    */
+  @RequestMapping(method = RequestMethod.GET, value = "/{carroId}")
+  public Carro get(@PathVariable("carroId") java.lang.String carroId) throws Exception {
+    return carroBusiness.get(carroId);
+  }
 
+  /**
+   * Foreign Key user
+   * @generated
+   */
+  @RequestMapping(method = RequestMethod.GET, value="/User/{userId}")    
+  public HttpEntity<PagedResources<Carro>> findCarrosByUser(@PathVariable("userId") java.lang.String userId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(carroBusiness.findCarrosByUser(userId, pageable)), HttpStatus.OK);
+  }
   
-
+    
+   @RequestMapping(method = RequestMethod.GET, value="/{carroId}/ConsumoMedio")    
+  public HttpEntity<PagedResources<CarroVO>> findConsumoMedio(@PathVariable("carroId") java.lang.String carroId, Pageable pageable, PagedResourcesAssembler assembler) {
+     return new ResponseEntity<>(assembler.toResource(carroBusiness.findConsumoMedio(carroId, pageable)), HttpStatus.OK);
+   }
 }

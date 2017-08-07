@@ -1,0 +1,59 @@
+<div data-container="true" id="starter"> 
+  <div class="component-holder ng-binding ng-scope" data-component="crn-datasource" data-attribute-preview="" id="crn-datasource-571544"> 
+    <datasource name="todasMarcas" entity="api/rest/Carros/posto/todasMarcas"></datasource> 
+    <div class="component-holder ng-binding ng-scope" data-component="crn-combobox-dynamic" data-attribute-preview="" id="crn-combobox-dynamic-108820"> 
+      <div class="form-group"> 
+        <label for="">Marcas</label> 
+        <ui-select crn-datasource="todasMarcas" ng-model="datasource.active" ng-disabled="disabled" theme="bootstrap" class="crn-select"> 
+          <ui-select-match placeholder="Select...">
+             {{$select.selected.name}} 
+          </ui-select-match> 
+          <ui-select-choices repeat="rowData as rowData in datasource.data | filter : $select.search" refresh="" refresh-deplay=""> 
+            <div data-container="true">
+               {{rowData.name}} 
+            </div> 
+          </ui-select-choices> 
+        </ui-select> 
+      </div> 
+    </div> 
+  </div> 
+  <div class="component-holder ng-binding ng-scope" data-component="crn-datasource" data-attribute-preview="" id="crn-datasource-1045099"> 
+    <datasource name="{idMarca}" entity="api/rest/Carros/posto/todosVeiculos/{{todasMarcas.active.id !== 6 ? todasMarcas.active.id : 6 }}" filter="" dependent-by="{{todasMarcas}}"></datasource> 
+  </div> 
+  <div class="component-holder ng-binding ng-scope" data-component="crn-combobox-dynamic" data-attribute-preview="" id="crn-combobox-dynamic-240302"> 
+    <div class="form-group"> 
+      <label for="">Modelos</label> 
+      <ui-select crn-datasource="{idMarca}" ng-model="datasource.active" ng-disabled="disabled" theme="bootstrap" class="crn-select"> 
+        <ui-select-match placeholder="Select...">
+           {{$select.selected.name}} 
+        </ui-select-match> 
+        <ui-select-choices repeat="rowData as rowData in datasource.data | filter : $select.search" refresh="" refresh-deplay=""> 
+          <div data-container="true">
+             {{rowData.name}} 
+          </div> 
+        </ui-select-choices> 
+      </ui-select> 
+    </div> 
+  </div> 
+  
+ 
+   <div class="component-holder ng-binding ng-scope" data-component="crn-datasource" data-attribute-preview="" id="crn-datasource-1045099"> 
+    <datasource name="{idVeiculosMarcas}" entity="api/rest/Carros/posto/todosModelos/21/4828" filter=""></datasource> 
+  </div> 
+  <div class="component-holder ng-binding ng-scope" data-component="crn-combobox-dynamic" data-attribute-preview="" id="crn-combobox-dynamic-240302"> 
+    <div class="form-group"> 
+      <label for="">Versões</label> 
+      <ui-select crn-datasource="{idVeiculosMarcas}" ng-model="datasource.active" ng-disabled="disabled" theme="bootstrap" class="crn-select"> 
+        <ui-select-match placeholder="Select...">
+           {{$select.selected.veiculo}} | {{$select.selected.key}} 
+        </ui-select-match> 
+        <ui-select-choices repeat="rowData as rowData in datasource.data | filter : $select.search" refresh="" refresh-deplay=""> 
+          <div data-container="true">
+             {{rowData.veiculo}} | {{rowData.key}} 
+          </div> 
+        </ui-select-choices> 
+      </ui-select> 
+    </div> 
+  </div>   
+  
+</div>
