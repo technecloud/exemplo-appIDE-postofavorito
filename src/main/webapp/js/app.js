@@ -101,20 +101,19 @@ var app = (function() {
           controller: 'HomeController',
           templateUrl: 'views/logged/comentarios.view.html'
         })
-
-
-
+        
+        .state('consumoMedio', {
+          url: "/home/logged/consumoMedio",
+          controller: 'HomeController',
+          templateUrl: 'views/logged/consumoMedio.view.html'
+        })
+        
         .state('mediaRentabilidadeCarro', {
           url: "/home/logged/mediaRentabilidadeCarro",
           controller: 'HomeController',
           templateUrl: 'views/logged/mediaRentabilidadeCarro.view.html'
         })
 
-        .state('consumoMedio', {
-          url: "/home/logged/consumoMedio",
-          controller: 'HomeController',
-          templateUrl: 'views/logged/consumoMedio.view.html'
-        })
 
         .state('home.pages', {
           url: "/{name:.*}",
