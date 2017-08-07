@@ -92,6 +92,5 @@ public interface AbastecimentoDAO extends JpaRepository<Abastecimento, java.lang
   
    @Query("select a.posto from Abastecimento a")
    List<Posto> recuperaPostosQueTemAbastecimento();
-  
- 
+
 }
