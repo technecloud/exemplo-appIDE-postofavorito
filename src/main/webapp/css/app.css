@@ -24,16 +24,15 @@ button.btn.btn-block.btn-warning {
 }
 
 div.row { 
- }
-
-div.col-md-4 { 
- }
-
-div.span4 { 
-  position: static;
-  left: 200px;
-  text-align: center;
+  position: relative;
+  left: 0px;
 }
 
-input.form-control { 
- }
+form.col-md-9 { 
+  position: absolute;
+  top: 24%;
+  right: 50%;
+  transform: translate(50%, 50%);
+  margin-bottom: 20px !important;
+}
+

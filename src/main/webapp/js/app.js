@@ -223,6 +223,7 @@ var app = (function() {
       });
     });
 
+
 }(window));
 
 app.userEvents = {};
@@ -233,10 +234,15 @@ app.config.datasourceApiVersion = 2;
 
 //Components personalization jquery
 var registerComponentScripts = function() {
-  //carousel slider
-  $('.carousel-indicators li').on('click', function() {
-    var currentCarousel = '#' + $(this).parent().parent().parent().attr('id');
-    var index = $(currentCarousel + ' .carousel-indicators li').index(this);
-    $(currentCarousel + ' #carousel-example-generic').carousel(index);
-  });
+	//carousel slider
+	$('.carousel-indicators li').on(
+			'click',
+			function() {
+				var currentCarousel = '#'
+						+ $(this).parent().parent().parent().attr('id');
+				var index = $(currentCarousel + ' .carousel-indicators li')
+						.index(this);
+				$(currentCarousel + ' #carousel-example-generic').carousel(
+						index);
+			});
 }
