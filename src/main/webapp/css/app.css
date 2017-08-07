@@ -24,6 +24,16 @@ button.btn.btn-block.btn-warning {
 }
 
 div.row { 
-  position: relative;
-  left: 0px;
+ }
+
+div.col-md-4 { 
+ }
+
+div.span4 { 
+  position: static;
+  left: 200px;
+  text-align: center;
 }
+
+input.form-control { 
+ }

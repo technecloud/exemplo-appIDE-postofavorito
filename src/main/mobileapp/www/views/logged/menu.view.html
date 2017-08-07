@@ -20,7 +20,7 @@
           <!-- Menu --> 
           <div class="component-holder" data-component="crn-navbar" id="crn-navbar-986427"> 
             <div class="nav navbar-nav"> 
-              <div class="item item-divider"> 
+              <div class="item item-divider active"> 
                 <i class="icon ion-ios-person"></i> &nbsp; {{session.user.name}} 
               </div> 
               <div menu-close="" class="item-icon-left item item-complex"> 
@@ -28,20 +28,14 @@
               </div> 
                
               <div menu-close="" class="item-icon-left item item-complex"> 
-                <a class="component-holder item-content ng-binding" href="#/app/logged/user" data-component="crn-anchor"> <i class="icon ion-ios-person"></i> {{ "Users.view.Users" | translate }}</a> 
+                <a class="component-holder item-content ng-binding" href="#/app/admin/user" data-component="crn-anchor"> <i class="icon ion-ios-person"></i> {{ "Users.view.Users" | translate }}</a> 
               </div> 
-              <div class="item item-divider"></div> 
+               
               <div menu-close="" class="item-icon-left item item-complex"> 
-                <a href="#/app/logged/abastecimento" class="component-holder item-content ng-binding" data-component="crn-anchor"><i class="icon ion-home"></i> Meus Abastecimentos</a><a href="#/app/logged/carro" class="component-holder item-content ng-binding" data-component="crn-anchor"><i class="icon ion-home"></i> Meus Carros</a><a href="#/app/logged/posto" class="component-holder item-content ng-binding" data-component="crn-anchor"><i class="icon ion-home"></i> Postos</a><a class="component-holder item-content ng-binding" href="#/app/home" ng-click="openChangePassword()" data-component="crn-anchor"> <i class="icon ion-lock-combination"></i>{{"Home.view.ChangePassword" | translate}}</a> 
+                <a href="#/app/logged/abastecimento" class="component-holder item-content ng-binding" data-component="crn-anchor"><i class="icon ion-home"></i> Meus Abastecimentos</a><a href="#/app/logged/carro" class="component-holder item-content ng-binding" data-component="crn-anchor"><i class="icon ion-home"></i> Meus Carros</a><a href="#/app/logged/posto" class="component-holder item-content ng-binding" data-component="crn-anchor"><i class="icon ion-home"></i> Postos</a><a href="#/app/logged/comentario" class="component-holder item-content ng-binding" data-component="crn-anchor"><i class="icon ion-home"></i> Comentários</a><a class="component-holder item-content ng-binding" href="#/app/home" ng-click="openChangePassword()" data-component="crn-anchor"> <i class="icon ion-lock-combination"></i>{{"Home.view.ChangePassword" | translate}}</a> 
               </div> 
               <div menu-close="" class="item-icon-left item item-complex"> 
                 <a class="component-holder item-content ng-binding" ng-click="logout()" href="#" data-component="crn-anchor"> <i class="icon icon ion-arrow-left-a"></i>{{"Home.view.Sair" | translate}}</a> 
               </div> 
-            <div menu-close="" class="item-icon-left item item-complex active"></div> <div menu-close="" class="item-icon-left item item-complex"></div> <div menu-close="" class="item-icon-left item item-complex"></div> </div> 
-          </div> 
-          <!-- Menu -->  
-        </ion-list> 
-      </ion-content> 
-    </ion-side-menu> 
-  </div> 
-</ion-side-menus>
+
+            <div menu-close="" class="item-icon-left item item-complex"></div> <div menu-close="" class="item-icon-left item item-complex"></div> <div menu-close="" class="item-icon-left item item-complex"></div> <div menu-close="" class="item-icon-left item item-complex active"></div> </div> 
