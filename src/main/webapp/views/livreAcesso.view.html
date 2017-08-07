@@ -41,8 +41,8 @@
 
   <div class="jumbotron">
       <div class="container" align="center">
-        <h1>Seja bem vindo ao meu posto favorito 🎖 </h1>
-        <p>Encontre fácil e rapidamente a opção mais econômica para abastecer seu carro!</p>
+        <h1 class="genClass4520">Seja bem vindo ao meu posto favorito 🎖 </h1>
+        <p class="genClass8031">Encontre fácil e rapidamente a opção mais econômica para abastecer seu carro!</p>
         <p><a class="btn btn-primary btn-lg" role="button" type="submit" ng-click="redirectRegister()" user.startinserting()="">Cadastre-se</a></p>
       </div>
     </div>
@@ -51,7 +51,7 @@
     <datasource filter="/listaRankingAbastecimentos" name="Abastecimento" entity="api/rest/Abastecimento" keys="id" rows-per-page="100" delete-message="Deseja remover?"></datasource>
     </div>
     <div class="component-holder ng-binding ng-scope" data-component="crn-button" data-attribute-preview="" id="crn-button-502461"></div>
-    <h3 align="center">Postos Campões de Rentabilidade </h3>
+    <h3 align="center" class="genClass2617">Postos Campões de Rentabilidade </h3>
     <div class="component-holder ng-binding ng-scope" data-component="crn-horizontal-container" data-attribute-preview="" id="crn-horizontal-container-509763">
       <div class="component-holder ng-binding ng-scope" data-component="crn-grid" data-attribute-preview="" id="crn-grid-708015">
         <div crn-datasource="dsPostos"> 
@@ -69,11 +69,16 @@
       </div>
       <div class="component-holder ng-binding ng-scope" data-component="crn-grid" data-attribute-preview="" id="crn-grid-578679">
         <div crn-datasource="Abastecimento" align="center"> 
+        <div class="erro_postos" ng-if="Abastecimento !== 0">
+            <h4 >Não possui postos !</h4>
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        </div>
+        
           <table class="table table-bordered"> 
-            <thead class=""> 
+            <thead ng-if="Abastecimento > 0"> 
               <tr class="table-header"> 
                 <th class="active">
-                  <div data-container="true" class="">
+                  <div data-container="true">
                     Postos
                   </div></th> 
                 <th>
@@ -86,7 +91,7 @@
                   </div></th>
               </tr> 
             </thead> 
-            <tbody class="">
+            <tbody>
               <tr class="table-active" ng-repeat="rowData in datasource.data"> 
                 <td class="active">{{rowData.nomePosto}}</td> 
                 <td class="genClass2529">{{rowData.mediaRentabilidadesPosto}}</td> 
