@@ -24,8 +24,11 @@ button.btn.btn-block.btn-warning {
 }
 
 div.row { 
-  position: relative;
-  left: 0px;
+  text-align: center;
+  position: absolute;
+  right: 50%;
+  transform: translate(50%, 50%);
+  width: 80% !important;
 }
 
 form.col-md-9 { 
