@@ -122,6 +122,11 @@
         $scope.dataAtual = function(){
           Abastecimento.active.data = $scope.data;
         }; 
+         $scope.dataMax = function(){
+          return $scope.data;
+        }; 
+        
+        
 
         $scope.shouldShowDelete = false;
         $scope.shouldShowReorder = false;

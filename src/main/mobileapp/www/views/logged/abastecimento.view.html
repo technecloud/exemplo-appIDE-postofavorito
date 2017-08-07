@@ -54,15 +54,17 @@
             <!-- data begin -->
             <label for="textinput-data" class="item item-input item-stacked-label">
             <span class="input-label">Data</span>
-             <input type="date" as date id="textinput-data" name="data" ng-click="dataAtual()" ng-model="Abastecimento.active.data"
-      placeholder="yyyy-MM-ddTHH:mm:ss" required />
+             <input type="date" as-date id="textinput-data" max="dataMax()" name="data" ng-click="dataAtual()" ng-model="Abastecimento.active.data"
+      placeholder="yyyy-MM-dd" required />
             </label>
             <span class="error" ng-show="abastecimento.data.$error.required  && abastecimento.data.$touched">Data é obrigatória</span>
+            <span class="error" ng-show="abastecimento.data.$error.max  && abastecimento.max.$touched">Data máxima excedida</span>
+
             <!-- posto begin -->
             <datasource name="Posto" entity="api/rest/Posto" keys="id" class=""></datasource>
             <label for="textinput-posto" class="item item-input item-select">
               <span class="input-label">posto</span>
-              <select ng-model="Abastecimento.active.posto" class="form-control" id="textinput-posto" name="posto" ng-options="opt as opt.nome for opt in Posto.data track by opt.id" required >
+              <select ng-model="Abastecimento.active.posto" class="form-control" id="textinput-posto" name="posto" ng-options="opt as opt.nome for opt in Posto.data track by opt.id"  >
               <option value=''>None</option>
               </select>
             </label>
@@ -71,7 +73,7 @@
             <datasource name="Combustivel" entity="api/rest/Combustivel" keys="id" class=""></datasource>
             <label for="textinput-combustivel" class="item item-input item-select">
               <span class="input-label">combustivel</span>
-              <select ng-model="Abastecimento.active.combustivel" class="form-control" id="combustivel" name="combustivel" required ng-options="opt as opt.nome for opt in Combustivel.data track by opt.id" >
+              <select ng-model="Abastecimento.active.combustivel" class="form-control" id="combustivel" name="combustivel" ng-options="opt as opt.nome for opt in Combustivel.data track by opt.id" >
               <option value=''>None</option>
               </select>
             </label>
@@ -123,7 +125,7 @@
             <datasource name="Carro" entity="api/rest/Carro" keys="id" class=""></datasource>
             <label for="textinput-carro" class="item item-input item-select">
               <span class="input-label">carro</span>
-              <select ng-model="Abastecimento.active.carro" class="form-control" id="textinput-carro" required name="carro" ng-options="opt as opt.marca opt.modelo for opt in Carro.data track by opt.id" >
+              <select ng-model="Abastecimento.active.carro" class="form-control" id="textinput-carro" name="carro" ng-options="opt as opt.marca opt.modelo for opt in Carro.data track by opt.id" >
               <option value=''>None</option>
               </select>
             </label>
