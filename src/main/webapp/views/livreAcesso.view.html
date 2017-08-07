@@ -69,8 +69,13 @@
       </div>
       <div class="component-holder ng-binding ng-scope" data-component="crn-grid" data-attribute-preview="" id="crn-grid-578679">
         <div crn-datasource="Abastecimento" align="center"> 
+        <div class="erro_postos" ng-if="Abastecimento !== 0">
+            <h4 >Não possui postos !</h4>
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        </div>
+        
           <table class="table table-bordered"> 
-            <thead> 
+            <thead ng-if="Abastecimento > 0"> 
               <tr class="table-header"> 
                 <th class="active">
                   <div data-container="true">
