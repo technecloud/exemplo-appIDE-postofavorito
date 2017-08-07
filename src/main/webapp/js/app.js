@@ -1,228 +1,273 @@
 var app = (function() {
-  return angular.module('MyApp', [
-      'ui.router',
-      'ui.select',
-      'ui-select-infinity',
-      'ngResource',
-      'ngSanitize',
-      'custom.controllers',
-      'custom.services',
-      'datasourcejs',
-      'chart.js',
-      'ngMask',
-      'ngJustGage',
-      'pascalprecht.translate',
-      'tmh.dynamicLocale',
-      'ui-notification',
-      'ui.bootstrap',
-      'ngFileUpload',
-      'ui.utils.masks'
-  ])
-    .constant('LOCALES', {
-      'locales': {
-        'pt_br': 'Portugues (Brasil)',
-        'en_us': 'English'
-      },
-      'preferredLocale': 'pt_br'
-    })
-    .config([
-      '$httpProvider',
-      function($httpProvider) {
-        var interceptor = [
-          '$q',
-          '$rootScope',
-          function($q, $rootScope) {
-            var service = {
-              'request': function(config) {
-                var _u = JSON.parse(sessionStorage.getItem('_u'));
-                if (_u && _u.token) config.headers['X-AUTH-TOKEN'] = _u.token;
-                return config;
-              }
-            };
-            return service;
-          }
-        ];
-        $httpProvider.interceptors.push(interceptor);
-      }
-    ])
-    .config(function($stateProvider, $urlRouterProvider, NotificationProvider) {
-      NotificationProvider.setOptions({
-        delay: 5000,
-        startTop: 20,
-        startRight: 10,
-        verticalSpacing: 20,
-        horizontalSpacing: 20,
-        positionX: 'right',
-        positionY: 'top'
-      });
+	return angular
+			.module(
+					'MyApp',
+					['ui.router', 'ui.select', 'ui-select-infinity',
+							'ngResource', 'ngSanitize', 'custom.controllers',
+							'custom.services', 'datasourcejs', 'chart.js',
+							'ngMask', 'ngJustGage', 'pascalprecht.translate',
+							'tmh.dynamicLocale', 'ui-notification',
+							'ui.bootstrap', 'ngFileUpload', 'ui.utils.masks'])
+			.constant('LOCALES', {
+				'locales' : {
+					'pt_br' : 'Portugues (Brasil)',
+					'en_us' : 'English'
+				},
+				'preferredLocale' : 'pt_br'
+			})
+			.config(
+					[
+							'$httpProvider',
+							function($httpProvider) {
+								var interceptor = [
+										'$q',
+										'$rootScope',
+										function($q, $rootScope) {
+											var service = {
+												'request' : function(config) {
+													var _u = JSON
+															.parse(sessionStorage
+																	.getItem('_u'));
+													if (_u && _u.token)
+														config.headers['X-AUTH-TOKEN'] = _u.token;
+													return config;
+												}
+											};
+											return service;
+										}];
+								$httpProvider.interceptors.push(interceptor);
+							}])
+			.config(
+					function($stateProvider, $urlRouterProvider,
+							NotificationProvider) {
+						NotificationProvider.setOptions({
+							delay : 5000,
+							startTop : 20,
+							startRight : 10,
+							verticalSpacing : 20,
+							horizontalSpacing : 20,
+							positionX : 'right',
+							positionY : 'top'
+						});
 
-    // Set up the states
-      $stateProvider
+						// Set up the states
+						$stateProvider
 
-        .state('login', {
-          url: "/login",
-          controller: 'LoginController',
-          templateUrl: 'views/login.view.html'
-        })
+								.state('login', {
+									url : "/login",
+									controller : 'LoginController',
+									templateUrl : 'views/login.view.html'
+								})
 
-        .state('livreAcesso', {
-          url: "",
-          controller: 'LoginController',
-          templateUrl: 'views/livreAcesso.view.html'
-        })
+								.state('livreAcesso', {
+									url : "",
+									controller : 'LoginController',
+									templateUrl : 'views/livreAcesso.view.html'
+								})
 
-        .state('cep', {
-          url: "/cep",
-          controller: 'CepController',
-          templateUrl: 'views/cep.view.html'
-        })
+								.state('cep', {
+									url : "/cep",
+									controller : 'CepController',
+									templateUrl : 'views/cep.view.html'
+								})
 
+								.state('cadastro', {
+									url : "/cadastro",
+									controller : 'LoginController',
+									templateUrl : 'views/cadastro.view.html'
+								})
 
-        .state('cadastro', {
-          url: "/cadastro",
-          controller: 'LoginController',
-          templateUrl: 'views/cadastro.view.html'
-        })
+								.state('main', {
+									url : "/",
+									controller : 'LoginController',
+									templateUrl : 'views/login.view.html'
+								})
 
-        .state('main', {
-          url: "/",
-          controller: 'LoginController',
-          templateUrl: 'views/login.view.html'
-        })
+								.state('home', {
+									url : "/home",
+									controller : 'HomeController',
+									templateUrl : 'views/logged/home.view.html'
+								})
 
-        .state('home', {
-          url: "/home",
-          controller: 'HomeController',
-          templateUrl: 'views/logged/home.view.html'
-        })
-        
-         .state('comentarios', {
-          url: "/home/logged/comentarios",
-          controller: 'HomeController',
-          templateUrl: 'views/logged/comentarios.view.html'
-        })
+								.state(
+										'comentarios',
+										{
+											url : "/home/logged/comentarios",
+											controller : 'HomeController',
+											templateUrl : 'views/logged/comentarios.view.html'
+										})
 
+								.state(
+										'mediaRentabilidadeCarro',
+										{
+											url : "/home/logged/mediaRentabilidadeCarro",
+											controller : 'HomeController',
+											templateUrl : 'views/logged/mediaRentabilidadeCarro.view.html'
+										})
 
+								.state(
+										'consumoMedio',
+										{
+											url : "/home/logged/consumoMedio",
+											controller : 'HomeController',
+											templateUrl : 'views/logged/consumoMedio.view.html'
+										})
 
-        .state('mediaRentabilidadeCarro', {
-          url: "/home/logged/mediaRentabilidadeCarro",
-          controller: 'HomeController',
-          templateUrl: 'views/logged/mediaRentabilidadeCarro.view.html'
-        })
+								.state(
+										'home.pages',
+										{
+											url : "/{name:.*}",
+											controller : 'PageController',
+											templateUrl : function(urlattr) {
+												return 'views/' + urlattr.name
+														+ '.view.html';
+											}
+										})
 
-        .state('consumoMedio', {
-          url: "/home/logged/consumoMedio",
-          controller: 'HomeController',
-          templateUrl: 'views/logged/consumoMedio.view.html'
-        })
+								.state('404', {
+									url : "/error/404",
+									controller : 'PageController',
+									templateUrl : function(urlattr) {
+										return 'views/error/404.view.html';
+									}
+								})
 
-        .state('home.pages', {
-          url: "/{name:.*}",
-          controller: 'PageController',
-          templateUrl: function(urlattr) {
-            return 'views/' + urlattr.name + '.view.html';
-          }
-        })
+								.state('403', {
+									url : "/error/403",
+									controller : 'PageController',
+									templateUrl : function(urlattr) {
+										return 'views/error/403.view.html';
+									}
+								});
+						// For any unmatched url, redirect to /state1
+						$urlRouterProvider.otherwise("/error/404");
+					})
 
+			.config(
+					function($translateProvider, tmhDynamicLocaleProvider) {
 
+						$translateProvider.useMissingTranslationHandlerLog();
 
-        .state('404', {
-          url: "/error/404",
-          controller: 'PageController',
-          templateUrl: function(urlattr) {
-            return 'views/error/404.view.html';
-          }
-        })
+						$translateProvider.useStaticFilesLoader({
+							prefix : 'i18n/locale_',
+							suffix : '.json'
+						});
 
-        .state('403', {
-          url: "/error/403",
-          controller: 'PageController',
-          templateUrl: function(urlattr) {
-            return 'views/error/403.view.html';
-          }
-        });
-      // For any unmatched url, redirect to /state1
-      $urlRouterProvider.otherwise("/error/404");
-    })
+						$translateProvider.registerAvailableLanguageKeys([
+								'pt_br', 'en_us'], {
+							'en*' : 'en_us',
+							'pt*' : 'pt_br',
+							'*' : 'pt_br'
+						});
 
-    .config(function($translateProvider, tmhDynamicLocaleProvider) {
+						var locale = (window.navigator.userLanguage
+								|| window.navigator.language || 'pt_br')
+								.replace('-', '_');
 
-      $translateProvider.useMissingTranslationHandlerLog();
+						$translateProvider.use(locale.toLowerCase());
+						$translateProvider.useSanitizeValueStrategy('escaped');
 
-      $translateProvider.useStaticFilesLoader({
-        prefix: 'i18n/locale_',
-        suffix: '.json'
-      });
+						tmhDynamicLocaleProvider
+								.localeLocationPattern('plugins/angular-i18n/angular-locale_{{locale}}.js');
+					})
 
-      $translateProvider.registerAvailableLanguageKeys(
-        ['pt_br', 'en_us'], {
-          'en*': 'en_us',
-          'pt*': 'pt_br',
-          '*': 'pt_br'
-        }
-      );
+			.directive(
+					'crnValue',
+					[
+							'$parse',
+							function($parse) {
+								return {
+									restrict : 'A',
+									require : '^ngModel',
+									link : function(scope, element, attr,
+											ngModel) {
+										var evaluatedValue;
+										if (attr.value) {
+											evaluatedValue = attr.value;
+										} else {
+											evaluatedValue = $parse(
+													attr.crnValue)(scope);
+										}
+										element.attr("data-evaluated", JSON
+												.stringify(evaluatedValue));
+										element
+												.bind(
+														"click",
+														function(event) {
+															scope
+																	.$apply(function() {
+																		ngModel
+																				.$setViewValue(evaluatedValue);
+																	}
+																			.bind(element));
+														});
+									}
+								};
+							}])
 
-      var locale = (window.navigator.userLanguage || window.navigator.language || 'pt_br').replace('-', '_');
+			// General controller
+			.controller(
+					'PageController',
+					[
+							"$scope",
+							"$stateParams",
+							"$location",
+							"$http",
+							"$rootScope",
+							function($scope, $stateParams, $location, $http,
+									$rootScope) {
 
-      $translateProvider.use(locale.toLowerCase());
-      $translateProvider.useSanitizeValueStrategy('escaped');
+								var hoje = new Date(new Date().getFullYear(),
+										new Date().getMonth(), new Date()
+												.getDate());
+								$scope.dataInicio = new Date(hoje.getTime());
+								
+								$scope.dataInicio.setDate($scope.dataInicio
+										.getDate());
+								$scope.dataFim = new Date(hoje.getTime());
 
-      tmhDynamicLocaleProvider.localeLocationPattern('plugins/angular-i18n/angular-locale_{{locale}}.js');
-    })
+								$scope.dataInicioString = (new Date(
+										$scope.dataInicio.getTime())).getDate()
+										+ "/"
+										+ ((new Date($scope.dataInicio
+												.getTime())).getMonth() + 1)
+										+ "/"
+										+ (new Date($scope.dataInicio.getTime()))
+												.getFullYear();
+               var date = new Date();
+          $scope.FromDate = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
 
-    .directive('crnValue', ['$parse', function($parse) {
-      return {
-        restrict: 'A',
-        require: '^ngModel',
-        link: function(scope, element, attr, ngModel) {
-          var evaluatedValue;
-          if (attr.value) {
-            evaluatedValue = attr.value;
-          } else {
-            evaluatedValue = $parse(attr.crnValue)(scope);
-          }
-          element.attr("data-evaluated", JSON.stringify(evaluatedValue));
-          element.bind("click", function(event) {
-            scope.$apply(function() {
-              ngModel.$setViewValue(evaluatedValue);
-            }.bind(element));
-          });
-        }
-      };
-    }])
+								for ( var x in app.userEvents)
+									$scope[x] = app.userEvents[x].bind($scope);
 
-    // General controller
-    .controller('PageController', ["$scope", "$stateParams", "$location", "$http", "$rootScope", function($scope, $stateParams, $location, $http, $rootScope) {
+								// save state params into scope
+								$scope.params = $stateParams;
+								$scope.$http = $http;
 
-      for (var x in app.userEvents)
-        $scope[x] = app.userEvents[x].bind($scope);
+								// Query string params
+								var queryStringParams = $location.search();
+								for ( var key in queryStringParams) {
+									if (queryStringParams.hasOwnProperty(key)) {
+										$scope.params[key] = queryStringParams[key];
+									}
+								}
+								registerComponentScripts();
+							}])
 
-      // save state params into scope
-      $scope.params = $stateParams;
-      $scope.$http = $http;
-
-      // Query string params
-      var queryStringParams = $location.search();
-      for (var key in queryStringParams) {
-        if (queryStringParams.hasOwnProperty(key)) {
-          $scope.params[key] = queryStringParams[key];
-        }
-      }
-      registerComponentScripts();
-    }])
-
-    .run(function($rootScope, $state) {
-      $rootScope.$on('$stateChangeError', function() {
-        if (arguments.length >= 6) {
-          var requestObj = arguments[5];
-          if (requestObj.status === 404 || requestObj.status === 403) {
-            $state.go(requestObj.status.toString());
-          }
-        } else {
-          $state.go('404');
-        }
-      });
-    });
+			.run(
+					function($rootScope, $state) {
+						$rootScope.$on('$stateChangeError', function() {
+							if (arguments.length >= 6) {
+								var requestObj = arguments[5];
+								if (requestObj.status === 404
+										|| requestObj.status === 403) {
+									$state.go(requestObj.status.toString());
+								}
+							} else {
+								$state.go('404');
+							}
+						});
+					});
 
 }(window));
 
@@ -234,10 +279,15 @@ app.config.datasourceApiVersion = 2;
 
 //Components personalization jquery
 var registerComponentScripts = function() {
-  //carousel slider
-  $('.carousel-indicators li').on('click', function() {
-    var currentCarousel = '#' + $(this).parent().parent().parent().attr('id');
-    var index = $(currentCarousel + ' .carousel-indicators li').index(this);
-    $(currentCarousel + ' #carousel-example-generic').carousel(index);
-  });
+	//carousel slider
+	$('.carousel-indicators li').on(
+			'click',
+			function() {
+				var currentCarousel = '#'
+						+ $(this).parent().parent().parent().attr('id');
+				var index = $(currentCarousel + ' .carousel-indicators li')
+						.index(this);
+				$(currentCarousel + ' #carousel-example-generic').carousel(
+						index);
+			});
 }
