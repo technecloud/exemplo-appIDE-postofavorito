@@ -20,9 +20,18 @@ table.table.table-bordered {
 button.btn.btn-block.btn-warning { 
   width: 250px;
 }
+
+div.row { 
+    text-align: center;
+    /* position: absolute; */
+    right: 50%;
+    transform: translate(15%, 50%); 
+    width: 80% !important;
+}
+
 form.col-md-9 { 
   position: absolute;
-  top: 24%;
+  top: 40%;
   right: 50%;
   transform: translate(50%, 10%);
   margin-bottom: 20px !important;
