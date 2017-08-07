@@ -54,7 +54,7 @@
             <!-- data begin -->
             <label for="textinput-data" class="item item-input item-stacked-label">
             <span class="input-label">Data</span>
-             <input type="date" as-date id="textinput-data" max="dataMax()" name="data" ng-click="dataAtual()" ng-model="Abastecimento.active.data"
+             <input type="date" id="textinput-data" max="dataMax()" name="data" ng-click="dataAtual()" ng-model="Abastecimento.active.data"
       placeholder="yyyy-MM-dd" required />
             </label>
             <span class="error" ng-show="abastecimento.data.$error.required  && abastecimento.data.$touched">Data é obrigatória</span>

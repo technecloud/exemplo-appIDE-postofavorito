@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -46,8 +47,9 @@ public class AuthenticationController {
 	private UserDAO userRepository;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<?> authenticationRequest(@RequestParam String username, String password, Device device)
+	public ResponseEntity<?> authenticationRequest(@RequestParam String username, String password, Device device, HttpServletRequest request)
 			throws AuthenticationException {
+
 
 		String formPassword = password;
 
@@ -56,6 +58,7 @@ public class AuthenticationController {
 		if (users.isEmpty())
 			throw new UsernameNotFoundException("User not Found!");
 		User user = users.get(0);
+
 
 		if (passwordEncoder.matches(formPassword, user.getPassword())) {
 
@@ -72,6 +75,9 @@ public class AuthenticationController {
 			String roles = userDetails.getAuthorities().toString().replaceFirst("\\[", "").replaceFirst("\\]", "");
 			boolean root = roles.contains(SecurityPermission.ROLE_ADMIN_NAME);
 			user.setPassword(null);
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("username", username);
       
 			// Return the token
 			return ResponseEntity.ok(new AuthenticationResponse(user, token, expires.getTime(), roles, root));
@@ -88,6 +94,8 @@ public class AuthenticationController {
 			String refreshedToken = this.tokenUtils.refreshToken(token);
 			expires = this.tokenUtils.getExpirationDateFromToken(token);
 			String username = this.tokenUtils.getUsernameFromToken(token);
+						  
+        
 
 			// Get User
 			List<User> users = userRepository.findByLogin(username, new PageRequest(0, 100)).getContent();
