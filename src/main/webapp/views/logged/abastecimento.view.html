@@ -1,5 +1,5 @@
 <h3>Abastecimento</h3>
-<div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
+<div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder" data-ng-init="msg_div_click()">
   <datasource filter="" name="Abastecimento" entity="api/rest/Abastecimento" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
 </div>
 <div data-component="crn-button" id="crn-button-564202">
@@ -156,12 +156,13 @@
           <div class="form-group">
             <label for="textinput-litros" class="">Litros</label>
             <input
+             ui-number-mask="4"
               type="text"
               ng-model="Abastecimento.active.litros"
               class="form-control"
               id="textinput-litros"
               placeholder="Ex: 1.5"
-              onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" step="0.01" value="0.00" required="true" title="Por favor, insira a quantidade de litros."
+    
               >
           </div>
         </div>
@@ -176,7 +177,6 @@
               placeholder="Ex: 3.99"
               required="true"
               ui-money-mask
-              oninvalid="setCustomValidity('Por favor, insira o preço por litro.')" onchange="try{setCustomValidity('')}catch(e){}"
               >
           </div>
         </div>
