@@ -15,7 +15,7 @@
               <li><a href="#/home/logged/userrole" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">UserRole</a><a href="#/home/admin/role" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">{{"Home.view.Roles" | translate}}</a><a href="#/home/admin/user" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">{{"Home.view.Users" | translate}}</a></li> 
               
               
-            <li><a href="#/home/logged/carro" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Carro</a></li><li><a href="" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Posto</a></li><li><a href="#/home/logged/abastecimento" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Abastecimento</a></li><li><a href="#/home/logged/comentario" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Comentário</a></li><li class="active"><a href="#/home/admin/combustivel" class="component-holder" data-component="crn-anchor">Combustivel</a></li></ul> </li> 
+            <li></li><li></li><li></li><li></li><li class="active"></li></ul> </li> 
           <li class="dropdown component-holder navbar-right" data-component="crn-menu-item"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-lg fa-gear"></i> <span>{{"ChooseTheme" | translate}}</span> <span class="caret"></span> </a> 
             <ul class="dropdown-menu"> 
               <li ng-repeat="theme in themes" ng-click="changeTheme(theme)"> <a href="javascript:void(0);" ng-class="{'bg-primary': myTheme==theme}">{{theme}} <i class="fa fa-lg fa-check pull-right" ng-if="myTheme==theme"></i></a></li> 
@@ -25,7 +25,7 @@
               <li><a class="component-holder" data-toggle="modal" data-target="#modalPassword" data-component="crn-anchor">{{"Home.view.ChangePassword" | translate}}</a></li> 
               <li ng-click="logout()" class="active"><a href="javascript:void(0);"><span>{{"Home.view.Logout" | translate}}</span></a></li> 
             </ul> </li> 
-        <li class="dropdown component-holder active" data-component="crn-menu-item"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>Menu </span> <span class="caret"></span></a> <ul class="dropdown-menu">   <li><a href="#/home/logged/carro" ng-click="msg_div_click()" class="component-holder" data-component="crn-anchor">Meus Carros</a></li> <li><a href="#/home/logged/abastecimento" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Meus Abastecimentos</a></li><li class="active"><a href="#/home/logged/posto2" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Postos</a></li></ul></li></ul> 
+        <li class="dropdown component-holder active" data-component="crn-menu-item"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>Controle do Usuario</span> <span class="caret"></span></a> <ul class="dropdown-menu">   <li><a href="#/home/logged/carro" ng-click="msg_div_click()" class="component-holder" data-component="crn-anchor">Meus Carros</a></li> <li><a href="#/home/logged/abastecimento" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Meus Abastecimentos</a></li><li class="active"><a href="#/home/logged/comentarios" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Comentário</a></li></ul></li><li class="dropdown component-holder" data-component="crn-menu-item"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>Gerenciamento dos Postos</span> <span class="caret"></span></a> <ul class="dropdown-menu">   <li class="active"><a href="#/home/logged/posto" class="component-holder" data-component="crn-anchor">Postos</a></li> <li><a href="#/home/admin/combustivel" class="component-holder" data-component="crn-anchor">Combustivel</a></li></ul></li></ul> 
       </div> 
     </div> 
   </nav>
@@ -47,13 +47,13 @@
           </div> 
           <div class="list-group list-group-sm"> 
             <div class="list-group-item"> 
-              <input class="form-control no-border" id="oldPassword" placeholder="{Old Password}" type="password" ____________________________________placeholder="{{'Home.view.Old Password' | translate}}" _____________________placeholder="{Old Password}" ______________________________placeholder="{Old Password}" ___placeholder="{Old Password}"> 
+              <input class="form-control no-border" id="oldPassword" placeholder="{Old Password}" type="password" ___placeholder="{Old Password}" ____________________________________placeholder="{{'Home.view.Old Password' | translate}}" __________________placeholder="{Old Password}" ___________________________placeholder="{Old Password}"> 
             </div> 
             <div class="list-group-item"> 
-              <input class="form-control no-border" id="newPassword" placeholder="{New Password}" type="password" ____________________________________placeholder="{{'Home.view.New Password' | translate}}" _____________________placeholder="{New Password}" ______________________________placeholder="{New Password}" ___placeholder="{New Password}"> 
+              <input class="form-control no-border" id="newPassword" placeholder="{New Password}" type="password" ___placeholder="{New Password}" ____________________________________placeholder="{{'Home.view.New Password' | translate}}" __________________placeholder="{New Password}" ___________________________placeholder="{New Password}"> 
             </div> 
             <div class="list-group-item"> 
-              <input class="form-control no-border" id="newPasswordConfirmation" placeholder="{Confirmation}" type="password" ____________________________________placeholder="{{'Home.view.Confirmation' | translate}}" _____________________placeholder="{Confirmation}" ______________________________placeholder="{Confirmation}" ___placeholder="{Confirmation}"> 
+              <input class="form-control no-border" id="newPasswordConfirmation" placeholder="{Confirmation}" type="password" ___placeholder="{Confirmation}" ____________________________________placeholder="{{'Home.view.Confirmation' | translate}}" __________________placeholder="{Confirmation}" ___________________________placeholder="{Confirmation}"> 
             </div> 
           </div> 
         </form> 

@@ -1,83 +1,79 @@
 <h3 align="center">User</h3>
-<div >
-<div class="row" ng-hide="User.inserting || User.editing" data-ng-init="msg_div_click()"  >
-    <div class="span4" style="float: none; margin: 0 auto;">
-  <div class="col-md-4" >
+<div class="row" ng-hide="User.inserting || User.editing" data-ng-init="msg_div_click()">
+  <div class="col-md-2">
     <div>
-      <label for="textinput-filter">{{"template.crud.search" | translate}} email</label>
+      <label for="textinput-filter" class="">{{"template.crud.search" | translate}} email</label>
       <input ng-model="email" class="form-control" value="" placeholder="email" type="text">
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-2">
     <div>
-      <label for="textinput-filter">{{"template.crud.search" | translate}} name</label>
+      <label for="textinput-filter" class="">{{"template.crud.search" | translate}} name</label>
       <input ng-model="name" class="form-control" value="" placeholder="name" type="text">
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-2">
     <div>
-      <label for="textinput-filter">{{"template.crud.search" | translate}} login</label>
+      <label for="textinput-filter" class="">{{"template.crud.search" | translate}} login</label>
       <input ng-model="login" class="form-control" value="" placeholder="login" type="text">
     </div>
   </div>
 </div>
-</div>
-</div>
 <br>
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
-  <datasource filter="?email={{email}}&amp;name={{name}}&amp;login={{login}}" name="User" entity="api/security/User/specificSearch" keys="id" rows-per-page="100" delete-message="Deseja remover?"></datasource>
+  <datasource filter="?email={{email}}&amp;name={{name}}&amp;login={{login}}" name="User" entity="api/security/User/specificSearch" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
 </div>
 <div data-component="crn-button" id="crn-button-564202" align="center">
-  <button class="btn btn-primary" type="submit" onclick="" ng-click="User.startInserting()" ng-hide="User.inserting || User.editing"><i class="fa fa-user"></i> <span>{{"template.crud.new" | translate}}</span></button>
+  <button class="btn btn-primary" type="submit" onclick="" ng-click="User.startInserting()" ng-hide="User.inserting || User.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
 </div>
 <div class="component-holder" data-component="crn-grid" id="crn-grid-User">
-  <div crn-datasource="User" ng-hide="User.editing || User.inserting" align="center">
+  <div crn-datasource="User" class="" ng-hide="User.editing || User.inserting" align="center">
     <table class="table  table-bordered table-hover table-striped">
       <thead>
         <tr class="table-header">
-          <th>
-            <div>Email</div>
+          <th class="">
+            <div class="">Email</div>
           </th>
-          <th>
-            <div>Name</div>
+          <th class="">
+            <div class="">Name</div>
           </th>
-          <th>
-            <div>Login</div>
+          <th class="">
+            <div class="">Login</div>
           </th>
-          <th>
-            <div>Picture</div>
+          <th class="">
+            <div class="">Picture</div>
           </th>
-          <th>
-            <div>{{"template.crud.actions" | translate}}</div>
+          <th class="">
+            <div class="">{{"template.crud.actions" | translate}}</div>
           </th>
         </tr>
       </thead>
       <tbody>
         <tr class="table-content" ng-repeat="rowData in datasource.data">
-          <td>
-            <div>
+          <td class="">
+            <div class="">
               {{rowData.email}}
             </div>
           </td>
-          <td>
-            <div>
+          <td class="">
+            <div class="">
               {{rowData.name}}
             </div>
           </td>
-          <td>
-            <div>
+          <td class="">
+            <div class="">
               {{rowData.login}}
             </div>
           </td>
-          <td>
-            <div>
+          <td class="">
+            <div class="">
               <a ng-if="rowData.picture" ng-click="datasource.openImage(rowData.picture)">
               <img data-ng-src="{{'data:image/png;base64,' + rowData.picture}}" style="max-height: 30px;">
               </a>
             </div>
           </td>
-          <td>
-            <div>
+          <td class="">
+            <div class="">
               <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button>
               <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
             </div>
@@ -92,7 +88,7 @@
 </div>
 <div data-component="crn-form" id="crn-form-form-User">
   <div class="form" ng-show="User.editing || User.inserting">
-    <form crn-datasource="User">
+    <form crn-datasource="User" class="">
       <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
         <button class="btn btn-primary" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
         <button class="btn btn-success" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>
