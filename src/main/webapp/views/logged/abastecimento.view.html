@@ -1,6 +1,8 @@
+
 <h3 align="center">Abastecimento</h3>
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
   <datasource filter="" name="Abastecimento" entity="api/rest/Abastecimento" keys="id" rows-per-page="100" delete-message="Deseja remover?"></datasource>
+
 </div>
 <div data-component="crn-button" id="crn-button-564202" align="center">
   <button class="btn btn-primary" type="submit" onclick="" ng-click="Abastecimento.startInserting()" ng-hide="Abastecimento.inserting || Abastecimento.editing"><i class="fa fa-user"></i> <span>{{"template.crud.new" | translate}}</span></button>
@@ -142,14 +144,18 @@
         </div>
        <div data-component="crn-textinput" id="crn-textinput-litros">
           <div class="form-group">
+
             <label for="textinput-litros">Litros</label>
             <input ng-model="Abastecimento.active.litros" class="form-control" id="textinput-litros" placeholder="Ex: 1.5" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" step="0.01" value="0.00" required="true" title="Por favor, insira a quantidade de litros." type="text">
+
           </div>
         </div>
         <div data-component="crn-textinput" id="crn-textinput-precoPorLitro">
           <div class="form-group">
+
             <label for="textinput-precoPorLitro">Preco Por Litro</label>
             <input ng-model="Abastecimento.active.precoPorLitro" class="form-control" id="textinput-precoPorLitro" placeholder="Ex: 3.99" required="true" ui-money-mask="" oninvalid="setCustomValidity('Por favor, insira o preço por litro.')" onchange="try{setCustomValidity('')}catch(e){}" type="text">
+
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">
