@@ -1,19 +1,17 @@
-<ion-view cache-view="false" view-title="{{'Login.view.Login' | translate}}"> 
+<ion-view cache-view="false" class="login_title" view-title="Meu Posto Favorito"> 
   <ion-content class="genClass7130"> 
     <div data-container="true"> 
-     
-  </div> 
+    </div> 
     <div data-container="true" style="padding-top: 60px;"> 
       <div class="col text-center"> 
-      <!-- <img src="img/logo_gas.png" style="width: 200px; height: 200px;">-->
-       <img src="http://spdistribuidora.com/images/icon-postoescola.png" style="width: 200px; height: 200px;">
-       
+        <!-- <img src="img/logo_gas.png" style="width: 200px; height: 200px;">--> 
+        <img src="http://spdistribuidora.com/images/icon-postoescola.png" style="width: 200px; height: 200px;"> 
       </div> 
     </div> 
     <form class="form-validation" autocomplete="off" name="form" ng-submit="login()" role="form"> 
-      <div class="list-inset" data-container="true"> 
-        <label class="item-input"> <i class="icon ion-person placeholder-icon"></i> <input type="text" class="form-control" ng-model="user.username" id="username" placeholder="{{'Login.view.Username' | translate}}"> </label> 
-        <label class="item-input"> <i class="icon ion-asterisk placeholder-icon"></i> <input type="password" class="form-control" ng-model="user.password" id="password" placeholder="{{'Login.view.Password' | translate}}"> </label> 
+      <div class="list-inset input_login" data-container="true"> 
+        <label class="item-input input_login"> <i class="icon ion-person placeholder-icon"></i> <input type="text" class="form-control input_login" ng-model="user.username" id="username" placeholder="{{'Login.view.Username' | translate}}"> </label> 
+        <label class="item-input input_login"> <i class="icon ion-asterisk placeholder-icon"></i> <input type="password" class="form-control input_login" ng-model="user.password" id="password" placeholder="{{'Login.view.Password' | translate}}"> </label> 
         <label> <button type="submit" class="button button-block button-positive" ng-disabled="form.$invalid || vm.dataLoading">{{"Login.view.Login" | translate}}</button> </label> 
         <label> 
           <div ng-show="message.error" class="help-block">

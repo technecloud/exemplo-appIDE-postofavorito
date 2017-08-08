@@ -825,3 +825,13 @@ ion-content.genClass7130 {
   background-image: url("http://cfcasabranca.com.br/wp-content/uploads/2017/06/Combustivel.jpg");
  background-size: 700px;
 }
+
+.input_login, .input_login.input .input_login.i {
+  border-radius: 10px;
+  background-color: orange;
+  color: black;
+}
+
+.login_title{
+  color:white;
+}
