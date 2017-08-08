@@ -48,6 +48,12 @@ public class Combustivel implements Serializable {
   private Posto posto;
   
   /**
+  * @generated
+  */
+  @Column(name = "preco", nullable = true, unique = false, insertable=true, updatable=true)
+  private java.lang.Long preco;
+  
+  /**
    * Construtor
    * @generated
    */
@@ -128,6 +134,25 @@ public class Combustivel implements Serializable {
    */
   public Combustivel setPosto(Posto posto){
     this.posto = posto;
+    return this;
+  }
+  
+  /**
+   * Obtém preco
+   * return preco
+   * @generated
+   */
+  public java.lang.Long getPreco(){
+    return this.preco;
+  }
+  
+  /**
+   * Define preco
+   * @param preco preco
+   * @generated
+   */
+  public Combustivel setPreco(java.lang.Long preco){
+    this.preco = preco;
     return this;
   }
   

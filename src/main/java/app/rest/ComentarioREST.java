@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.*;
 import java.util.*;
 import app.entity.*;
 import app.business.*;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Controller para expor serviços REST de Comentario
@@ -36,8 +35,8 @@ public class ComentarioREST {
    * @generated
    */
   @RequestMapping(method = RequestMethod.POST)
-   public Comentario post(@Validated @RequestBody final Comentario entity, HttpServletRequest req) throws Exception {
-     return comentarioBusiness.post(entity, req);
+  public Comentario post(@Validated @RequestBody final Comentario entity) throws Exception {
+    return comentarioBusiness.post(entity);
   }
 
   /**
@@ -70,19 +69,18 @@ public class ComentarioREST {
     comentarioBusiness.delete(comentarioId);
   }
 
- 
+  /**
+   * NamedQuery list
+   * @generated
+   */
+  @RequestMapping(method = RequestMethod.GET
+  )
+  public HttpEntity<PagedResources<Comentario>> listParams (Pageable pageable, PagedResourcesAssembler assembler){
+    return new ResponseEntity<>(assembler.toResource(comentarioBusiness.list(pageable)), HttpStatus.OK);
+  }
 
-  
-  @RequestMapping(method = RequestMethod.GET, value = "/{comentarioId}")
-  public Comentario get(@PathVariable("comentarioId") java.lang.String comentarioId) throws Exception {
-     return comentarioBusiness.get(comentarioId);
-   }
- 
 
-  @RequestMapping(method = RequestMethod.GET)
-  public HttpEntity<PagedResources<Comentario>> listParams(Pageable pageable, PagedResourcesAssembler assembler){
-  return new ResponseEntity<>(assembler.toResource(comentarioBusiness.list(pageable)), HttpStatus.OK);
-  }/**
+  /**
    * Searchable fields - General search (Only strings fields)
    * @generated
    */
@@ -99,23 +97,15 @@ public class ComentarioREST {
   public HttpEntity<PagedResources<Comentario>> specificSearch(java.lang.String data, java.lang.String texto, java.lang.Boolean moderado, Pageable pageable, PagedResourcesAssembler assembler) {
     return new ResponseEntity<>(assembler.toResource(comentarioBusiness.specificSearch(data, texto, moderado, pageable)), HttpStatus.OK);
   }
-  
-  @RequestMapping(method = RequestMethod.GET, value="/User/{userId}")    
-  public HttpEntity<PagedResources<Comentario>> findComentariosByUser(@PathVariable("userId") java.lang.String userId, Pageable pageable, PagedResourcesAssembler assembler) {
-  return new ResponseEntity<>(assembler.toResource(comentarioBusiness.findComentariosByUser(userId, pageable)), HttpStatus.OK);
-  }
-  
-  @RequestMapping(method = RequestMethod.GET, value="/Posto/{postoId}")    
-  public HttpEntity<PagedResources<Comentario>> findComentariosByPosto(@PathVariable("postoId") java.lang.String postoId, Pageable pageable, PagedResourcesAssembler assembler) {
-  return new ResponseEntity<>(assembler.toResource(comentarioBusiness.findComentariosByPosto(postoId, pageable)), HttpStatus.OK);
-  }
-  
-  
+
   /**
    * Serviço exposto para recuperar a entidade de acordo com o id fornecido
    *
    * @generated
    */
-  
+  @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+  public Comentario get(@PathVariable("id") java.lang.String id) throws Exception {
+    return comentarioBusiness.get(id);
+  }
 
 }

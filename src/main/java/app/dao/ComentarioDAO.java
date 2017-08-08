@@ -51,17 +51,6 @@ public interface ComentarioDAO extends JpaRepository<Comentario, java.lang.Strin
   @Query("select c from Comentario c")
   public Page<Comentario> list(Pageable pageable);
   
-  
-  @Query("SELECT entity FROM Comentario entity WHERE entity.user.id = :id")
-  public Page<Comentario> findComentariosByUser(@Param(value="id") java.lang.String id, Pageable pageable);
- 
-   /**
-    * Foreign Key posto
- -   * @generated
- -   */
-   @Query("SELECT entity FROM Comentario entity WHERE entity.posto.id = :id")
-   public Page<Comentario> findComentariosByPosto(@Param(value="id") java.lang.String id, Pageable pageable);
-  
 
 
   
