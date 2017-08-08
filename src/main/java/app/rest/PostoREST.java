@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.*;
 import java.util.*;
 import app.entity.*;
 import app.business.*;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Controller para expor serviços REST de Posto
@@ -159,10 +158,10 @@ public class PostoREST {
    */
   @RequestMapping(method = RequestMethod.POST
   , value="/{instanceId}/Comentario")
-  public Comentario postComentario(@Validated @RequestBody final Comentario entity, @PathVariable("instanceId") java.lang.String instanceId, HttpServletRequest req) throws Exception {
+  public Comentario postComentario(@Validated @RequestBody final Comentario entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
   Posto posto = this.postoBusiness.get(instanceId);
   entity.setPosto(posto);
-    return this.comentarioBusiness.post(entity, req);
+    return this.comentarioBusiness.post(entity);
   }
 
 
@@ -202,10 +201,10 @@ public class PostoREST {
    */
   @RequestMapping(method = RequestMethod.POST
   , value="/{instanceId}/Abastecimento")
-  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("instanceId") java.lang.String instanceId,  HttpServletRequest req) throws Exception {
+  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
   Posto posto = this.postoBusiness.get(instanceId);
   entity.setPosto(posto);
-    return this.abastecimentoBusiness.post(entity, req);
+    return this.abastecimentoBusiness.post(entity);
   }
 
 
@@ -287,7 +286,7 @@ public class PostoREST {
    */
   @RequestMapping(method = RequestMethod.POST
   ,value="/{instanceId}/User")
-  public Posto postUser(@Validated @RequestBody final User entity, @PathVariable("instanceId") java.lang.String instanceId,  HttpServletRequest req) throws Exception {
+  public Posto postUser(@Validated @RequestBody final User entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
     Comentario newComentario = new Comentario();
 
     Posto instance = this.postoBusiness.get(instanceId);
@@ -295,7 +294,7 @@ public class PostoREST {
     newComentario.setUser(entity);
     newComentario.setPosto(instance);
 
-    this.comentarioBusiness.post(newComentario, req);
+    this.comentarioBusiness.post(newComentario);
 
     return newComentario.getPosto();
   }

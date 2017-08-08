@@ -58,21 +58,13 @@ public class UserBusiness {
     entity.setPassword(encryptionPassword);      
     User result = null;
     byte[] picture = entity.getPicture();
-    
     try {
-       result = repository.save(entity);
- 
-      }catch(Exception e) {
-         throw new Exception("Erro no cadastro, usuário já existente.");
-    } 
-     try {
-       result.setPicture(picture);
-       this.cloudManager.byEntity(result).build().dropbox(DROPBOX_APP_ACCESS_TOKEN).upload();
-     } catch (Exception e) {
-       log.error(e.getMessage());
-       throw new Exception("ocorreu um erro ao salvar a imagem no dropbox.");
-     }
-   
+      result = repository.save(entity);
+      result.setPicture(picture);
+      this.cloudManager.byEntity(result).build().dropbox(DROPBOX_APP_ACCESS_TOKEN).upload();
+    } catch (Exception e) {
+      log.error(e.getMessage());
+    }
     // begin-user-code
     // end-user-code
     return result;

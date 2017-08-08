@@ -43,7 +43,7 @@ public final class CloudManager {
 	}
 
 	public CloudFactory build() {
-		InputStream fileContent = new ByteArrayInputStream(new byte[0]);
+		InputStream fileContent = null;
 		Class<?> aClass = sourceObject.getClass();
 		ArrayList<FileObject> files = new ArrayList<>(10);
 		try {
