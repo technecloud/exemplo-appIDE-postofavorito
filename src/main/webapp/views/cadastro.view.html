@@ -1,5 +1,3 @@
-
-
 <div class="component-holder ng-binding ng-scope" data-component="crn-navbar" data-attribute-preview="" id="crn-navbar-977657"> 
   <nav class="navbar navbar-default navbar-fixed-top"> 
     <div class="container-fluid"> 
@@ -20,38 +18,29 @@
   </nav> 
 </div> 
 
+
 <div data-component="crn-form" id="crn-form-form-User"> 
+
   <div class="component-holder ng-binding ng-scope" data-component="crn-image" data-attribute-preview="" id="crn-image-329586"></div> 
-  <div style="background-color:#efe045; margin-top:50px">
+  
+  <div class="col-md-12" style="background-color:#efe045; margin-top:50px"> 
     <h1 align="center" class="genClass2190">Seja bem vindo ao Meu Posto Favorito</h1> 
     <h4 class="genClass4202"> O MPF (Meu Posto Favorito) é uma aplicação responsiva para registrar dados sobre o consumo de combustível de carros e para gerenciar os comentários dos usuários sobre postos de combustíveis. </h4> 
     <div style="margin-top:50px;" align="center"> 
       <img src="img/gasolina.png" width="100" height="100"> 
     </div> 
-      <div data-component="crn-datasource" id="crn-datasource-tela"> 
+    <div data-component="crn-datasource" id="crn-datasource-tela"> 
       <datasource name="User" entity="/api/security/User" keys="id" delete-message="Deseja remover?"></datasource> 
     </div> 
-   
-   <div style="margin-top:50px;" align="center"> 
-      <button class="btn btn-sucess" ng-click="User.startInserting()" ng-scope="User.active=null"><i class="glyphicon glyphicon-ok"></i> Iniciar cadastro</button> 
-  
-    </div>
-   
-    
+    <div style="margin-top:50px;" align="center"> 
+      <button class="btn btn-sucess botao_banner" ng-click="User.startInserting()" ng-scope="User.active=null"><i class="glyphicon glyphicon-ok"></i> Iniciar cadastro</button> 
+    </div> 
   </div> 
-  <div class="form" ng-show="User.inserting"> 
-    
+  
+  <div class="form col-md-12" ng-show="User.inserting"> 
     <form crn-datasource="User" class="col-md-9"> 
-      <!--<div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
-        <button class="btn btn-primary" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
-        <button class="btn btn-success" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>
-        <button class="btn btn-primary" ng-disabled="!datasource.hasPrevious()" ng-click="datasource.previous()"><i class="glyphicon glyphicon-chevron-left"></i></button>
-        <button class="btn btn-primary" ng-disabled="!datasource.hasNext()" ng-click="datasource.next()"><i class="glyphicon glyphicon-chevron-right"></i></button>
-        <button class="btn btn-primary" ng-click="datasource.remove()"><i class="glyphicon glyphicon-trash"></i></button>
-      </div>--> 
-     
       <br> 
-      <fieldset ng-disabled="!datasource.inserting"> 
+      <fieldset class="row" ng-disabled="!datasource.inserting"> 
         <div class="col-md-12" data-component="crn-textinput" id="crn-textinput-picture"> 
           <div class="form-group"> 
             <label for="textinput-picture">Picture</label> 
@@ -63,40 +52,37 @@
               </div> 
             </div> 
           </div> 
-        </div>       
+        </div> 
         <div class="col-md-4" data-component="crn-textinput" id="crn-textinput-email"> 
           <div class="form-group"> 
             <label for="textinput-email">Email</label> 
-            <input ng-model="User.active.email" class="form-control" id="textinput-email" pattern=".{1,50}" required="" title="Escreva um email com no máximo 50 caracteres" placeholder="Ex: maria@email.com" type="email"> 
+            <input ng-model="User.active.email" class="form-control" id="textinput-email" pattern=".{1,50}" required title="Escreva um email com no máximo 50 caracteres" placeholder="Ex: maria@email.com" type="email"> 
           </div> 
         </div> 
         <div class="col-md-4" data-component="crn-textinput" id="crn-textinput-name"> 
           <div class="form-group"> 
             <label for="textinput-name">Name</label> 
-            <input ng-model="User.active.name" class="form-control" id="textinput-name" pattern=".{1,50}" title="Escreva um nome com no máximo 50 caracteres" placeholder="Ex: Maria da Silva" required="" type="text"> 
+            <input ng-model="User.active.name" class="form-control" id="textinput-name" pattern=".{1,50}" title="Escreva um nome com no máximo 50 caracteres" placeholder="Ex: Maria da Silva" required type="text"> 
           </div> 
         </div> 
         <div class="col-md-4" data-component="crn-textinput" id="crn-textinput-login"> 
           <div class="form-group"> 
             <label for="textinput-login">Login</label> 
-            <input ng-model="User.active.login" class="form-control" id="textinput-login" placeholder="Ex: maria" pattern=".{1,50}" title="Escreva um login com no máximo 50 caracteres" required="" type="text"> 
+            <input ng-model="User.active.login" class="form-control" id="textinput-login" placeholder="Ex: maria" pattern=".{1,50}" title="Escreva um login com no máximo 50 caracteres" required type="text"> 
           </div> 
         </div> 
         <div class="col-md-4" data-component="crn-textinput" id="crn-textinput-password"> 
           <div class="form-group"> 
             <label for="textinput-password">Password</label> 
-            <input ng-model="User.active.password" class="form-control" id="textinput-password" placeholder="Insira a senha" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!#$%<>'()*+,-./:;?@[\\\]_`{|}~]).{8,}" title="Desculpe, sua senha de conter  pelo menos 8 caracteres, contendo nela: letras maiúsculas e minúsculas, números, caracteres especiais" type="password"> 
+            <input ng-model="User.active.password" class="form-control" id="textinput-password" placeholder="Insira a senha" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!#$%<>'()*+,-./:;?@[\\\]_`{|}~]).{8,}" title="Desculpe, sua senha de conter  pelo menos 8 caracteres, contendo nela: letras maiúsculas e minúsculas, números, caracteres especiais" type="password"> 
           </div> 
         </div> 
-     <div  class="active-bar col-md-12" ng-hide="!datasource.inserting" style="margin-top:10px;"> 
-        <button class="btn btn-success" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i> Confirmar </button> 
-        <button class="btn btn-danger" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i> Cancelar </button> 
-      </div> 
+        <div class="active-bar col-md-12" ng-hide="!datasource.inserting" style="margin-top:10px;"> 
+          <button class="btn btn-success" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i> Confirmar </button> 
+          <button class="btn btn-danger" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i> Cancelar </button> 
+        </div> 
       </fieldset> 
     </form> 
-    
-    <br>
-    <br>
-    
   </div> 
+  
 </div>
