@@ -10,7 +10,7 @@
       <div id="navbar" class="navbar-collapse collapse"> 
         <ul class="nav navbar-nav" style="float:none"> 
           <li class="dropdown component-holder" data-component=""> <a href="#/home" class="dropdown-toggle" ng-click="msg_div_click_false()" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-lg fa-home"></i> <span>{{"Home.view.Home" | translate}}</span> </a> </li> 
-          <li class="dropdown component-holder open" data-component="crn-menu-item" ng-if="session.root"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-users fa-lg"></i> <span>{{"Home.view.Admin" | translate}}</span> <span class="caret"></span> </a> 
+          <li class="dropdown component-holder open" data-component="crn-menu-item" ng-if="session.root"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-users fa-lg"></i> <span>Gerenciamento do administrador</span> <span class="caret"></span> </a> 
             <ul class="dropdown-menu"> 
               <li class="active"><a href="#/home/admin/user" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">{{"Home.view.Users" | translate}}</a></li> 
               
@@ -25,7 +25,8 @@
               <li><a class="component-holder" data-toggle="modal" data-target="#modalPassword" data-component="crn-anchor">{{"Home.view.ChangePassword" | translate}}</a></li> 
               <li ng-click="logout()" class="active"><a href="javascript:void(0);"><span>{{"Home.view.Logout" | translate}}</span></a></li> 
             </ul> </li> 
-        <li class="dropdown component-holder active" data-component="crn-menu-item"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>Menu </span> <span class="caret"></span></a> <ul class="dropdown-menu">   <li><a href="#/home/logged/carro" ng-click="msg_div_click()" class="component-holder" data-component="crn-anchor">Meus Carros</a></li> <li><a href="#/home/logged/abastecimento" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Meus Abastecimentos</a></li><li class="active"><a href="#/home/logged/posto2" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Postos</a></li></ul></li></ul> 
+        <li class="dropdown component-holder active open" data-component="crn-menu-item"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-user	Try it
+"></i> <span>Gerenciamento do Usuário </span> <span class="caret"></span></a> <ul class="dropdown-menu">   <li><a href="#/home/logged/carro" ng-click="msg_div_click()" class="component-holder" data-component="crn-anchor">Meus Carros</a></li> <li><a href="#/home/logged/abastecimento" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Meus Abastecimentos</a></li><li class="active"><a href="#/home/logged/posto2" class="component-holder" ng-click="msg_div_click()" data-component="crn-anchor">Postos</a></li></ul></li></ul> 
       </div> 
     </div> 
   </nav>
@@ -47,13 +48,13 @@
           </div> 
           <div class="list-group list-group-sm"> 
             <div class="list-group-item"> 
-              <input class="form-control no-border" id="oldPassword" placeholder="{Old Password}" __________________placeholder="{Old Password}" ______________________________placeholder="{{'Home.view.Old Password' | translate}}" ________________________placeholder="{Old Password}" type="password"> 
+              <input class="form-control no-border" id="oldPassword" placeholder="{Old Password}" type="password" __________________placeholder="{Old Password}" ___________________________placeholder="{Old Password}" ______________________________placeholder="{{'Home.view.Old Password' | translate}}" ______placeholder="{Old Password}"> 
             </div> 
             <div class="list-group-item"> 
-              <input class="form-control no-border" id="newPassword" placeholder="{New Password}" __________________placeholder="{New Password}" ______________________________placeholder="{{'Home.view.New Password' | translate}}" ________________________placeholder="{New Password}" type="password"> 
+              <input class="form-control no-border" id="newPassword" placeholder="{New Password}" type="password" __________________placeholder="{New Password}" ___________________________placeholder="{New Password}" ______________________________placeholder="{{'Home.view.New Password' | translate}}" ______placeholder="{New Password}"> 
             </div> 
             <div class="list-group-item"> 
-              <input class="form-control no-border" id="newPasswordConfirmation" placeholder="{Confirmation}" __________________placeholder="{Confirmation}" ______________________________placeholder="{{'Home.view.Confirmation' | translate}}" ________________________placeholder="{Confirmation}" type="password"> 
+              <input class="form-control no-border" id="newPasswordConfirmation" placeholder="{Confirmation}" type="password" __________________placeholder="{Confirmation}" ___________________________placeholder="{Confirmation}" ______________________________placeholder="{{'Home.view.Confirmation' | translate}}" ______placeholder="{Confirmation}"> 
             </div> 
           </div> 
         </form> 
