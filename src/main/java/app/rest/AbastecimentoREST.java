@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.*;
 import java.util.*;
 import app.entity.*;
 import app.business.*;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Controller para expor serviços REST de Abastecimento
@@ -36,8 +35,8 @@ public class AbastecimentoREST {
    * @generated
    */
   @RequestMapping(method = RequestMethod.POST)
-  public Abastecimento post(@Validated @RequestBody final Abastecimento entity, HttpServletRequest req) throws Exception {
-  return abastecimentoBusiness.post(entity, req);
+  public Abastecimento post(@Validated @RequestBody final Abastecimento entity) throws Exception {
+    return abastecimentoBusiness.post(entity);
   }
 
   /**
@@ -80,30 +79,8 @@ public class AbastecimentoREST {
     return new ResponseEntity<>(assembler.toResource(abastecimentoBusiness.list(pageable)), HttpStatus.OK);
   }
 
- @RequestMapping(method = RequestMethod.GET, value="/User/{userId}")    
-  public HttpEntity<PagedResources<Abastecimento>> findAbastecimentosByUser(@PathVariable("userId") java.lang.String userId, Pageable pageable, PagedResourcesAssembler assembler) {
-     return new ResponseEntity<>(assembler.toResource(abastecimentoBusiness.findAbastecimentosByUser(userId, pageable)), HttpStatus.OK);
-  }
-  
-   @RequestMapping(method = RequestMethod.GET, value="/Posto/{postoId}")    
-   public HttpEntity<PagedResources<Abastecimento>> findAbastecimentosByPosto(@PathVariable("postoId") java.lang.String postoId, Pageable pageable, PagedResourcesAssembler assembler) {
-   return new ResponseEntity<>(assembler.toResource(abastecimentoBusiness.findAbastecimentosByPosto(postoId, pageable)), HttpStatus.OK);
-   }
-   
-    @RequestMapping(method = RequestMethod.GET, value="/Carro/{carroId}")    
-   public HttpEntity<PagedResources<Abastecimento>> findAbastecimentosByCarro(@PathVariable("carroId") java.lang.String carroId, Pageable pageable, PagedResourcesAssembler assembler) {
-     return new ResponseEntity<>(assembler.toResource(abastecimentoBusiness.findAbastecimentosByCarro(carroId, pageable)), HttpStatus.OK);
-   }
-   
-   @RequestMapping(method = RequestMethod.GET, value="/listaRankingAbastecimentos")
-   public HttpEntity<PagedResources<AbastecimentoVO>> listaRankingAbastecimentos(Pageable pageable, PagedResourcesAssembler assembler){
-     return new ResponseEntity<>(assembler.toResource(abastecimentoBusiness.listaRanking(pageable)), HttpStatus.OK);    
-   }
-   
-   @RequestMapping(method = RequestMethod.GET, value="/listaRankingCarro")
-   public HttpEntity<PagedResources<CarroVO2>> listaRankingCarro(Pageable pageable, PagedResourcesAssembler assembler){
-     return new ResponseEntity<>(assembler.toResource(abastecimentoBusiness.listaRankingCarro(pageable)), HttpStatus.OK);    
-   }
+
+
   /**
    * Serviço exposto para recuperar a entidade de acordo com o id fornecido
    *

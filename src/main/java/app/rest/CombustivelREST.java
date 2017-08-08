@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.*;
 import java.util.*;
 import app.entity.*;
 import app.business.*;
-import javax.servlet.http.HttpServletRequest;
+
 /**
  * Controller para expor serviços REST de Combustivel
  *
@@ -122,10 +122,10 @@ public class CombustivelREST {
    */
   @RequestMapping(method = RequestMethod.POST
   , value="/{instanceId}/Abastecimento")
-  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("instanceId") java.lang.String instanceId, HttpServletRequest req) throws Exception {
+  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
   Combustivel combustivel = this.combustivelBusiness.get(instanceId);
   entity.setCombustivel(combustivel);
-    return this.abastecimentoBusiness.post(entity, req);
+    return this.abastecimentoBusiness.post(entity);
   }
 
 

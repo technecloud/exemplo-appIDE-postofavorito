@@ -69,8 +69,8 @@
       </div>
       <div class="component-holder ng-binding ng-scope" data-component="crn-grid" data-attribute-preview="" id="crn-grid-578679">
         <div crn-datasource="Abastecimento" align="center"> 
-        <div class="erro_postos" ng-if="Abastecimento !== 0">
-            <h4 >Não possui postos !</h4>
+        <div class="erro_postos" ng-if="Abastecimento.length > 0">
+            <h4>Não possui postos !</h4>
             <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
         </div>
         
@@ -104,7 +104,7 @@
           </div> 
         </div>
       </div>
-      <div class="row" data-container="true" draggable="true"> 
+      <div class="rows" data-container="true" draggable="true"> 
         <div class="column col-md-4">
           <div class="component-holder ng-binding ng-scope" data-component="crn-combobox-dynamic" data-attribute-preview="" id="crn-combobox-dynamic-775080"></div>
         </div> 
@@ -112,7 +112,7 @@
       </div>
     </div> 
   </div> 
-  <div class="row" align="left">
+  <div class="rows" align="left">
         <div class="col-md-4">
           <h2>Postos</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>

@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.*;
 import java.util.*;
 import app.entity.*;
 import app.business.*;
-import javax.servlet.http.HttpServletRequest;
+
 /**
  * Controller para expor serviços REST de User
  *
@@ -126,27 +126,29 @@ public class UserREST {
    * OneToMany Relationship GET
    * @generated
    */
- @RequestMapping(method = RequestMethod.GET, value="/{userId}/Carro")    
-   public HttpEntity<PagedResources<Carro>> findCarro(@PathVariable("userId") java.lang.String userId, Pageable pageable, PagedResourcesAssembler assembler) {
-    return new ResponseEntity<>(assembler.toResource(userBusiness.findCarro(userId, pageable)), HttpStatus.OK);
-   
- }
+  @RequestMapping(method = RequestMethod.GET
+  , value="/{instanceId}/Carro")
+  public HttpEntity<PagedResources<Carro>> findCarro(@PathVariable("instanceId") java.lang.String instanceId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(userBusiness.findCarro(instanceId, pageable)), HttpStatus.OK);
+  }
 
   /**
    * OneToMany Relationship DELETE
    * @generated
    */
-   @RequestMapping(method = RequestMethod.DELETE, value="/{userId}/Carro/{carroId}")    
-   public void deleteCarro(@PathVariable("carroId") java.lang.String carroId) throws Exception {
-     this.carroBusiness.delete(carroId);
- }
+  @RequestMapping(method = RequestMethod.DELETE
+  , value="/{instanceId}/Carro/{relationId}")
+  public void deleteCarro(@PathVariable("relationId") java.lang.String relationId) throws Exception {
+    this.carroBusiness.delete(relationId);
+  }
 
   /**
    * OneToMany Relationship PUT
    * @generated
    */
-   @RequestMapping(method = RequestMethod.PUT, value="/{userId}/Carro")
-  public Carro putCarro(@Validated @RequestBody final Carro entity, @PathVariable("userId") java.lang.String userId) throws Exception {
+  @RequestMapping(method = RequestMethod.PUT
+  , value="/{instanceId}/Carro/{relationId}")
+  public Carro putCarro(@Validated @RequestBody final Carro entity, @PathVariable("relationId") java.lang.String relationId) throws Exception {
     return this.carroBusiness.put(entity);
   }
 
@@ -154,12 +156,13 @@ public class UserREST {
    * OneToMany Relationship POST
    * @generated
    */
-@RequestMapping(method = RequestMethod.POST, value="/{userId}/Carro")
-   public Carro postCarro(@Validated @RequestBody final Carro entity, @PathVariable("userId") java.lang.String userId, HttpServletRequest req) throws Exception {
-     User user = this.userBusiness.get(userId);
-     entity.setUser(user);
-     return this.carroBusiness.post(entity, req);
- }
+  @RequestMapping(method = RequestMethod.POST
+  , value="/{instanceId}/Carro")
+  public Carro postCarro(@Validated @RequestBody final Carro entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
+  User user = this.userBusiness.get(instanceId);
+  entity.setUser(user);
+    return this.carroBusiness.post(entity);
+  }
 
   /**
    * OneToMany Relationship GET - Searchable fields - General search (Only strings fields)
@@ -214,11 +217,12 @@ public class UserREST {
    * OneToMany Relationship POST
    * @generated
    */
-  @RequestMapping(method = RequestMethod.POST, value="/{userId}/Comentario")
-  public Comentario postComentario(@Validated @RequestBody final Comentario entity, @PathVariable("userId") java.lang.String userId, HttpServletRequest req) throws Exception {
-     User user = this.userBusiness.get(userId);
-    entity.setUser(user);
-     return this.comentarioBusiness.post(entity, req);
+  @RequestMapping(method = RequestMethod.POST
+  , value="/{instanceId}/Comentario")
+  public Comentario postComentario(@Validated @RequestBody final Comentario entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
+  User user = this.userBusiness.get(instanceId);
+  entity.setUser(user);
+    return this.comentarioBusiness.post(entity);
   }
 
 
@@ -256,11 +260,12 @@ public class UserREST {
    * OneToMany Relationship POST
    * @generated
    */
- @RequestMapping(method = RequestMethod.POST, value="/{userId}/Abastecimento")
-   public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("userId") java.lang.String userId, HttpServletRequest req) throws Exception {
-     User user = this.userBusiness.get(userId);
-     entity.setUser(user);
-     return this.abastecimentoBusiness.post(entity, req);
+  @RequestMapping(method = RequestMethod.POST
+  , value="/{instanceId}/Abastecimento")
+  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
+  User user = this.userBusiness.get(instanceId);
+  entity.setUser(user);
+    return this.abastecimentoBusiness.post(entity);
   }
 
   /**
@@ -297,18 +302,19 @@ public class UserREST {
    * ManyToMany Relationship POST
    * @generated
    */
-  
-  @RequestMapping(method = RequestMethod.POST,value="/{userId}/Posto")
-  public User postPosto(@Validated @RequestBody final Posto entity, @PathVariable("userId") java.lang.String userId, HttpServletRequest req) throws Exception {
+  @RequestMapping(method = RequestMethod.POST
+  ,value="/{instanceId}/Posto")
+  public User postPosto(@Validated @RequestBody final Posto entity, @PathVariable("instanceId") java.lang.String instanceId) throws Exception {
     Comentario newComentario = new Comentario();
-    User user = this.userBusiness.get(userId);
-    
-    newComentario.setPosto(entity);
-    newComentario.setUser(user);
-     
-    this.comentarioBusiness.post(newComentario, req);
-    return newComentario.getUser();
 
+    User instance = this.userBusiness.get(instanceId);
+
+    newComentario.setPosto(entity);
+    newComentario.setUser(instance);
+
+    this.comentarioBusiness.post(newComentario);
+
+    return newComentario.getUser();
   }
 
   /**
