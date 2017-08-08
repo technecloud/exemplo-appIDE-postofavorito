@@ -784,3 +784,44 @@ body {
 .input-validation-error {
     border-bottom: 2px solid red !important;
 }
+
+ion-content.genClass993 { 
+  background-color: rgb(139, 195, 74);
+}
+
+h1.title { 
+  background-color: rgb(49, 56, 66);
+  color: rgb(255, 255, 255);
+}
+
+div.bar.bar-header.bar-stable { 
+  background-color: rgb(139, 195, 74);
+}
+
+label.item.item-input { 
+  background-color: rgb(139, 195, 74);
+}
+
+label.item { 
+  background-color: rgb(139, 195, 74);
+}
+
+.title{
+  background-color: white;
+}
+
+div.list { 
+  
+}
+
+i.icon.ion-person.placeholder-icon { 
+}
+
+ion-view.genClass701 { 
+  background-image: url("img/combustivel.jpg");
+}
+
+ion-content.genClass7130 { 
+  background-image: url("http://cfcasabranca.com.br/wp-content/uploads/2017/06/Combustivel.jpg");
+ background-size: 700px;
+}
