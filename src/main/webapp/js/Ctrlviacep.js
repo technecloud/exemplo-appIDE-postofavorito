@@ -22,6 +22,7 @@
 				var raw;
 				raw = response.data;
 				$scope.address = raw;
+				console.log($scope.address);
 				if (raw.erro) {
 					$scope.address = deferred.reject('CEP não encontrado');
 					return deferred.reject('CEP não encontrado');
