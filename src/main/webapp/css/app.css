@@ -92,9 +92,55 @@ h4.genClass4202 {
   
 }
 
-div.rows { 
+div.boxes { 
   text-align: center;
   right: 50%;
   transform: translate(15%, 10%);
   width: 80% !important;
+}
+
+
+.inputs{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+.form-group input[type=radio] {
+  display: none;
+  
+}
+.form-group label i.fa:before {
+  content:'\f005';
+  color: #FC0;
+  font-size: 4em;
+}
+.form-group input[type=radio]:checked ~ label i.fa:before {
+  color: #CCC;
+  
+}  
+
+.coment{
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+
+input[type=checkbox], input[type=radio] {
+    margin: 4px 0 0;
+    width: 35px;
+    margin-top: 1px;
+    line-height: normal;
+}
+
+.tabela_coment{
+  margin-top: 50px;
+}
+
+.btn_coment{
+  margin-top: 23px !important;
+}
+
+.botao_banner{
+  margin-bottom: 5px !important;
 }
