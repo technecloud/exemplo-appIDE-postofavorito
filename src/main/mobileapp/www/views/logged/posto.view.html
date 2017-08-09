@@ -1,4 +1,4 @@
-<ion-view cache-view="false" view-title="Posto" hide-back-button="true">
+<ion-view cache-view="false" view-title="Posto" hide-back-button="true" data-ng-init="msg_div_click()">
   <ion-nav-buttons side="right">
     <button class="button button-stable" ng-hide="Posto.inserting || Posto.editing" ng-click="Posto.startInserting()"> <i class="icon ion-plus-round"></i> </button>
     <button class="button button-stable" ng-show="Posto.inserting || Posto.editing" ng-click="Posto.post()"> <i class="icon ion-checkmark"></i> </button>

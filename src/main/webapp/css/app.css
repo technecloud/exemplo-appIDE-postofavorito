@@ -144,3 +144,6 @@ input[type=checkbox], input[type=radio] {
 .botao_banner{
   margin-bottom: 5px !important;
 }
+
+div.container-full { 
+ }
