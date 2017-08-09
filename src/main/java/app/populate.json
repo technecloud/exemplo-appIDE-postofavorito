@@ -5,6 +5,8 @@
     "name": "admin",
     "login": "admin",
     "password": "$2a$10$LjzpM1Q3VoAtG2dTCCabNuW0/amVPjL3Iyvyi2Dj7NP.HngtzSewu"
+    
+    
   },
   {
     "_class": "app.entity.Role",
